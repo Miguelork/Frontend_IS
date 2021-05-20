@@ -1,3 +1,4 @@
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Register';
 import Login from './components/Login';
 import Inicio from './components/Inicio';
