@@ -2,6 +2,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Register';
 import Login from './components/Login';
 import Inicio from './components/Inicio';
+import Menu from './components/Menu';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -9,7 +10,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Menu from './components/Menu';
+
 
 
 function App() {
