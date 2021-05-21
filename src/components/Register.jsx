@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Wave from './Wave'
+import axios from 'axios';
 
 // onChange={(e) => mostrarDiv(e.target.value)} <------ NO BORRAR
 
@@ -36,6 +37,28 @@ function registrarDoctor() {
     Doctor.horaFinal = document.getElementById("horaFinalD").value;
     console.log(Doctor)
    // Envio POST al backend
+   axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
+      "tipo": Doctor.tipo,
+      "nombre": Doctor.nombre,
+      "apellido": Doctor.apellido,
+      "user": Doctor.user,
+      "password": Doctor.password,
+      "telefono": Doctor.telefono,
+      "email": Doctor.email,
+      "direccion": Doctor.direccion,
+      "especialidades": Doctor.especialidades,
+      "horaIncial": Doctor.horaIncial,
+      "horaFinal": Doctor.horaFinal
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+   /*
     fetch('https://dblinkmed.herokuapp.com/crearUsuario', { 
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -57,7 +80,7 @@ function registrarDoctor() {
     })
     .then(res => res.json())
     .then(res => console.log(res))
-
+    */
 }  
 
 function registrarPaciente() {
@@ -69,7 +92,21 @@ function registrarPaciente() {
     Paciente.telefono = document.getElementById("telefonoP").value;
     Paciente.email = document.getElementById("emailP").value;
     Paciente.direccion = document.getElementById("direccionP").value;
-    console.log(Paciente) 
+    axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
+      "nombre": Paciente.nombre,
+      "apellido": Paciente.apellido,
+      "user": Paciente.user,
+      "password": Paciente.password,
+      "telefono": Paciente.telefono,
+      "email": Paciente.email,
+      "direccion": Paciente.direccion,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }  
 
 const Register = () => {
