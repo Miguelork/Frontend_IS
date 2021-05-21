@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Wave from './Wave';
 
@@ -14,7 +15,9 @@ const Inicio = () => {
                   <h1>Bienvenidos a <span>LinkMed</span></h1>
                   <h2>Conocimiento especializado, al alcance de tu mano</h2>
                   <div className="text-center text-lg-left">
-                    <a href="#about" className="mr-2 btn-get-started scrollto">Comienza Ahora</a>
+                    <Link to="/login">
+                      <a className="mr-2 btn-get-started scrollto">Comienza Ahora</a>
+                    </Link>
                     <a href="#about" className="ml-2 btn-get-started scrollto">Ver Video</a>
                   </div>
                 </div>

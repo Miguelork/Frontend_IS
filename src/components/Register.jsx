@@ -32,8 +32,32 @@ function registrarDoctor() {
     Doctor.email = document.getElementById("emailD").value;
     Doctor.direccion = document.getElementById("direccionD").value;
     Doctor.especialidades = document.getElementById("especialidadesD").value;
-    Doctor.hora = document.getElementById("horaD").value;
+    Doctor.horaIncial = document.getElementById("horaInicialD").value;
+    Doctor.horaFinal = document.getElementById("horaFinalD").value;
     console.log(Doctor)
+   // Envio POST al backend
+    fetch('https://dblinkmed.herokuapp.com/crearUsuario', { 
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: `
+    {
+       "tipo": "${Doctor.tipo}"
+       "nombre": "${Doctor.nombre}",
+       "apellido": "${Doctor.apellido}",
+       "user": "${Doctor.user}",
+       "password": "${Doctor.password}",
+       "telefono": "${Doctor.telefono}",
+       "email": "${Doctor.email}",
+       "direccion": "${Doctor.direccion}",
+       "especialidades": "${Doctor.especialidades}",
+       "horaIncial": "${Doctor.horaIncial}",
+       "horaFinal": "${Doctor.horaFinal}"
+   }
+        ` }),
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+
 }  
 
 function registrarPaciente() {
@@ -127,46 +151,84 @@ const Register = () => {
                <input type="hidden" id="tipoD"/>
                      <div class="form-row">
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="nombreD" placeholder="Escriba su Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Nombre</span>
+                              </div>
+                              <input type="text" id="nombreD" className="form-control" placeholder="Escriba su nombre" />
+                           </div>
                         </div>
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="apellidoD" placeholder="Escriba su Apellido" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Apellido</span>
+                              </div>
+                              <input type="text" id="apellidoD" className="form-control" placeholder="Escriba su apellido" />
+                           </div>
                         </div>
                      </div>
                      <div class="form-row">
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="userD" placeholder="Escriba su Usuario" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Usuario </span>
+                              </div>
+                              <input type="text" id="userD" className="form-control" placeholder="Escriba su usuario" />
+                           </div>
                         </div>
                         <div class="col-md-6 form-group">
-                           <input type="password" class="form-control" id="passwordD" placeholder="Escriba su Contraseña" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Contraseña</span>
+                              </div>
+                              <input type="password" id="passwordD" className="form-control" placeholder="Escriba su contraseña" />
+                           </div>
                         </div>
                      </div>                     
                      <div class="form-row">
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="telefonoD" placeholder="Escriba su Teléfono " data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Teléfono</span>
+                              </div>
+                              <input type="text" id="telefonoD" className="form-control" placeholder="Escriba su teléfono" />
+                           </div>
                         </div>
                         <div class="col-md-6 form-group">
-                           <input type="email" class="form-control" id="emailD" placeholder="Escriba su Email" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Email</span>
+                              </div>
+                              <input type="email" id="emailD" className="form-control" placeholder="Escriba su email" />
+                           </div>
                         </div>
                      </div>
                      <div class="form-group">
-                           <input type="text" class="form-control" id="direccionD" placeholder="Escriba su Dirección" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                     <div className="input-group">
+                           <div className="input-group-prepend">
+                              <span className="input-group-text" >Dirección</span>
+                           </div>
+                           <input type="text" id="direccionD" className="form-control" placeholder="Escriba su dirección" />
+                        </div>
                         </div>
                         <div class="form-row">
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="especialidadesD" placeholder="Escriba su Especialidades" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                           <div className="input-group-prepend">
+                              <span className="input-group-text" >Especialidades</span>
+                           </div>
+                           <input type="text" id="especialidadesD" className="form-control" placeholder="Escriba su especialidades" />
+                        </div>
                         </div>
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="horaD" placeholder="Escriba su Hora de atención. Ej: 8:00AM a 11:00AM" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                           <div className="input-group-prepend">
+                              <span className="input-group-text" >Horas de atención</span>
+                           </div>
+                           <input type="time" id="horaInicialD" className="form-control" />
+                           <span className="input-group-text" >Hasta</span>
+                           <input type="time" id="horaFinalD" className="form-control" />
+                        </div>
                         </div>
                      </div>
                      <div class="mb-3">
@@ -190,47 +252,76 @@ const Register = () => {
                   <form role="form" class="php-email-form" style={{"width":"100%"}}>
                      <div class="form-row">
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="nombreP" placeholder="Escriba su Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                           <div class="validate"></div>
+                           <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Nombre</span>
+                              </div>
+                              <input type="text" id="nombreP" className="form-control" placeholder="Escriba su nombre" />
+                           </div>
                         </div>
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="apellidoP" placeholder="Escriba su Apellido" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                           <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Apellido</span>
+                              </div>
+                              <input type="text" id="apellidoP" className="form-control" placeholder="Escriba su apellido" />
+                           </div>
                         </div>
                      </div>
                      <div class="form-row">
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="userP" placeholder="Escriba su Usuario" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                           <div class="validate"></div>
+                           <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Usuario </span>
+                              </div>
+                              <input type="text" id="userP" className="form-control" placeholder="Escriba su usuario" />
+                           </div>
                         </div>
                         <div class="col-md-6 form-group">
-                           <input type="password" class="form-control" id="passwordP" placeholder="Escriba su Contraseña" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                           <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Contraseña</span>
+                              </div>
+                              <input type="password" id="passwordP" className="form-control" placeholder="Escriba su contraseña" />
+                           </div>
                         </div>
-                     </div>                     
+                     </div>
                      <div class="form-row">
                         <div class="col-md-6 form-group">
-                           <input type="text" class="form-control" id="telefonoP" placeholder="Escriba su Teléfono " data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                           <div class="validate"></div>
+                           <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Teléfono</span>
+                              </div>
+                              <input type="text" id="telefonoP" className="form-control" placeholder="Escriba su teléfono" />
+                           </div>
                         </div>
                         <div class="col-md-6 form-group">
-                           <input type="email" class="form-control" id="emailP" placeholder="Escriba su Email" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                           <div className="input-group">
+                              <div className="input-group-prepend">
+                                 <span className="input-group-text" >Email</span>
+                              </div>
+                              <input type="email" id="emailP" className="form-control" placeholder="Escriba su email" />
+                           </div>
                         </div>
                      </div>
                      <div class="form-group">
-                           <input type="text" class="form-control" id="direccionP" placeholder="Escriba su Dirección" data-rule="email" data-msg="Please enter a valid email" />
-                           <div class="validate"></div>
+                        <div className="input-group">
+                           <div className="input-group-prepend">
+                              <span className="input-group-text" >Dirección</span>
+                           </div>
+                           <input type="text" id="direccionP" className="form-control" placeholder="Escriba su dirección" />
                         </div>
-                     <div class="mb-3">
-                        <div style={{"display":"none" , "color":"white"}}>¡Ha ocurrido un error!</div>
                      </div>
-                     <div class="text-center"><a href="#" onClick={ registrarPaciente }  className="btn-get-started scrollto">Aceptar</a></div>
-                  </form>
+                     <div class="mb-3">
+                        <div style={{"display":"none" , "color":"white"}}>¡Ha ocurrido un error!
+                     </div>
                </div>
+               <div class="text-center"><a href="#" onClick={ registrarPaciente }  className="btn-get-started scrollto">Aceptar</a></div>
+               </form>
             </div>
-         </section>
-         {/* End Features Section */}
+      </div>
+      </section>
+      {/* End Features Section */}
       </div>
       <Wave />
    </section>
