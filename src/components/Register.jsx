@@ -3,9 +3,16 @@ import Header from './Header'
 
 // onChange={(e) => mostrarDiv(e.target.value)} <------ NO BORRAR
 
-function mostrarDivDoctor() {
+function mostrarDivDoctorV() {
     document.getElementById('pricing').style.display = 'none';
     document.getElementById('divDoctor').style.display = '';
+    document.getElementById('tipoD').value = "Voluntario";
+}
+
+function mostrarDivDoctorP() {
+    document.getElementById('pricing').style.display = 'none';
+    document.getElementById('divDoctor').style.display = '';
+    document.getElementById('tipoD').value = "Premium";
 }
 
 function mostrarDivPaciente() {
@@ -15,6 +22,7 @@ function mostrarDivPaciente() {
 
 function registrarDoctor() {
     var Doctor = new Object();
+    Doctor.tipo = document.getElementById("tipoD").value;
     Doctor.nombre = document.getElementById("nombreD").value;
     Doctor.apellido = document.getElementById("apellidoD").value;
     Doctor.user = document.getElementById("userD").value;
@@ -47,6 +55,10 @@ const Register = () => {
    <section id="hero">
       <section id="pricing" className="pricing" style={{"padding":"1rem"}}>
          <div className="container">
+         <div data-aos="zoom-out">
+                  <h1>Unete a la plataforma <span>LinkMed</span></h1>
+                  <h2>Seleciona tu tipo de usuario</h2>
+                </div>
             <div className="row" data-aos="fade-center" style={{"justify-content":"center"}}>
                <div className="col-lg-3 col-md-6">
                   <div className="box" data-aos="zoom-in" data-aos-delay={100}>
@@ -76,7 +88,23 @@ const Register = () => {
                         <li className="na">Massa ultricies mi</li>
                      </ul>
                      <div className="btn-wrap">
-                        <a href="#" className="btn-buy" onClick={ mostrarDivDoctor }>Buy Now</a>
+                        <a href="#" className="btn-buy" onClick={ mostrarDivDoctorV }>Buy Now</a>
+                     </div>
+                  </div>
+               </div>
+               <div className="col-lg-3 col-md-6 mt-4 mt-md-0">
+                  <div className="box featured" data-aos="zoom-in" data-aos-delay={200}>
+                     <h3>Business</h3>
+                     <h4><sup>$</sup>19<span> / month</span></h4>
+                     <ul>
+                        <li>Aida dere</li>
+                        <li>Nec feugiat nisl</li>
+                        <li>Nulla at volutpat dola</li>
+                        <li>Pharetra massa</li>
+                        <li className="na">Massa ultricies mi</li>
+                     </ul>
+                     <div className="btn-wrap">
+                        <a href="#" className="btn-buy" onClick={ mostrarDivDoctorP }>Buy Now</a>
                      </div>
                   </div>
                </div>
@@ -95,6 +123,7 @@ const Register = () => {
                </div>
                <div className="row" data-aos="fade-left">
                <form role="form" class="php-email-form" style={{"width":"100%"}}>
+               <input type="hidden" id="tipoD"/>
                      <div class="form-row">
                         <div class="col-md-6 form-group">
                            <input type="text" class="form-control" id="nombreD" placeholder="Escriba su Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
