@@ -4,6 +4,7 @@ import Header from './Header';
 import InicioCard from './InicioCard';
 import Wave from './Wave';
 
+
 class Inicio extends React.Component {
   constructor(props) {
     super(props)

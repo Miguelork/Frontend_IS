@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function InicioCard(props) {
     return (
         <div className="container">
