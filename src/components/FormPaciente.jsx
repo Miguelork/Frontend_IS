@@ -74,6 +74,12 @@ const FormPaciente = () => {
                 <h2>Registro</h2>
                 <p style={{ "color": "white" }}>Paciente</p>
             </div>
+            <div id="error" style={{ "display": "none" }} class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Ops!</strong> El usuario o el correo ya existen en nuestra plataforma.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
             <div className="row" data-aos="fade-left">
                 <form role="form" class="php-email-form" style={{ "width": "100%" }}>
                     <div class="form-row">
@@ -155,10 +161,6 @@ const FormPaciente = () => {
                             <input type="text" id="pacdireccion"  name="direccion" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su dirección" />
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!
-                     </div>
-                    </div>
                     <div class="text-center"><a href="#" onClick={onSubmit} className="btn-get-started scrollto">Aceptar</a></div>
                 </form>
             </div>
@@ -166,8 +168,8 @@ const FormPaciente = () => {
     )
 }
 
-function registrarPaciente() {
-    console.log("Se registro paciente")
+async function registrarPaciente() {
+    
     var Paciente = new Object();
     Paciente.nombre = document.getElementById("pacnombre").value;
     Paciente.apellido = document.getElementById("pacapellido").value;
@@ -176,21 +178,50 @@ function registrarPaciente() {
     Paciente.telefono = document.getElementById("pactelefono").value;
     Paciente.email = document.getElementById("pacemail").value;
     Paciente.direccion = document.getElementById("pacdireccion").value;
-    axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
-        "nombre": Paciente.nombre,
-        "apellido": Paciente.apellido,
-        "user": Paciente.user,
-        "password": Paciente.password,
-        "telefono": Paciente.telefono,
-        "email": Paciente.email,
-        "direccion": Paciente.direccion,
-    })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+
+    // Se verifica primero que el usuario no exista
+    const response = await axios({
+        url: "https://dblinkmed.herokuapp.com/listaUsuario",
+        method: "GET",
+    });
+    // console.log(response.data.item);
+
+    var controlExiste = false; // Variable booleana para saber si existe ponerla en true
+    response.data.item.map((usuario) => {
+        if (usuario.user == Paciente.user || usuario.email == Paciente.email) {
+            controlExiste = true;
+        }
+    });
+
+    // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
+    if (controlExiste == false) {
+         // Envio POST al backend
+        axios.post("https://dblinkmed.herokuapp.com/crearUsuario", {
+                nombre: Paciente.nombre,
+                apellido: Paciente.apellido,
+                user: Paciente.user,
+                password: Paciente.password,
+                telefono: Paciente.telefono,
+                email: Paciente.email,
+                direccion: Paciente.direccion,
+            })
+            .then(function (response) {
+                console.log(response);
+                window.location.href = '/';
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }else{
+        document.getElementById('error').style.display = 'block';
+        setTimeout(function() {
+            document.getElementById('error').style.display = 'none';
+        },5000);
+    }
 }
+
+
+
+
 
 export default FormPaciente

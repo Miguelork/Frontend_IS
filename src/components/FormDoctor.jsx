@@ -87,6 +87,12 @@ const FormDoctor = () => {
                 <h2>Registro</h2>
                 <p style={{ "color": "white" }}>Doctor</p>
             </div>
+            <div id="error" style={{ "display": "none" }} class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Ops!</strong> El usuario o el correo ya existen en nuestra plataforma.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
             <div className="row" data-aos="fade-left">
                 <form role="form" id="regDoctor" class="php-email-form" style={{ "width": "100%" }}>
                     <input type="hidden" id="tipoD" />
@@ -215,8 +221,7 @@ const FormDoctor = () => {
     )
 
 }
-function registrarDoctor() {
-    console.log("Se registro doctor")
+async function registrarDoctor() {
     var Doctor = new Object();
     Doctor.tipo = document.getElementById("tipoD").value;
     Doctor.nombre = document.getElementById("docnombre").value;
@@ -230,6 +235,22 @@ function registrarDoctor() {
     Doctor.horaIncial = document.getElementById("docdateI").value;
     Doctor.horaFinal = document.getElementById("docdateE").value;
 
+    // Se verifica primero que el usuario no exista
+    const response = await axios({
+        url: "https://dblinkmed.herokuapp.com/listaUsuario",
+        method: "GET",
+    });
+    // console.log(response.data.item);
+
+    var controlExiste = false; // Variable booleana para saber si existe ponerla en true
+    response.data.item.map((usuario) => {
+        if (usuario.user == Doctor.user || usuario.email == Doctor.email) {
+            controlExiste = true;
+        }
+    });
+
+    // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
+    if (controlExiste == false) {
     // Envio POST al backend
     axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
         "tipo": Doctor.tipo,
@@ -250,6 +271,12 @@ function registrarDoctor() {
         .catch(function (error) {
             console.log(error);
         });
+    }else{
+        document.getElementById('error').style.display = 'block';
+        setTimeout(function() {
+            document.getElementById('error').style.display = 'none';
+        },5000);
+    }
 }
 
 export default FormDoctor
