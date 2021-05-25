@@ -16,11 +16,11 @@ class Inicio extends React.Component {
         "fr": "evenodd",
         "d1": "M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z",
         "d2": "",
-        "description": "Todos los perfiles de los especialistas en la salud que veras en este medio fueron rigurosamente verificados, y validados por nuestro equipo de trabajo, el cual sirve de garantia de calidad de los mismos."
+        "description": "Todos los perfiles de los especialistas en la salud que veras en este medio fueron rigurosamente verificados, y validados por nuestro equipo de trabajo, el cual sirve de garantia de calidad."
 
       }, {
         "id": 2,
-        "title": "Rápida Respuesta",
+        "title": "Velocidad de Respuesta",
         "ico":"bi bi-speedometer",
         "fr":"evenodd",
         "d1":"M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z",
@@ -28,7 +28,7 @@ class Inicio extends React.Component {
         "description": "Contactar con especialistas de la salud nunca habia sido tan fácil, la comunicación por este medio garantiza una pronta respuesta en contraste a lo tardado que puede ser agendar una cita."
       }, {
         "id": 3,
-        "title": "Contacto Directo",
+        "title": "Contacta Directamente",
         "ico":"bi bi-chat-dots-fill",
         "fr":"",
         "d1":"M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z",
@@ -41,7 +41,7 @@ class Inicio extends React.Component {
         "fr":"",
         "d1":"M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z",
         "d2":"",
-        "description": "Entendemos perfectamente la crisis que se esta viviendo en el mundo a partir de la pandemia, por lo que esta es una plataforma principalmente humanitaria, para garantizar ayudar a la mayoria de las personas."
+        "description": "Entendemos perfectamente la crisis que se esta viviendo en el mundo a partir de la pandemia, por lo que esta es una plataforma cuyo proposito es ayudar a las personas."
       }]
     }
   }
