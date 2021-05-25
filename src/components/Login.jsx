@@ -16,8 +16,11 @@ const Login = () => {
                 <section id="pricing" className="pricing" style={{ "padding": "1rem" }}>
                     <div className="container" style={{ "max-width": "500px" }}>
                         <div className="section-title" data-aos="fade-up">
-                            <h2>Login</h2>
+                            <h2>Inicio de Sesión</h2>
                             <p style={{ "color": "white" }}>Usuario</p>
+                        </div>
+                        <div className="mt-0 mb-4 hero-img" data-aos="zoom-out" data-aos-delay={100}>
+                            <img src="assets/img/log.svg" className="img-fluid" alt="" />
                         </div>
                         <div className="row" data-aos="fade-left">
                             <form role="form" class="php-email-form" style={{ "width": "100%" }}>
@@ -42,13 +45,14 @@ const Login = () => {
                                     <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
                                 </div>
                                 <div class="text-center"><a href="#" onClick={login} className="btn-get-started scrollto">Aceptar</a></div>
+                                <Link to="/">
+                                    <p style={{ "color": "white", "font-size": "10px", "margin-top": "1rem" }}>¿Has olvidado la contraseña?</p>
+                                </Link>
+                                <Link to="/register">
+                                    <p style={{ "color": "white", "font-size": "10px" }}>Registrarse</p>
+                                </Link>
                             </form>
-                            <Link to="/">
-                                <p style={{ "color": "white", "font-size": "10px", "margin-top": "1rem" }}>¿Has olvidado la contraseña?</p>
-                            </Link>
-                            <Link to="/register">
-                                <p style={{ "color": "white", "font-size": "10px" }}>Registrarse</p>
-                            </Link>
+
                         </div>
                     </div>
                 </section>
