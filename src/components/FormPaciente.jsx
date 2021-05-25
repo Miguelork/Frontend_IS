@@ -74,12 +74,6 @@ const FormPaciente = () => {
                 <h2>Registro</h2>
                 <p style={{ "color": "white" }}>Paciente</p>
             </div>
-            <div id="error" style={{ "display": "none" }} class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Ops!</strong> El usuario o el correo ya existen en nuestra plataforma.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div>
             <div className="row" data-aos="fade-left">
                 <form role="form" class="php-email-form" style={{ "width": "100%" }}>
                     <div class="form-row">
@@ -169,7 +163,7 @@ const FormPaciente = () => {
 }
 
 async function registrarPaciente() {
-    
+    console.log("Ejecutando funcion: registrarPaciente()")
     var Paciente = new Object();
     Paciente.nombre = document.getElementById("pacnombre").value;
     Paciente.apellido = document.getElementById("pacapellido").value;
@@ -188,11 +182,18 @@ async function registrarPaciente() {
 
     var controlExiste = false; // Variable booleana para saber si existe ponerla en true
     response.data.item.map((usuario) => {
-        if (usuario.user == Paciente.user || usuario.email == Paciente.email) {
+        if (usuario.user == Paciente.user) {
+            document.getElementById("pacusuario").classList.add('is-invalid');
+            document.getElementById("pacusuario").classList.remove('is-valid');
+            controlExiste = true;
+        }
+        if (usuario.email == Paciente.email){
+            document.getElementById("pacemail").classList.add('is-invalid');
+            document.getElementById("pacemail").classList.remove('is-valid');
             controlExiste = true;
         }
     });
-
+    
     // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
     if (controlExiste == false) {
          // Envio POST al backend
@@ -212,11 +213,6 @@ async function registrarPaciente() {
             .catch(function (error) {
                 console.log(error);
             });
-    }else{
-        document.getElementById('error').style.display = 'block';
-        setTimeout(function() {
-            document.getElementById('error').style.display = 'none';
-        },5000);
     }
 }
 

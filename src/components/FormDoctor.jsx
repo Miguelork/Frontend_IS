@@ -87,12 +87,6 @@ const FormDoctor = () => {
                 <h2>Registro</h2>
                 <p style={{ "color": "white" }}>Doctor</p>
             </div>
-            <div id="error" style={{ "display": "none" }} class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Ops!</strong> El usuario o el correo ya existen en nuestra plataforma.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div>
             <div className="row" data-aos="fade-left">
                 <form role="form" id="regDoctor" class="php-email-form" style={{ "width": "100%" }}>
                     <input type="hidden" id="tipoD" />
@@ -244,7 +238,14 @@ async function registrarDoctor() {
 
     var controlExiste = false; // Variable booleana para saber si existe ponerla en true
     response.data.item.map((usuario) => {
-        if (usuario.user == Doctor.user || usuario.email == Doctor.email) {
+        if (usuario.user == Doctor.user) {
+            document.getElementById("docusuario").classList.add('is-invalid');
+            document.getElementById("docusuario").classList.remove('is-valid');
+            controlExiste = true;
+        }
+        if (usuario.email == Doctor.email){
+            document.getElementById("docemail").classList.add('is-invalid');
+            document.getElementById("docemail").classList.remove('is-valid');
             controlExiste = true;
         }
     });
@@ -271,11 +272,6 @@ async function registrarDoctor() {
         .catch(function (error) {
             console.log(error);
         });
-    }else{
-        document.getElementById('error').style.display = 'block';
-        setTimeout(function() {
-            document.getElementById('error').style.display = 'none';
-        },5000);
     }
 }
 
