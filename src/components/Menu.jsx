@@ -48,7 +48,10 @@ const Menu = () => {
                 <div className="col-md-6 mt-4">
                     <div className="icon-box" data-aos="zoom-in" data-aos-delay={250}>
                     <i className="ri-database-2-line" style={{"color":"#47aeff"}} />
-                    <h3><a href> Ver Perfil</a></h3>
+                    {/* <h3><a href> Ver Perfil</a></h3>*/}
+                    <Link to="/perfil">
+                      <h3><a href> Ver Perfil</a></h3>
+                    </Link>
                     </div>
                 </div>
                 <div className="col-md-6 mt-4">

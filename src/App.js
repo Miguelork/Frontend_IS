@@ -3,6 +3,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Inicio from './components/Inicio';
 import Menu from './components/Menu';
+import Perfil from './components/Perfil';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -18,6 +19,9 @@ function App() {
 <Router>
     <div className="App">
         <Switch>
+          <Route path="/perfil">
+            <Perfil />
+          </Route>
           <Route path="/register">
             <Register />
           </Route>
