@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header'
-import Wave from './Wave'
-
-function login() {
-    alert("Pulse");
-}
+import Header from './Header';
+import Wave from './Wave';
+import axios from 'axios';
 
 const Login = () => {
     return (
@@ -45,7 +42,7 @@ const Login = () => {
                                     <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
                                 </div>
                                 <div class="text-center"><a href="#" onClick={login} className="btn-get-started scrollto">Aceptar</a></div>
-                                <Link to="/">
+                                <Link to="/recuperarcontrasena">
                                     <p style={{ "color": "white", "font-size": "10px", "margin-top": "1rem" }}>¿Has olvidado la contraseña?</p>
                                 </Link>
                                 <Link to="/register">
@@ -64,6 +61,28 @@ const Login = () => {
             {/* End Hero */}
         </div>
     )
+}
+
+async function login() {
+    // Funcion para iniciar sesión
+    const response = await axios({
+        url: "https://dblinkmed.herokuapp.com/listaUsuario",
+         method: "GET",
+    });
+    //console.log(response.data.item);
+    var login = false; // Variable de control para poner en true si coinciden los datos con la DB
+    response.data.item.map((usuario) => {
+        if ( usuario.user == document.getElementById("user").value && usuario.password == document.getElementById("password").value ) {
+            login = true;
+        }
+    });
+    // Si login esta true es que todo fue bien y se inicia sesión
+    if( login == true ){
+        alert("Has iniciado sesión!");
+    }else{
+        alert("Error! Los datos no son correctos.");
+    }
+    
 }
 
 export default Login

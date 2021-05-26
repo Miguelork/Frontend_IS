@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Inicio from './components/Inicio';
 import Menu from './components/Menu';
 import Perfil from './components/Perfil';
+import RecuperarContrasena from './components/RecuperarContrasena';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -11,6 +12,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 
 
 
@@ -27,6 +29,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/recuperarcontrasena">
+            <RecuperarContrasena />
           </Route>
           <Route path="/menu">
             <Menu />
