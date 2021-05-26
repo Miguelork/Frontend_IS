@@ -10,16 +10,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  BrowserRouter
 } from "react-router-dom";
-
-
 
 
 function App() {
   return (
-<Router>
-    <div className="App">
+    <BrowserRouter>
+      <div className="App">
         <Switch>
           <Route path="/perfil">
             <Perfil />
@@ -40,8 +39,8 @@ function App() {
             <Inicio />
           </Route>
         </Switch>
-    </div>
-    </Router>
+      </div>
+    </BrowserRouter>
   );
 }
 
