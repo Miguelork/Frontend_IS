@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import Wave from './Wave';
 import axios from 'axios';
+import RecuperarContrasena from './RecuperarContrasena';
 
 const Login = () => {
     return (
@@ -41,20 +42,32 @@ const Login = () => {
                                 <div class="mb-3">
                                     <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
                                 </div>
-                                <div class="text-center"><a href="#" onClick={login} className="btn-get-started scrollto">Aceptar</a></div>
-                                <Link to="/recuperarcontrasena">
+                                <div className="text-center"><a href="#" onClick={login} className="btn-get-started scrollto">Aceptar</a></div>
+                                <a type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
                                     <p style={{ "color": "white", "font-size": "10px", "margin-top": "1rem" }}>¿Has olvidado la contraseña?</p>
-                                </Link>
+                                </a>
+
                                 <Link to="/register">
                                     <p style={{ "color": "white", "font-size": "10px" }}>Registrarse</p>
                                 </Link>
                             </form>
-
                         </div>
                     </div>
                 </section>
-                {/* End Pricing Section */}
-                <div>
+                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal_border" role="document">
+                        <div className="modal-content ">
+                            <div className="modal-header bg-green pb-0">            
+                                <p style={{ "color": "white",  "font-size": "35px", "font-family": "Poppins, sans-serif" }}>Recuperar Contraseña</p>
+                                <button type="button" className=" btn-cancel" height="35px" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body bg-blue">
+                                <RecuperarContrasena />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <Wave />
             </section>
@@ -67,22 +80,22 @@ async function login() {
     // Funcion para iniciar sesión
     const response = await axios({
         url: "https://dblinkmed.herokuapp.com/listaUsuario",
-         method: "GET",
+        method: "GET",
     });
     //console.log(response.data.item);
     var login = false; // Variable de control para poner en true si coinciden los datos con la DB
     response.data.item.map((usuario) => {
-        if ( usuario.user == document.getElementById("user").value && usuario.password == document.getElementById("password").value ) {
+        if (usuario.user == document.getElementById("user").value && usuario.password == document.getElementById("password").value) {
             login = true;
         }
     });
     // Si login esta true es que todo fue bien y se inicia sesión
-    if( login == true ){
+    if (login == true) {
         alert("Has iniciado sesión!");
-    }else{
+    } else {
         alert("Error! Los datos no son correctos.");
     }
-    
+
 }
 
 export default Login

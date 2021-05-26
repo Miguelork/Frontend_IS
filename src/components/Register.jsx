@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from './Header'
 import Wave from './Wave'
-import axios from 'axios';
 import FormDoctor from './FormDoctor';
 import FormPaciente from './FormPaciente';
 // onChange={(e) => mostrarDiv(e.target.value)} <------ NO BORRAR
