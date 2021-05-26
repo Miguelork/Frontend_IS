@@ -58,7 +58,7 @@ class Inicio extends React.Component {
                   <h2>Conocimiento especializado, al alcance de tu mano</h2>
                   <div className="text-center text-lg-left">
                     <Link to="/login">
-                      <a className="mr-2 btn-get-started scrollto">Comienza Ahora</a>
+                      <a className="mr-2 btn-get-started scrollto mb-2">Comienza Ahora</a>
                     </Link>
                     <a href="#about" className="ml-2 btn-get-started scrollto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
