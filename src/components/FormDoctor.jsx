@@ -236,6 +236,9 @@ async function registrarDoctor() {
     Doctor.horaIncial = document.getElementById("docdateI").value;
     Doctor.horaFinal = document.getElementById("docdateE").value;
 
+    ocultar('DocFormulario');
+    mostrar('DocFinalizando');
+
     // Se verifica primero que el usuario no exista
     const response = await axios({
         url: "https://dblinkmed.herokuapp.com/listaUsuario",
@@ -259,8 +262,6 @@ async function registrarDoctor() {
 
     // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
     if (controlExiste == false) {
-        ocultar('DocFormulario');
-        mostrar('DocFinalizando');
     // Envio POST al backend
     axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
         "tipo": Doctor.tipo,
@@ -282,6 +283,9 @@ async function registrarDoctor() {
         .catch(function (error) {
             console.log(error);
         });
+    }else{
+        ocultar('DocFinalizando');
+        mostrar('DocFormulario');
     }
 }
 

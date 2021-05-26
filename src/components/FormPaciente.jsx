@@ -181,6 +181,9 @@ async function registrarPaciente() {
     Paciente.email = document.getElementById("pacemail").value;
     Paciente.direccion = document.getElementById("pacdireccion").value;
 
+    ocultar('PacFormulario');
+    mostrar('PacFinalizando');
+
     // Se verifica primero que el usuario no exista
     const response = await axios({
         url: "https://dblinkmed.herokuapp.com/listaUsuario",
@@ -204,8 +207,6 @@ async function registrarPaciente() {
     
     // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
     if (controlExiste == false) {
-        ocultar('PacFormulario');
-        mostrar('PacFinalizando');
          // Envio POST al backend
         axios.post("https://dblinkmed.herokuapp.com/crearUsuario", {
                 tipo: Paciente.tipo,
@@ -219,11 +220,14 @@ async function registrarPaciente() {
             })
             .then(function (response) {
                 console.log(response);
-                setTimeout(() => { window.location.href = '/login'; }, 3000);
+                window.location.href = '/login';
             })
             .catch(function (error) {
                 console.log(error);
             });
+    }else{
+        ocultar('PacFinalizando');
+        mostrar('PacFormulario');
     }
 }
 
