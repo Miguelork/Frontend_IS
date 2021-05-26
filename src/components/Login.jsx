@@ -59,7 +59,7 @@ const Login = () => {
                         <div className="modal-content ">
                             <div className="modal-header bg-green pb-0">            
                                 <p style={{ "color": "white",  "font-size": "35px", "font-family": "Poppins, sans-serif" }}>Recuperar Contraseña</p>
-                                <button type="button" className=" btn-cancel" height="35px" data-dismiss="modal" aria-label="Close">
+                                <button type="button" className=" btn-cancel" height="35px" width="35px" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>

@@ -35,6 +35,7 @@ const FormPaciente = () => {
                 break;
             case "password":
                 validarCampo(expresiones.password, e.target, 'password');
+                break;
             case "email":
                 validarCampo(expresiones.correo, e.target, 'email');
                 break;

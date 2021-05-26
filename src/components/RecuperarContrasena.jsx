@@ -3,6 +3,59 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const RecuperarContrasena = () => {
+
+    const expresiones = {
+        usuario: /^[a-zA-Z0-9_-]{4,20}$/,
+        nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+        password: /^.{8,15}$/,
+        correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+    }
+
+    const campos = {
+        nombre:false,
+        usuario:false,
+        password:false,
+        email:false
+    }
+
+    const validarFormulario = (e) => {
+        switch (e.target.name) {
+            case "usuario":
+                validarCampo(expresiones.usuario, e.target, 'usuario');
+                break;
+            case "nombre":
+                validarCampo(expresiones.nombre, e.target, 'nombre');
+                break;
+            case "password":
+                validarCampo(expresiones.password, e.target, 'password');
+                break;
+            case "email":
+                validarCampo(expresiones.correo, e.target, 'email');
+                break;
+        }
+    }
+
+    const validarCampo = (expresion, input, campo) => {
+        if ((expresion.test(input.value))) {
+            document.getElementById(campo).classList.remove('is-invalid');
+            document.getElementById(campo).classList.add('is-valid');
+            campos[campo] = true;
+        } else {
+            document.getElementById(campo).classList.add('is-invalid');
+            document.getElementById(campo).classList.remove('is-valid');
+            campos[campo] = false;
+        }
+    }
+
+    const next = (e) => {
+        console.log(campos[e.target.name])
+        if(campos[e.target.name]){
+            pasos();
+        }else{
+            e.preventDefault();
+        }
+    }
+
     return (
         <div className="container" style={{ "max-width": "500px" }}>
             <div className="section-title" data-aos="fade-up">
@@ -27,12 +80,12 @@ const RecuperarContrasena = () => {
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Nombre</span>
                                     </div>
                                 </div>
-                                <input type="text" id="nombre" className="form-control" />
+                                <input type="text" id="nombre" name="nombre" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 offset-4 text-center">
-                        <a href="#" onClick={pasos} className="btn-get-started scrollto">Siguiente</a>
+                        <a href="#" onClick={next} name="nombre" className="btn-get-started scrollto">Siguiente</a>
                     </div>
                 </div>
                 <div className="row" data-aos="fade-left" id="paso-2" style={{ "display": "none" }}>
@@ -46,12 +99,12 @@ const RecuperarContrasena = () => {
                                     </svg>  Usuario</span>
                                     </div>
                                 </div>
-                                <input type="text" id="user" className="form-control" />
+                                <input type="text" id="usuario" name="usuario" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 offset-4 text-center">
-                        <a href="#" onClick={pasos} className="btn-get-started scrollto">Siguiente</a></div>
+                        <a href="#" onClick={next}  name="usuario" className="btn-get-started scrollto">Siguiente</a></div>
                 </div>
                 <div className="row" data-aos="fade-left" id="paso-3" style={{ "display": "none" }}>
                     <div class="col-md-12">
@@ -63,12 +116,12 @@ const RecuperarContrasena = () => {
                                     </svg>  Email</span>
                                     </div>
                                 </div>
-                                <input type="text" id="email" className="form-control" />
+                                <input type="text" id="email" name="email" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 offset-4 text-center">
-                        <a href="#" onClick={pasos} className="btn-get-started scrollto">Siguiente</a>
+                        <a href="#" onClick={next} name="email" className="btn-get-started scrollto">Siguiente</a>
                     </div>
                 </div>
                 <div className="row" data-aos="fade-left" id="cargando" style={{ "display": "none" }}>
@@ -94,17 +147,10 @@ const RecuperarContrasena = () => {
                         <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
                             <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Clave</span>
                         </div>
-                        <input type="password" id="password" className="form-control" placeholder="Escriba su nueva contraseña" required />
-                    </div>
-
-                    <div className="input-group">
-                        <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
-                            <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Clave</span>
-                        </div>
-                        <input type="password" id="password" className="form-control" placeholder="Escriba de nuevo su nueva contraseña" required />
+                        <input type="password" id="password" name="password" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su nueva contraseña" required />
                     </div>
                     <br />
-                    <div class="text-center"><a href="#" onClick={cambiarClave} className="btn-get-started scrollto">Siguiente</a></div>
+                    <div class="text-center"><a href="#" onClick={cambiarClave} className="btn-get-started scrollto">Guardar Cambios</a></div>
                 </div>
                 <div className="row" data-aos="fade-left" id="finalizando" style={{ "display": "none" }}>
                     <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
@@ -121,12 +167,19 @@ const RecuperarContrasena = () => {
                         </button>
                     </div>
                     <Link to="/inicio">
-                        <a className="mr-2 btn-get-started scrollto">Volver al inicio</a>
+                        <a type="button" data-dismiss="modal" onClick={clear} aria-label="Close" className="mr-2 btn-get-started scrollto">Cerrar</a>
                     </Link>
                 </div>
             </form>
         </div>
     )
+}
+
+function clear(){
+    paso=0;
+    pasos();
+    {/* falta poner 0 los valores */}
+
 }
 
 var auxUsuario = new Object();
@@ -161,7 +214,6 @@ function pasos() {
         case 6:
             mostrar('aceptado');
             break;
-
     }
 }
 
