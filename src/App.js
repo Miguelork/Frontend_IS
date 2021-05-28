@@ -13,6 +13,7 @@ import {
   Link,
   BrowserRouter
 } from "react-router-dom";
+import CatalogoDoctores from './components/CatalogoDoctores';
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/menu">
             <Menu />
+          </Route>
+          <Route path="/catalogo">
+            <CatalogoDoctores />
           </Route>
           <Route path="/">
             <Inicio />

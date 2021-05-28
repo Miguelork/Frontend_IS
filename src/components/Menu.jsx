@@ -42,7 +42,7 @@ class Menu extends React.Component {
                     data-aos='zoom-in'
                     data-aos-delay={50}
                   >
-                    <i className='ri-store-line' style={{ color: "#ffbb2c" }} />
+                    <i className='icofont-attachment' style={{ color: "#ffbb2c" }} />
                     <h3>
                       <a href> Crear Nuevo Foro</a>
                     </h3>
@@ -55,7 +55,7 @@ class Menu extends React.Component {
                     data-aos-delay={100}
                   >
                     <i
-                      className='ri-bar-chart-box-line'
+                      className='icofont-comment'
                       style={{ color: "#5578ff" }}
                     />
                     <h3>
@@ -70,7 +70,7 @@ class Menu extends React.Component {
                     data-aos-delay={150}
                   >
                     <i
-                      className='ri-calendar-todo-line'
+                      className='icofont-search-document'
                       style={{ color: "#e80368" }}
                     />
                     <h3>
@@ -85,12 +85,14 @@ class Menu extends React.Component {
                     data-aos-delay={200}
                   >
                     <i
-                      className='ri-paint-brush-line'
+                      className='icofont-doctor-alt'
                       style={{ color: "#e361ff" }}
                     />
+                    <Link to='/catalogo'>
                     <h3>
                       <a href> Explorar Doctores</a>
                     </h3>
+                    </Link>
                   </div>
                 </div>
                 <div className='col-md-6 mt-4'>
@@ -100,7 +102,7 @@ class Menu extends React.Component {
                     data-aos-delay={250}
                   >
                     <i
-                      className='ri-database-2-line'
+                      className='icofont-id'
                       style={{ color: "#47aeff" }}
                     />
                     {/* <h3><a href> Ver Perfil</a></h3>*/}
@@ -118,7 +120,7 @@ class Menu extends React.Component {
                     data-aos-delay={300}
                   >
                     <i
-                      className='ri-gradienter-line'
+                      className='icofont-logout'
                       style={{ color: "#ffa76e" }}
                     />
                     <h3>

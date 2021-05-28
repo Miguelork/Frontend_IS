@@ -88,10 +88,10 @@ const FormDoctor = () => {
                 <h2>Registro</h2>
                 <p style={{ "color": "white" }}>Doctor</p>
             </div>
-            <div className="row" data-aos="fade-left" id="DocFinalizando"  style={{ "display": "none" }}>  
+            <div className="row section-title" data-aos="fade-left" id="DocFinalizando"  style={{ "display": "none" }}>  
                 <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
                 <p style={{ "color": "white", "font-size":"12px"}}>
-                    Se esta registrando con exito <br /> Sera redirigido al Login para que inicie sesión
+                    Se esta registrando<br /> Sera redirigido al Login para que inicie sesión
                 </p>
                 <style dangerouslySetInnerHTML={{__html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />    
             </div>
@@ -142,6 +142,33 @@ const FormDoctor = () => {
                             </div>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="col-md-6 form-group">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                    </svg>  Nacimiento</span>
+                                    </div>
+                                </div>
+                                <input type="date" id="docnacimiento" name="nacimiento" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div className="input-group">
+                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z" />
+                                </svg>   Sexo</span>
+                                </div>
+                                <select class="custom-select" id="docsexo" name="sexo">
+                                    <option selected>Seleccione...</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>                    
                     <div class="form-row">
                         <div class="col-md-6 form-group">
                             <div className="input-group">
@@ -230,11 +257,13 @@ async function registrarDoctor() {
     Doctor.apellido = document.getElementById("docapellido").value;
     Doctor.user = document.getElementById("docusuario").value;
     Doctor.password = document.getElementById("docpassword").value;
+    Doctor.nacimiento = document.getElementById("docnacimiento").value;
+    Doctor.sexo = document.getElementById("docsexo").value;
     Doctor.telefono = document.getElementById("doctelefono").value;
     Doctor.email = document.getElementById("docemail").value;
     Doctor.direccion = document.getElementById("docdireccion").value;
     Doctor.especialidades = document.getElementById("docespecialidad").value;
-    Doctor.horaIncial = document.getElementById("docdateI").value;
+    Doctor.horaInicial = document.getElementById("docdateI").value;
     Doctor.horaFinal = document.getElementById("docdateE").value;
 
     ocultar('DocFormulario');
@@ -265,17 +294,19 @@ async function registrarDoctor() {
     if (controlExiste == false) {
     // Envio POST al backend
     axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
-        "tipo": Doctor.tipo,
-        "nombre": Doctor.nombre,
-        "apellido": Doctor.apellido, 
-        "user": Doctor.user,
-        "password": Doctor.password,
-        "telefono": Doctor.telefono,
-        "email": Doctor.email,
-        "direccion": Doctor.direccion,
-        "especialidades": Doctor.especialidades,
-        "horaIncial": Doctor.horaIncial,
-        "horaFinal": Doctor.horaFinal
+        tipo: Doctor.tipo,
+        nombre: Doctor.nombre,
+        apellido: Doctor.apellido, 
+        user: Doctor.user,
+        password: Doctor.password,
+        nacimiento: Doctor.nacimiento,
+        sexo: Doctor.sexo,
+        telefono: Doctor.telefono,
+        email: Doctor.email,
+        direccion: Doctor.direccion,
+        especialidades: Doctor.especialidades,
+        horaInicial: Doctor.horaInicial,
+        horaFinal: Doctor.horaFinal
     })
         .then(function (response) {
             console.log(response);

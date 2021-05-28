@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const FormPaciente = () => {
-    
+
     const expresiones = {
         usuario: /^[a-zA-Z0-9_-]{4,20}$/,
         nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
@@ -13,13 +13,13 @@ const FormPaciente = () => {
     }
 
     const campos = {
-        nombre:false,
-        apellido:false,
-        usuario:false,
-        password:false,
-        telefono:false,
-        email:false,
-        direccion:false
+        nombre: false,
+        apellido: false,
+        usuario: false,
+        password: false,
+        telefono: false,
+        email: false,
+        direccion: false
     }
 
     const validarFormulario = (e) => {
@@ -61,27 +61,27 @@ const FormPaciente = () => {
     }
 
     const onSubmit = (e) => {
-        if( campos.nombre && campos.apellido && campos.usuario && campos.password && campos.telefono &&
-            campos.email && campos.direccion){
+        if (campos.nombre && campos.apellido && campos.usuario && campos.password && campos.telefono &&
+            campos.email && campos.direccion) {
             registrarPaciente();
-        } else{
+        } else {
             e.preventDefault();
-        } 
+        }
     }
-    
+
     return (
         <div className="container">
             <div className="section-title" data-aos="fade-up">
                 <h2>Registro</h2>
                 <p style={{ "color": "white" }}>Paciente</p>
             </div>
-            <div className="row" data-aos="fade-left" id="PacFinalizando"  style={{ "display": "none" }}>  
+            <div className="row section-title" data-aos="fade-left" id="PacFinalizando" style={{ "display": "none" }}>
                 <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
-                <p style={{ "color": "white", "font-size":"12px"}}>
-                    Se esta registrando con exito <br /> Sera redirigido al Login para que inicie sesión
+                <p style={{ "color": "white", "font-size": "12px" }}>
+                    Se esta registrando<br /> Sera redirigido al Login para que inicie sesión
                 </p>
-                <style dangerouslySetInnerHTML={{__html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />    
-            </div> 
+                <style dangerouslySetInnerHTML={{ __html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />
+            </div>
             <div className="row" data-aos="fade-left" id="PacFormulario">
                 <form role="form" class="php-email-form" style={{ "width": "100%" }}>
                     <div class="form-row">
@@ -92,7 +92,7 @@ const FormPaciente = () => {
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Nombre</span>
                                     </div>
                                 </div>
-                                <input type="text" id="pacnombre"  name="nombre" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su nombre" />
+                                <input type="text" id="pacnombre" name="nombre" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su nombre" />
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
@@ -102,7 +102,7 @@ const FormPaciente = () => {
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Apellido</span>
                                     </div>
                                 </div>
-                                <input type="text" id="pacapellido"  name="apellido" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su apellido" />
+                                <input type="text" id="pacapellido" name="apellido" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su apellido" />
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@ const FormPaciente = () => {
                                     </svg>  Usuario</span>
                                     </div>
                                 </div>
-                                <input type="text" id="pacusuario"  name="usuario" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su usuario" />
+                                <input type="text" id="pacusuario" name="usuario" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su usuario" />
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
@@ -124,7 +124,34 @@ const FormPaciente = () => {
                                 <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
                                     <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Clave</span>
                                 </div>
-                                <input type="password" id="pacpassword"  name="password" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su contraseña" />
+                                <input type="password" id="pacpassword" name="password" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su contraseña" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 form-group">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                    </svg>  Nacimiento</span>
+                                    </div>
+                                </div>
+                                <input type="date" id="pacnacimiento" name="nacimiento" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div className="input-group">
+                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z" />
+                                </svg>   Sexo</span>
+                                </div>
+                                <select class="custom-select" id="pacsexo" name="sexo">
+                                    <option selected>Seleccione...</option>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -137,7 +164,7 @@ const FormPaciente = () => {
                                     </svg>  Telefono</span>
                                     </div>
                                 </div>
-                                <input type="text" id="pactelefono"  name="telefono" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su teléfono" />
+                                <input type="text" id="pactelefono" name="telefono" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su teléfono" />
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
@@ -148,7 +175,7 @@ const FormPaciente = () => {
                                     </svg>  Email</span>
                                     </div>
                                 </div>
-                                <input type="email" id="pacemail"  name="email" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su email" />
+                                <input type="email" id="pacemail" name="email" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su email" />
                             </div>
                         </div>
                     </div>
@@ -160,7 +187,7 @@ const FormPaciente = () => {
                                 </svg>  Dirección</span>
                                 </div>
                             </div>
-                            <input type="text" id="pacdireccion"  name="direccion" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su dirección" />
+                            <input type="text" id="pacdireccion" name="direccion" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su dirección" />
                         </div>
                     </div>
                     <div class="text-center"><a href="#" onClick={onSubmit} className="btn-get-started scrollto">Aceptar</a></div>
@@ -178,6 +205,8 @@ async function registrarPaciente() {
     Paciente.apellido = document.getElementById("pacapellido").value;
     Paciente.user = document.getElementById("pacusuario").value;
     Paciente.password = document.getElementById("pacpassword").value;
+    Paciente.nacimiento = document.getElementById("pacnacimiento").value;
+    Paciente.sexo = document.getElementById("pacsexo").value;
     Paciente.telefono = document.getElementById("pactelefono").value;
     Paciente.email = document.getElementById("pacemail").value;
     Paciente.direccion = document.getElementById("pacdireccion").value;
@@ -199,26 +228,28 @@ async function registrarPaciente() {
             document.getElementById("pacusuario").classList.remove('is-valid');
             controlExiste = true;
         }
-        if (usuario.email == Paciente.email){
+        if (usuario.email == Paciente.email) {
             document.getElementById("pacemail").classList.add('is-invalid');
             document.getElementById("pacemail").classList.remove('is-valid');
             controlExiste = true;
         }
     });
-    
+
     // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
     if (controlExiste == false) {
-         // Envio POST al backend
+        // Envio POST al backend
         axios.post("https://dblinkmed.herokuapp.com/crearUsuario", {
-                tipo: Paciente.tipo,
-                nombre: Paciente.nombre,
-                apellido: Paciente.apellido,
-                user: Paciente.user,
-                password: Paciente.password,
-                telefono: Paciente.telefono,
-                email: Paciente.email,
-                direccion: Paciente.direccion,
-            })
+            tipo: Paciente.tipo,
+            nombre: Paciente.nombre,
+            apellido: Paciente.apellido,
+            user: Paciente.user,
+            password: Paciente.password,
+            nacimiento: Paciente.nacimiento,
+            sexo: Paciente.sexo,
+            telefono: Paciente.telefono,
+            email: Paciente.email,
+            direccion: Paciente.direccion,
+        })
             .then(function (response) {
                 console.log(response);
                 window.location.href = '/login';
@@ -226,22 +257,22 @@ async function registrarPaciente() {
             .catch(function (error) {
                 console.log(error);
             });
-    }else{
+    } else {
         ocultar('PacFinalizando');
         mostrar('PacFormulario');
     }
 }
 
-function ocultar( id ){
+function ocultar(id) {
     document.getElementById(id).style.opacity = '0';
     document.getElementById(id).style.transition = 'opacity 0.5s';
-    setTimeout(() => {  document.getElementById(id).style.display = 'none'; }, 500);
+    setTimeout(() => { document.getElementById(id).style.display = 'none'; }, 500);
 }
 
-function mostrar( id ){
-    setTimeout(() => { 
-    document.getElementById(id).style.display = 'block';
-    document.getElementById(id).style.opacity = '100';
+function mostrar(id) {
+    setTimeout(() => {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById(id).style.opacity = '100';
     }, 500);
 }
 
