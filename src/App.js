@@ -5,6 +5,8 @@ import Inicio from './components/Inicio';
 import Menu from './components/Menu';
 import Perfil from './components/Perfil';
 import RecuperarContrasena from './components/RecuperarContrasena';
+import CatalogoDoctores from './components/CatalogoDoctores';
+import Foro from './components/Foro';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -13,7 +15,7 @@ import {
   Link,
   BrowserRouter
 } from "react-router-dom";
-import CatalogoDoctores from './components/CatalogoDoctores';
+
 
 
 function App() {
@@ -38,6 +40,9 @@ function App() {
           </Route>
           <Route path="/catalogo">
             <CatalogoDoctores />
+          </Route>
+          <Route path="/foro">
+            <Foro />
           </Route>
           <Route path="/">
             <Inicio />

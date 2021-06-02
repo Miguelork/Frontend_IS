@@ -73,9 +73,11 @@ class Menu extends React.Component {
                       className='icofont-search-document'
                       style={{ color: "#e80368" }}
                     />
+                    <Link to='/foro'>
                     <h3>
                       <a href> Explorar Foros</a>
                     </h3>
+                    </Link>
                   </div>
                 </div>
                 <div className='col-md-6 mt-4'>
