@@ -61,7 +61,7 @@ class Foro extends React.Component {
                                                 <a data-toggle="collapse" className="collapse" href="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
                                                 <div id="faq-list-1" className="collapse show" data-parent=".faq-list">
                                                     <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                                                    <a href="#about" class="btn-get-started scrollto mt-2">Abrir</a>
+                                                    <a href="#" class="btn-get-started scrollto mt-2">Abrir</a>
                                                 </div>
                                             </li>
                                             <li>
