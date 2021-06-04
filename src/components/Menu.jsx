@@ -6,6 +6,17 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const cookies = new Cookies();
 
 class Menu extends React.Component {
+
+  
+  esAdmin = () => {
+    if (cookies.get("usuario")) {
+      if(cookies.get("usuario").tipo === 'Admin'){
+        return true
+      }
+    } 
+    return false
+  }
+
   cerrarSesion = () => {
     cookies.remove("usuario", { path: "/" });
     window.location.href = "/";
@@ -14,9 +25,10 @@ class Menu extends React.Component {
   componentDidMount() {
     if (!cookies.get("usuario")) {
       window.location.href = "/login";
-    }
+    } 
   }
 
+  
   render() {
     console.log(cookies.get('usuario'));
     return (
@@ -163,6 +175,26 @@ class Menu extends React.Component {
                     </h3>
                   </div>
                 </div>
+                {(this.esAdmin())
+                  ? <div className='col-md-6 mt-4'>
+                      <div
+                        className='icon-box'
+                        data-aos='zoom-in'
+                        data-aos-delay={150}
+                      >
+                        <i
+                          className='icofont-search-document'
+                          style={{ color: "#e80368" }}
+                        />
+                        <Link to='/admin_aprobar'>
+                        <h3>
+                          <a href>Aprobar/Rechazar Doctores</a>
+                        </h3>
+                        </Link>
+                      </div>
+                    </div>
+                  : <div></div>
+                }
               </div>
             </div>
           </section>

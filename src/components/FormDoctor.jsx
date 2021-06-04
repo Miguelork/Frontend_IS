@@ -306,7 +306,8 @@ async function registrarDoctor() {
         direccion: Doctor.direccion,
         especialidades: Doctor.especialidades,
         horaInicial: Doctor.horaInicial,
-        horaFinal: Doctor.horaFinal
+        horaFinal: Doctor.horaFinal,
+        aprobado: false
     })
         .then(function (response) {
             console.log(response);

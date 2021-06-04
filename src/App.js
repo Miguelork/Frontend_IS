@@ -7,6 +7,7 @@ import Perfil from './components/Perfil';
 import RecuperarContrasena from './components/RecuperarContrasena';
 import CatalogoDoctores from './components/CatalogoDoctores';
 import Foro from './components/Foro';
+import AdminAprobar from './components/AdminAprobar'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/foro">
             <Foro />
+          </Route>
+          <Route path="/admin_aprobar">
+            <AdminAprobar />
           </Route>
           <Route path="/">
             <Inicio />
