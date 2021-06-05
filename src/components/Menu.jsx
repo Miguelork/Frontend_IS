@@ -55,9 +55,11 @@ class Menu extends React.Component {
                     data-aos-delay={50}
                   >
                     <i className='icofont-attachment' style={{ color: "#ffbb2c" }} />
+                    <Link to='/preguntar'>
                     <h3>
-                      <a href> Crear Nuevo Foro</a>
+                      <a href> Realizar una pregunta en el Foro</a>
                     </h3>
+                    </Link>
                   </div>
                 </div>
                 <div className='col-md-6 mt-4'>

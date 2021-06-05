@@ -1,3 +1,11 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  BrowserRouter
+} from "react-router-dom";
+import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -7,17 +15,8 @@ import Perfil from './components/Perfil';
 import RecuperarContrasena from './components/RecuperarContrasena';
 import CatalogoDoctores from './components/CatalogoDoctores';
 import Foro from './components/Foro';
-import AdminAprobar from './components/AdminAprobar'
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  BrowserRouter
-} from "react-router-dom";
-
-
+import AdminAprobar from './components/AdminAprobar';
+import Preguntar from './components/Preguntar';
 
 function App() {
   return (
@@ -38,6 +37,9 @@ function App() {
           </Route>
           <Route path="/menu">
             <Menu />
+          </Route>
+          <Route path="/preguntar">
+            <Preguntar />
           </Route>
           <Route path="/catalogo">
             <CatalogoDoctores />
