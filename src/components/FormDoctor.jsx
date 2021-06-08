@@ -6,7 +6,7 @@ const FormDoctor = () => {
     const expresiones = {
         usuario: /^[a-zA-Z0-9_-]{4,20}$/,
         nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-        direccion: /^[a-zA-ZÀ-ÿ\s]{1,250}$/,
+        direccion: /^.{10,250}$/,
         password: /^.{8,15}$/,
         hora: /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
         correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -23,7 +23,9 @@ const FormDoctor = () => {
         direccion:false,
         especialidad:false,
         dateI:false,
-        dateE:false
+        dateE:false,
+        nacimiento:false,
+        sexo:false
     }
 
     const validarFormulario = (e) => {
@@ -58,6 +60,12 @@ const FormDoctor = () => {
             case "dateE":
                 validarCampo(expresiones.hora, e.target, 'dateE')
                 break;
+            case "nacimiento": 
+                validarCampo(expresiones.direccion, e.target, 'nacimiento')
+                break;
+            case "sexo":
+                validarCampo(expresiones.nombre, e.target, 'sexo')
+                break;
         }
     }
 
@@ -74,8 +82,8 @@ const FormDoctor = () => {
     }
 
     const onSubmit = (e) => {
-        if( campos.nombre && campos.apellido && campos.usuario && campos.password && campos.telefono &&
-            campos.email && campos.direccion && campos.especialidad && campos.dateI && campos.dateE){
+        if( campos.nombre && campos.apellido && campos.usuario && campos.password && campos.telefono && campos.sexo &&
+            campos.email && campos.direccion && campos.especialidad && campos.dateI && campos.dateE && campos.nacimiento){
             registrarDoctor();
         } else{
             e.preventDefault();
@@ -161,7 +169,7 @@ const FormDoctor = () => {
                                     <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z" />
                                 </svg>   Sexo</span>
                                 </div>
-                                <select class="custom-select" id="docsexo" name="sexo">
+                                <select class="custom-select" id="docsexo" name="sexo" onBlur={validarFormulario} onClick={validarFormulario}>
                                     <option selected>Seleccione...</option>
                                     <option value="hombre">Hombre</option>
                                     <option value="mujer">Mujer</option>
