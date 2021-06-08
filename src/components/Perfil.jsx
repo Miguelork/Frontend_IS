@@ -88,7 +88,7 @@ class Perfil extends React.Component {
                                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Nombre</span>
                                                 </div>
                                             </div>
-                                            <input type="text" id="pacnombre" name="nombre" className="form-control" placeholder="Escriba su nombre" />
+                                            <input disabled type="text" id="pacnombre" name="nombre" className="form-control" placeholder="Escriba su nombre" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -98,7 +98,7 @@ class Perfil extends React.Component {
                                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Apellido</span>
                                                 </div>
                                             </div>
-                                            <input type="text" id="pacapellido" name="apellido" className="form-control" placeholder="Escriba su apellido" />
+                                            <input disabled type="text" id="pacapellido" name="apellido" className="form-control" placeholder="Escriba su apellido" />
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ class Perfil extends React.Component {
                                                 </svg>  Usuario</span>
                                                 </div>
                                             </div>
-                                            <input type="text" disabled id="pacusuario" name="usuario" className="form-control" placeholder="Escriba su usuario" />
+                                            <input type="text" id="pacusuario" name="usuario" className="form-control" placeholder="Escriba su usuario" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -134,7 +134,7 @@ class Perfil extends React.Component {
                                                 </svg>  Nacimiento</span>
                                                 </div>
                                             </div>
-                                            <input type="date" id="pacnacimiento" name="nacimiento" className="form-control" />
+                                            <input disabled type="date" id="pacnacimiento" name="nacimiento" className="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -143,7 +143,7 @@ class Perfil extends React.Component {
                                                 <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z" />
                                             </svg>   Sexo</span>
                                             </div>
-                                            <select class="custom-select" id="pacsexo" name="sexo">
+                                            <select disable class="custom-select" id="pacsexo" name="sexo">
                                                 <option selected>Seleccione...</option>
                                                 <option value="hombre">Hombre</option>
                                                 <option value="mujer">Mujer</option>
@@ -171,7 +171,7 @@ class Perfil extends React.Component {
                                                 </svg>  Email</span>
                                                 </div>
                                             </div>
-                                            <input type="email" disabled id="pacemail" name="email" className="form-control" placeholder="Escriba su email" />
+                                            <input type="email" id="pacemail" name="email" className="form-control" placeholder="Escriba su email" />
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +199,7 @@ class Perfil extends React.Component {
                                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Nombre</span>
                                                 </div>
                                             </div>
-                                            <input type="text" id="docnombre" name="nombre" className="form-control" placeholder="Escriba su nombre" required />
+                                            <input disabled type="text" id="docnombre" name="nombre" className="form-control" placeholder="Escriba su nombre" required />
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -209,7 +209,7 @@ class Perfil extends React.Component {
                                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Apellido</span>
                                                 </div>
                                             </div>
-                                            <input type="text" id="docapellido" name="apellido" className="form-control" placeholder="Escriba su apellido" required />
+                                            <input disabled type="text" id="docapellido" name="apellido" className="form-control" placeholder="Escriba su apellido" required />
                                         </div>
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@ class Perfil extends React.Component {
                                                 </svg>  Usuario</span>
                                                 </div>
                                             </div>
-                                            <input type="text" disabled id="docusuario" name="usuario" className="form-control" placeholder="Escriba su usuario" required />
+                                            <input type="text" id="docusuario" name="usuario" className="form-control" placeholder="Escriba su usuario" required />
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -245,7 +245,7 @@ class Perfil extends React.Component {
                                                 </svg>  Nacimiento</span>
                                                 </div>
                                             </div>
-                                            <input type="date" id="docnacimiento" name="nacimiento" className="form-control" />
+                                            <input disabled type="date" id="docnacimiento" name="nacimiento" className="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -254,7 +254,7 @@ class Perfil extends React.Component {
                                                 <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z" />
                                             </svg>   Sexo</span>
                                             </div>
-                                            <select class="custom-select" id="docsexo" name="sexo">
+                                            <select disabled class="custom-select" id="docsexo" name="sexo">
                                                 <option selected>Seleccione...</option>
                                                 <option value="hombre">Hombre</option>
                                                 <option value="mujer">Mujer</option>
@@ -282,7 +282,7 @@ class Perfil extends React.Component {
                                                 </svg>  Email</span>
                                                 </div>
                                             </div>
-                                            <input type="email" disabled id="docemail" name="email" className="form-control" placeholder="Escriba su email" required />
+                                            <input type="email" id="docemail" name="email" className="form-control" placeholder="Escriba su email" required />
                                         </div>
                                     </div>
                                 </div>
