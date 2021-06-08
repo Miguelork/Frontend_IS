@@ -13,7 +13,6 @@ class CatalogoDoctores extends React.Component {
         data: []
     }
 
-
     async componentDidMount() {
         if (!cookies.get("usuario")) {
             window.location.href = "/login";
@@ -72,13 +71,13 @@ class CatalogoDoctores extends React.Component {
                             <div className="modal fade" id={item.user} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div className="modal-dialog modal-dialog-centered" role="document">
                                     <div className="modal-content">
-                                        <div className="modal-header">
+                                        <div className="modal-header bg-green pb-0">
                                             <h5 className="modal-title" id="exampleModalLongTitle">Información detallada</h5>
                                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
-                                        <div className="modal-body">
+                                        <div className="modal-body bg-blue">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-12 form-group">
@@ -208,19 +207,6 @@ class CatalogoDoctores extends React.Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                         </div>
                                     </div>
                                 </div>
