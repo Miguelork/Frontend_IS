@@ -13,12 +13,11 @@ class AdminAprobar extends React.Component {
         data: []
     }
 
-
     async componentDidMount() {
         if (!cookies.get("usuario")) {
             window.location.href = "/login";
         } else {
-            if (cookies.get("usuario").tipo !== 'Admin'){
+            if (cookies.get("usuario").tipo !== 'Admin') {
                 window.location.href = "/menu";
             }
         }
@@ -34,7 +33,7 @@ class AdminAprobar extends React.Component {
         })
     }
 
-    
+
 
     render() {
         return (
@@ -53,7 +52,7 @@ class AdminAprobar extends React.Component {
                                 <p style={{ "color": "white", "font-size": "12px" }}>Cargando</p>
                                 <style dangerouslySetInnerHTML={{ __html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />
                             </div>
-                            <div id ='lista' className="row" data-aos="fade-left">
+                            <div id='lista' className="row" data-aos="fade-left">
                                 {this.state.data.map(item => {
                                     if (item.tipo == "Voluntario" || item.tipo == "Premium")
                                         return (
@@ -68,11 +67,19 @@ class AdminAprobar extends React.Component {
                                                                 ? <h4><span class="badge badge-secondary">Aprobado</span></h4>
                                                                 : <h4><span class="badge badge-secondary">Rechazado</span></h4>
                                                             }
-                                                            
+
                                                         </div>
                                                         <div className="cambiar">
-                                                            <button type="button" class="btn btn-success" onClick={actualizarDoctor.bind(this,item,true)}>Aprobar</button>
-                                                            <button type="button" class="btn btn-danger" onClick={actualizarDoctor.bind(this,item,false)}>Rechazar</button>
+                                                            <button type="button" class="btn-checkk btn-lg mr-2" onClick={actualizarDoctor.bind(this, item, true)}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                                </svg>
+                                                            </button>
+                                                            <button type="button" class="btn-cancel btn-lg ml-2" onClick={actualizarDoctor.bind(this, item, false)}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,7 +97,7 @@ class AdminAprobar extends React.Component {
     }
 }
 
-function actualizarDoctor(doctor,booleano) {
+function actualizarDoctor(doctor, booleano) {
     var Doctor = doctor;
 
     ocultar('lista');
@@ -114,7 +121,7 @@ function actualizarDoctor(doctor,booleano) {
         horaInicial: Doctor.horaInicial,
         horaFinal: Doctor.horaFinal,
         aprobado: booleano
-    
+
     })
         .then(function (response) {
             console.log(response);

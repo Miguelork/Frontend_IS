@@ -1,6 +1,7 @@
 import React from 'react';
 import Wave from './Wave';
 import Header from './Header';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class Mision extends React.Component {
 
@@ -50,7 +51,7 @@ class Mision extends React.Component {
               <div className="row" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div className="col-md-8 mt-4 mb-4">
                   <h5 style={{ "color": "white" }} className="card-title md-3 icoFont"><b>Equipo de Trabajo</b></h5>
-                  <p style={{ "color": "white" }} className="card-text" class="text-justify wow fadeInUp" > Nuestro equipo consta de un destacado equipo de desarrolladores los cuales se encargan de las funciones de desarrollo web, asi como las funciones administrativas del website, para mas información acerca del equipo de desarrollo/administración visite la seccion de <Link to='/nosotros'>¿Quienes Somos?</Link>. En este sentido, nuestro equipo no solo esta compuesto por dicho equipo, sino que es significativamente compueso por todo el panel de medicos que albergamos en nuestro directorio, para mas información visite nuestro <Link to='/catalogo'>Catalogo</Link>, los cuales son certificados y aceptados tras una minusiosa revisión por parte del equipo administrativo, garantizando asi la calidad de nuestro equipo</p>
+                  <p style={{ "color": "white" }} className="card-text" class="text-justify wow fadeInUp" > Nuestro equipo consta de un destacado equipo de desarrolladores los cuales se encargan de las funciones de desarrollo web, asi como las funciones administrativas del website, para mas información acerca del equipo de desarrollo/administración visite la seccion de <Link to='/nosotros' style={{ "color": "#1acc8d" }}>¿Quienes Somos?</Link>. En este sentido, nuestro equipo no solo esta compuesto por dicho equipo, sino que es significativamente compueso por todo el panel de medicos que albergamos en nuestro directorio, para mas información visite nuestro <Link to='/catalogo' style={{ "color": "#1acc8d" }}>Catalogo</Link>, los cuales son certificados y aceptados tras una minusiosa revisión por parte del equipo administrativo, garantizando asi la calidad de nuestro equipo</p>
                 </div>
                 <div className="col-md-1 mt-4 mb-4"></div>
                 <div className="col-md-3 mt-4 mb-4" data-aos="zoom-out" data-aos-delay={100} id="imagen" >

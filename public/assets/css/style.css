@@ -1130,6 +1130,36 @@ section {
     margin: 0 2px;
 }
 
+.btn-cancel {
+    color: whitesmoke;
+    background-color: #c4090c;
+    border: none;
+}
+
+.ico-cancel {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.btn-cancel:hover {
+    background-color: whitesmoke;
+    color: #c4090c;
+    border: none;
+}
+
+.btn-checkk {
+    color: whitesmoke;
+    background-color: #08bb3d;
+    border: none;
+}
+
+.btn-checkk:hover {
+    background-color: whitesmoke;
+    color: #08bb3d;
+    border: none;
+}
+
 
 /*--------------------------------------------------------------
 # Pricing

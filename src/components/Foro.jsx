@@ -38,8 +38,7 @@ class Foro extends React.Component {
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
                             <div className="section-title" data-aos="fade-up">
-                                <h2>Foro</h2>
-                                <p style={{ "color": "white" }}>Temas</p>
+                                <p style={{ "color": "white" }}>Foro</p>
                             </div>
                             <div className="row" data-aos="fade-left">
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>

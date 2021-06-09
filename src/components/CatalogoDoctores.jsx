@@ -38,8 +38,7 @@ class CatalogoDoctores extends React.Component {
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
                             <div className="section-title" data-aos="fade-up">
-                                <h2>Catalogo de</h2>
-                                <p style={{ "color": "white" }}>Doctores</p>
+                                <h2>Catalogo de Doctores</h2>
                             </div>
                             <div className="row" data-aos="fade-left">
                                 {this.state.data.map(item => {
@@ -71,11 +70,13 @@ class CatalogoDoctores extends React.Component {
                             <div className="modal fade" id={item.user} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div className="modal-dialog modal-dialog-centered" role="document">
                                     <div className="modal-content">
-                                        <div className="modal-header bg-green pb-0">
-                                            <h5 className="modal-title" id="exampleModalLongTitle">Información detallada</h5>
-                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
+                                        <div className="modal-header bg-green pt-2 pb-2">
+                                            <h5 style={{ "color": "white" }} className="modal-title" id="exampleModalLongTitle">Información detallada</h5>
+                                            <h1 display="400" style={{ "color": "white" }} type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                                                    <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                                                </svg></span>
+                                            </h1>
                                         </div>
                                         <div className="modal-body bg-blue">
                                             <div class="container">
@@ -89,45 +90,8 @@ class CatalogoDoctores extends React.Component {
                                                             </div>
                                                             <div className="form-control"><p>{item.nombre} {item.apellido}</p></div>
                                                         </div>
-                                                    </div>  
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 form-group">
-                                                        <div className="input-group">
-                                                            <div>
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
-                                                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
-                                                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                                                    </svg>Edad</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.nacimiento}</p></div>
-                                                        </div>
-                                                    </div> 
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6 form-group">
-                                                        <div className="input-group">
-                                                            <div className="input-group-prepend">
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                                                </svg> Usuario</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.user}</p></div>
-                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6 form-group">
-                                                        <div className="input-group">
-                                                            <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16">
-                                                                <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1H11.5zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z" />
-                                                            </svg> Sexo</span>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.sexo}</p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </div>            
                                                 <div class="row">
                                                     <div class="col-md-12 form-group">
                                                         <div className="input-group">
@@ -183,8 +147,8 @@ class CatalogoDoctores extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div>Horarios de atencion</div>
-                                                    <div class="col-md-12 form-group">
+                                                    <h6 className="col-sm-12 mb-2" style={{ "color": "white" }} >Horarios de atencion</h6>
+                                                    <div class="col-sm-12 form-group">
                                                         <div className="input-group">
                                                             <div className="input-group-prepend">
                                                                 <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -193,8 +157,9 @@ class CatalogoDoctores extends React.Component {
                                                                 </svg> Desde</span>
                                                                 </div>
                                                             </div>
-                                                            <div className="form-control"><p>{item.horaInicial}</p></div>
-                                                            <div className="input-group-prepend">
+                                                            <div className="form-control mr-1"><p>{item.horaInicial}</p></div>
+
+                                                            <div className="input-group-prepend ml-1">
                                                                 <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
                                                                     <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
                                                                     <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
