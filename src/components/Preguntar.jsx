@@ -70,16 +70,60 @@ class Preguntar extends React.Component {
         )
     }
 }
-
 function validar() {
     var pregunta  = document.getElementById("titulo").value;
     if (pregunta.length == 0) {
-        alert("No furula")
+        alert("No furula");
     }else{
-        //Mandar a bd
+        crearPregunta();
     }
-    
+     
 }
+
+async function crearPregunta() {
+    var Pregunta = new Object(); // Creando el objeto pregunta
+    Pregunta.titulo = document.getElementById("titulo").value; // Obteniendo el titulo
+    Pregunta.descripcion = document.getElementById("descripcion").value; // Obteniendo la descripcion
+    let usuario = await cookies.get("usuario"); // Obteniendo los datos del usuario en cookies
+    Pregunta.nombre = usuario.nombre; // Poniendo al objeto pregunta el nombre
+    Pregunta.apellido = usuario.apellido; // Poniendo al objeto pregunta el apellido
+    Pregunta.user = usuario.user; // Poniendo la objeto pregunta el user
+    // Mostrar cargando mientrar se ejecutan toda la funcion
+    ocultar('pregunta');
+    mostrar('cargando');
+    // Envio POST al backend
+    axios.post('https://dblinkmed.herokuapp.com/crearPregunta', {
+        titulo: Pregunta.titulo,
+        descripcion: Pregunta.descripcion,
+        nombre: Pregunta.nombre,
+        apellido: Pregunta.apellido,
+        user: Pregunta.user
+    })
+        .then(function (response) {
+            console.log(response);
+            setTimeout(() => { window.location.href = '/foro'; }, 3000); // Re
+        })
+        .catch(function (error) {
+            console.log(error);
+            ocultar('cargando');
+            mostrar('pregunta');
+        });
+
+    function ocultar(id) {
+        document.getElementById(id).style.opacity = '0';
+        document.getElementById(id).style.transition = 'opacity 0.5s';
+        setTimeout(() => { document.getElementById(id).style.display = 'none'; }, 500);
+    }
+
+    function mostrar(id) {
+        setTimeout(() => {
+            document.getElementById(id).style.display = 'block';
+            document.getElementById(id).style.opacity = '100';
+        }, 500);
+    }
+
+}
+
 
 
 export default Preguntar

@@ -13,14 +13,13 @@ class Foro extends React.Component {
         data: []
     }
 
-
     async componentDidMount() {
         if (!cookies.get("usuario")) {
             window.location.href = "/login";
         }
 
         const response = await axios({
-            url: "https://dblinkmed.herokuapp.com/listaUsuario",
+            url: "https://dblinkmed.herokuapp.com/listaPregunta",
             method: "GET",
         });
         console.log(response.data.item);
@@ -53,48 +52,25 @@ class Foro extends React.Component {
                                         </div>
                                         <input type="text" id="inputBuscar" onKeyUp={Buscar} className="form-control" placeholder="Escriba lo que desea buscar..." />
                                     </div>
-
-
                                     <div className="faq-list">
                                         <ul id="listaForo">
-                                            <li>
-                                                <a data-toggle="collapse" className="collapse" href="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
-                                                <div id="faq-list-1" className="collapse show" data-parent=".faq-list">
-                                                    <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                                                    <a href="#" class="btn-get-started scrollto mt-2">Abrir</a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="collapse" href="#faq-list-2" className="collapsed">Feugiat scelerisque varius morbi enim nunc? <i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
-                                                <div id="faq-list-2" className="collapse" data-parent=".faq-list">
-                                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="collapse" href="#faq-list-3" className="collapsed">Dolor sit amet consectetur adipiscing elit? <i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
-                                                <div id="faq-list-3" className="collapse" data-parent=".faq-list">
-                                                    <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="collapse" href="#faq-list-4" className="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
-                                                <div id="faq-list-4" className="collapse" data-parent=".faq-list">
-                                                    <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="collapse" href="#faq-list-5" className="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
-                                                <div id="faq-list-5" className="collapse" data-parent=".faq-list">
-                                                    <p>Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.</p>
-                                                </div>
-                                            </li>
+                                            {this.state.data.map((item, index) => {
+                                                return (
+                                                    <li>
+                                                        <a data-toggle="collapse" className="collapse" href={'#faq-list-' + index}>{item.titulo}<i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
+                                                        <div id={'faq-list-' + index} className="collapse" data-parent=".faq-list">
+                                                            <p>{item.descripcion}</p>
+                                                            <a href="#" class="btn-get-started scrollto mt-2">Abrir</a>
+                                                        </div>
+                                                    </li>
+                                                )
+                                            })}
                                         </ul>
-
                                     </div>
-                                </section>{/* End F.A.Q Section */}
+                                </section>
                             </div>
                         </div>
-                    </section>{/* End Team Section */}
+                    </section>
                     <Wave />
                 </section>
             </div>
