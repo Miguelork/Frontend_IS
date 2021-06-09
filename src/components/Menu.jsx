@@ -182,7 +182,7 @@ class Menu extends React.Component {
                   </div>
                 </div>
                 {(this.esAdmin())
-                  ? <div className='col-md-6 mt-4'>
+                  ? <div className='col-md-12 mt-4'>
                       <div
                         className='icon-box'
                         data-aos='zoom-in'
