@@ -60,7 +60,9 @@ class Foro extends React.Component {
                                                         <a data-toggle="collapse" className="collapse" href={'#faq-list-' + index}>{item.titulo}<i className="bx bx-chevron-down icon-show" /><i className="bx bx-chevron-up icon-close" /></a>
                                                         <div id={'faq-list-' + index} className="collapse" data-parent=".faq-list">
                                                             <p>{item.descripcion}</p>
-                                                            <a href="#" class="btn-get-started scrollto mt-2">Abrir</a>
+                                                            <Link to={`/${item._id}`}>
+                                                            <a class="btn-get-started scrollto mt-2">Abrir</a>
+                                                            </Link>
                                                         </div>
                                                     </li>
                                                 )

@@ -17,6 +17,7 @@ import CatalogoDoctores from './components/CatalogoDoctores';
 import Foro from './components/Foro';
 import AdminAprobar from './components/AdminAprobar';
 import Preguntar from './components/Preguntar';
+import RespuestaForo from "./components/RespuestaForo";
 
 function App() {
   return (
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/foro">
             <Foro />
+          </Route>
+          <Route path="/:id">
+            <RespuestaForo />
           </Route>
           <Route path="/admin_aprobar">
             <AdminAprobar />
