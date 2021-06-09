@@ -60,7 +60,10 @@ class Nosotros extends React.Component {
               </div>
               <div id="collapseVI" className="collapse bg-green" style={{ "padding-top": "1rem" }} aria-labelledby="headVI" data-parent="#bloqcontact">
                 <h1 style={{ "color": "white" }} >Maria Soto</h1>
-                <p style={{ "color": "white" }} class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <p style={{ "color": "white" }} class="lead">Mi nombre es Miguelangel Somana Parra, soy un estudiante de ingenieria de sistemas, muy bueno con el Frontend, pero con ganas de convertirse en fullstack, tengo 20 años, entre mis hobbies se encuentran
+                        el senderismo, la lectura, y como la mayoria de mi generación la música y los videojuegos
+                        Mi objetivos a corto plazo es graduarme como Ing de Sistemas, y en el camino de lograrlo
+                        espero obtener experiencia laboral, atento a sus consejos en este rubro.</p>
                 <p class="lead">
                   <a class="btn-get-started btn-lg" href="https://wa.me/584142871576/" role="button">Contactame</a>
                 </p>
