@@ -56,11 +56,11 @@ function App() {
           <Route path="/foro">
             <Foro />
           </Route>
-          <Route path="/:id">
-            <RespuestaForo />
-          </Route>
           <Route path="/admin_aprobar">
             <AdminAprobar />
+          </Route>
+          <Route path="/:id">
+            <RespuestaForo />
           </Route>
           <Route path="/">
             <Inicio />
