@@ -174,9 +174,11 @@ class Menu extends React.Component {
                       className='ri-price-tag-2-line'
                       style={{ color: "#4233ff" }}
                     />
-                    <h3>
-                      <a href> ¿Quienes Somos?</a>
-                    </h3>
+                    <Link to='/nosotros'>
+                      <h3>
+                        <a href>¿Quienes Somos?</a>
+                      </h3>
+                    </Link>
                   </div>
                 </div>
                 {(this.esAdmin())
