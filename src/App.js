@@ -12,6 +12,8 @@ import Login from './components/Login';
 import Inicio from './components/Inicio';
 import Menu from './components/Menu';
 import Perfil from './components/Perfil';
+import Mision from './components/Mision';
+import Nosotros from './components/Nosotros';
 import RecuperarContrasena from './components/RecuperarContrasena';
 import CatalogoDoctores from './components/CatalogoDoctores';
 import Foro from './components/Foro';
@@ -23,7 +25,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Switch>
+         <Switch>
+          <Route path="/nosotros">
+            <Nosotros />
+          </Route>
+          <Route path="/mision">
+            <Mision />
+          </Route>
           <Route path="/perfil">
             <Perfil />
           </Route>

@@ -157,9 +157,11 @@ class Menu extends React.Component {
                       className='ri-file-list-3-line'
                       style={{ color: "#11dbcf" }}
                     />
-                    <h3>
-                      <a href> Proposito de LinkMed</a>
-                    </h3>
+                    <Link to='/mision'>
+                      <h3>
+                        <a href>Proposito de LinkMed</a>
+                      </h3>
+                    </Link>
                   </div>
                 </div>
                 <div className='col-md-6 mt-4'>
