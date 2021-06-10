@@ -31,9 +31,8 @@ class AdminAprobar extends React.Component {
         this.setState({
             data
         })
-    }
-
-
+    
+}
 
     render() {
         return (
@@ -43,9 +42,13 @@ class AdminAprobar extends React.Component {
                 <section id="hero">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
-                            <div className="section-title" data-aos="fade-up">
+                            <div className="section-title mb-0 pb-0" data-aos="fade-up">
                                 <h2>Lista de aprobacion</h2>
-                                <p style={{ "color": "white" }}>Doctores</p>
+                            </div>
+                            <div className="col-md-12 mb-5 text-center">
+                                <div data-aos="zoom-out">
+                                    <h1 className="mt-3 mb-3" style={{ "color": "white" }}>Doctores</h1>
+                                </div>
                             </div>
                             <div className="row section-title" data-aos="fade-left" id="cargando" style={{ "display": "none" }}>
                                 <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
@@ -53,39 +56,79 @@ class AdminAprobar extends React.Component {
                                 <style dangerouslySetInnerHTML={{ __html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />
                             </div>
                             <div id='lista' className="row" data-aos="fade-left">
-                                {this.state.data.map(item => {
-                                    if (item.tipo == "Voluntario" || item.tipo == "Premium")
-                                        return (
-                                            <div className="col-lg-3 col-md-6 mt-5 mt-md-0 mb-5">
-                                                <div className="member" data-aos="zoom-in" data-aos-delay={100}>
-                                                    <div className="pic"><img src={"assets/img/team/" + item.sexo + ".jpg"} className="img-fluid" alt /></div>
-                                                    <div className="member-info">
-                                                        <h4><a href="#" style={{ "text-decoration": "none", "color": "#01036f" }} data-toggle="modal" data-target={"#" + item.user}>{item.nombre} {item.apellido}</a></h4>
-                                                        <span>{item.especialidades}</span>
-                                                        <div className="estatus">
-                                                            {(item.aprobado)
-                                                                ? <h4><span class="badge badge-secondary">Aprobado</span></h4>
-                                                                : <h4><span class="badge badge-secondary">Rechazado</span></h4>
-                                                            }
-
-                                                        </div>
-                                                        <div className="cambiar">
+                                <input style={{ "background": "white" }} type="text" id="inputBusDoc" onKeyUp={Buscar} className="form-control searchm mb-3" placeholder=" 🔍    Escriba el nombre o especialidad del doctor..." />
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style={{ "color": "white" }}>Nombre</th>
+                                            <th scope="col" style={{ "color": "white" }}>Tipo</th>
+                                            <th scope="col" style={{ "color": "white" }}>Usuario</th>
+                                            <th scope="col" style={{ "color": "white" }}>Email</th>
+                                            <th scope="col" style={{ "color": "white" }}>Especialidades</th>
+                                            <th scope="col" style={{ "color": "white" }}>Estado</th>
+                                            <th scope="col" style={{ "color": "white" }}> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.data.map(item => {
+                                            if (item.tipo == "Voluntario" || item.tipo == "Premium")
+                                                return (
+                                                    <tr >
+                                                        <th scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</th>
+                                                        <td style={{ "color": "white" }}>{item.tipo}</td>
+                                                        <td style={{ "color": "white" }}>{item.user}</td>
+                                                        <td style={{ "color": "white" }}>{item.email}</td>
+                                                        <td style={{ "color": "white" }}>{item.especialidades}</td>
+                                                        <td style={{ "color": "white" }}>{item.aprobado.toString()}</td>
+                                                        <td style={{ "color": "white" }}>
                                                             <button type="button" class="btn-checkk btn-lg mr-2" onClick={actualizarDoctor.bind(this, item, true)}>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
-                                                                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
                                                                 </svg>
                                                             </button>
                                                             <button type="button" class="btn-cancel btn-lg ml-2" onClick={actualizarDoctor.bind(this, item, false)}>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
-                                                                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
+                                                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
                                                                 </svg>
                                                             </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )
-                                })}
+                                                        </td>
+                                                    </tr>
+                                                )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="col-md-12 mb-5 text-center">
+                                <div data-aos="zoom-out">
+                                    <h1 className="mt-3 mb-3" style={{ "color": "white" }}>Pacientes</h1>
+                                </div>
+                            </div>
+                            <div id='lista' className="row" data-aos="fade-left">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style={{ "color": "white" }}>Nombre</th>
+                                            <th scope="col" style={{ "color": "white" }}>Genero</th>
+                                            <th scope="col" style={{ "color": "white" }}>Usuario</th>
+                                            <th scope="col" style={{ "color": "white" }}>Email</th>
+                                            <th scope="col" style={{ "color": "white" }}>Telefono</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.data.map(item => {
+                                            if (item.tipo == "Paciente")
+                                                return (
+                                                    <tr id="listaForo">
+                                                        <th scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</th>
+                                                        <td style={{ "color": "white" }}>{item.sexo}</td>
+                                                        <td style={{ "color": "white" }}>{item.user}</td>
+                                                        <td style={{ "color": "white" }}>{item.email}</td>
+                                                        <td style={{ "color": "white" }}>{item.telefono}</td>
+                                                    </tr>
+                                                )
+                                        })}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </section>{/* End Team Section */}
@@ -146,6 +189,10 @@ function mostrar(id) {
         document.getElementById(id).style.display = 'block';
         document.getElementById(id).style.opacity = '100';
     }, 500);
+}
+
+function Buscar() {
+    //FALTA CUADRARLO
 }
 
 

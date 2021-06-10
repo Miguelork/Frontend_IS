@@ -194,7 +194,7 @@ class Menu extends React.Component {
                         />
                         <Link to='/admin_aprobar'>
                         <h3>
-                          <a href>Aprobar/Rechazar Doctores</a>
+                          <a href>Gestionar Doctores y Pacientes </a>
                         </h3>
                         </Link>
                       </div>

@@ -1130,6 +1130,10 @@ section {
     margin: 0 2px;
 }
 
+.seacrchm {
+    border-radius: 100%;
+}
+
 .btn-cancel {
     color: whitesmoke;
     background-color: #c4090c;

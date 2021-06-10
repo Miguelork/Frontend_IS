@@ -41,8 +41,9 @@ class CatalogoDoctores extends React.Component {
                                 <h2>Catalogo de Doctores</h2>
                             </div>
                             <div className="row" data-aos="fade-left">
+                                {/* <input style={{ "background": "white" }} type="text" id="inputBusDoc" onKeyUp={Buscar} className="form-control searchm mb-3" placeholder=" 🔍    Escriba el nombre o especialidad del doctor..." /> */}
                                 {this.state.data.map(item => {
-                                    if (item.tipo == "Voluntario" || item.tipo == "Premium")
+                                    if ((item.tipo == "Voluntario" || item.tipo == "Premium") && (item.aprobado == true))
                                         return (
                                             <div className="col-lg-3 col-md-6 mt-5 mt-md-0 mb-5">
                                                 <div className="member" data-aos="zoom-in" data-aos-delay={100}>
@@ -91,7 +92,7 @@ class CatalogoDoctores extends React.Component {
                                                             <div className="form-control"><p>{item.nombre} {item.apellido}</p></div>
                                                         </div>
                                                     </div>
-                                                </div>            
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-md-12 form-group">
                                                         <div className="input-group">
