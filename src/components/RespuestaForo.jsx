@@ -25,13 +25,13 @@ class RespuestaForo extends React.Component {
                         <form role="form" class="php-email-form" style={{ "width": "100%" }}>
                             <div class="form-group">
                                 <h2 className="mt-4 mb-4" style={{ "color": "white" }}><b>Escribe una respuesta</b></h2>
-                                <textarea rows="6" cols="50" id="descripcion" name="descripcion" className="form-control" placeholder="Escriba su respuesta..." required />
+                                <textarea rows="6" cols="50" id="respuesta" name="respuesta" className="form-control" placeholder="Escriba su respuesta..." required />
                             </div>
                             <div class="mt-4 mb-3">
                                 <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
                             </div>
                             <div class="text-center">
-                                <a href="#" className="btn-get-started scrollto">Aceptar</a>
+                                <a href="#" onClick={ agregarRespuesta} className="btn-get-started scrollto">Aceptar</a>
                             </div>
                         </form>
                     </div>
@@ -97,6 +97,7 @@ class RespuestaForo extends React.Component {
                                 <h2>Pregunta</h2>
                                 <p style={{ "color": "white" }}>{this.state.data.titulo}</p>
                                 <p style={{ "color": "white", "font-size": "14px" }}>{this.state.data.descripcion}</p>
+                                <input type="hidden" value={this.state.data._id} id="idPregunta" /> 
                             </div>
                             <div className="row" data-aos="fade-left">
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>
@@ -126,4 +127,17 @@ class RespuestaForo extends React.Component {
     }
 }
 
+function agregarRespuesta (){
+    console.log("soy Maria")
+    var Respuesta = new Object(); // Creando el objeto pregunta
+    Respuesta.idPregunta = document.getElementById("idPregunta").value; // Obteniendo el titulo
+    Respuesta.respuesta = document.getElementById("respuesta").value; // Obteniendo la descripcion
+    let usuario =  cookies.get("usuario"); // Obteniendo los datos del usuario en cookies
+    Respuesta.nombre = usuario.nombre; // Poniendo al objeto pregunta el nombre
+    Respuesta.apellido = usuario.apellido; // Poniendo al objeto pregunta el apellido
+    Respuesta.user = usuario.user; // Poniendo la objeto pregunta el user
+    console.log(Respuesta)
+    
+
+}
 export default withRouter(RespuestaForo);
