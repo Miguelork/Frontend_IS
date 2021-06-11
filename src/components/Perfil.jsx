@@ -349,7 +349,7 @@ class Perfil extends React.Component {
 }
 
 async function actualizarPaciente() {
-    console.log("Ejecutando funcion: actualizarPaciente()")
+    // console.log("Ejecutando funcion: actualizarPaciente()")
     var Paciente = new Object();
     Paciente._id = document.getElementById("pacid").value;
     Paciente.tipo = "Paciente";
@@ -382,12 +382,12 @@ async function actualizarPaciente() {
         direccion: Paciente.direccion,
     })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             window.location.href = '/menu';
             cookies.set('usuario', Paciente, { path: "/" });
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
             ocultar('cargando');
             mostrar('imagen');
             mostrar('Paciente');
@@ -396,7 +396,7 @@ async function actualizarPaciente() {
 
 
 function actualizarDoctor() {
-    console.log("Ejecutando funcion: actualizarDoctor()")
+    // console.log("Ejecutando funcion: actualizarDoctor()")
     var Doctor = new Object();
     Doctor._id = document.getElementById("docid").value;
     Doctor.tipo = document.getElementById("tipoD").value;
@@ -435,12 +435,12 @@ function actualizarDoctor() {
         horaFinal: Doctor.horaFinal
     })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             window.location.href = '/menu';
             cookies.set('usuario', Doctor, { path: "/" });
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
             ocultar('cargando');
             mostrar('imagen');
             mostrar('Doctor');

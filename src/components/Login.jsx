@@ -106,7 +106,7 @@ async function login() {
         url: "https://dblinkmed.herokuapp.com/listaUsuario",
         method: "GET",
     });
-    //console.log(response.data.item);
+    // console.log(response.data.item);
     var login = false; // Variable de control para poner en true si coinciden los datos con la DB
     response.data.item.map((usuario) => {
         if (usuario.user == document.getElementById("user").value && usuario.password == document.getElementById("password").value) {

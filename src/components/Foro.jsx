@@ -22,7 +22,7 @@ class Foro extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaPregunta",
             method: "GET",
         });
-        console.log(response.data.item);
+        // console.log(response.data.item);
         let data = await response.data.item;
         this.setState({
             data
@@ -72,7 +72,7 @@ class Foro extends React.Component {
 }
 
 function Buscar() {
-    console.log("Entrandasdf")
+    // console.log("Entrandasdf")
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("inputBuscar");
     filter = input.value.toUpperCase();

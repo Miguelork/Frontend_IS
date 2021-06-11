@@ -206,7 +206,7 @@ const FormPaciente = () => {
 }
 
 async function registrarPaciente() {
-    console.log("Ejecutando funcion: registrarPaciente()")
+    // console.log("Ejecutando funcion: registrarPaciente()")
     var Paciente = new Object();
     Paciente.tipo = "Paciente";
     Paciente.nombre = document.getElementById("pacnombre").value;
@@ -227,7 +227,7 @@ async function registrarPaciente() {
         url: "https://dblinkmed.herokuapp.com/listaUsuario",
         method: "GET",
     });
-    // console.log(response.data.item);
+    // // console.log(response.data.item);
 
     var controlExiste = false; // Variable booleana para saber si existe ponerla en true
     response.data.item.map((usuario) => {
@@ -259,11 +259,11 @@ async function registrarPaciente() {
             direccion: Paciente.direccion,
         })
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 window.location.href = '/login';
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
             });
     } else {
         ocultar('PacFinalizando');

@@ -30,7 +30,7 @@ class Menu extends React.Component {
 
   
   render() {
-    console.log(cookies.get('usuario'));
+    // console.log(cookies.get('usuario'));
     return (
       <div>
         <Header></Header>

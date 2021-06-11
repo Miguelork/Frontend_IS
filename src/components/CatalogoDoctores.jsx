@@ -22,7 +22,7 @@ class CatalogoDoctores extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaUsuario",
             method: "GET",
         });
-        console.log(response.data.item);
+        // console.log(response.data.item);
         let data = await response.data.item;
         this.setState({
             data

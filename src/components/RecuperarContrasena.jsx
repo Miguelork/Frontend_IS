@@ -48,7 +48,7 @@ const RecuperarContrasena = () => {
     }
 
     const next = (e) => {
-        console.log(campos[e.target.name])
+        // console.log(campos[e.target.name])
         if(campos[e.target.name]){
             pasos();
         }else{
@@ -147,7 +147,7 @@ const RecuperarContrasena = () => {
                         <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
                             <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Clave</span>
                         </div>
-                        <input type="password" id="password" name="password" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su nueva contraseña" required />
+                        <input type="password" id="passwordNuevo" name="password" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su nueva contraseña" required />
                     </div>
                     <br />
                     <div class="text-center"><a href="#" onClick={cambiarClave} className="btn-get-started scrollto">Guardar Cambios</a></div>
@@ -186,7 +186,7 @@ var auxUsuario = new Object();
 var paso = 1;
 
 function pasos() {
-    console.log("Ejecutando funcion: pasos()", paso);
+    // console.log("Ejecutando funcion: pasos()", paso);
     paso++;
     ocultar('paso-1');
     ocultar('paso-2');
@@ -223,13 +223,13 @@ async function verificarIdentidad() {
         url: "https://dblinkmed.herokuapp.com/listaUsuario",
         method: "GET",
     });
-    console.log(response.data.item);
+    // console.log(response.data.item);
     var existe = false;
     response.data.item.map((usuario) => {
-        if (usuario.nombre == document.getElementById("nombre").value && usuario.user == document.getElementById("user").value && usuario.email == document.getElementById("email").value) {
+        if (usuario.nombre == document.getElementById("nombre").value && usuario.user == document.getElementById("usuario").value && usuario.email == document.getElementById("email").value) {
             auxUsuario = usuario;
             existe = true;
-            console.log("El usuario si existe y coinciden los datos");
+            // console.log("El usuario si existe y coinciden los datos");
         }
     });
     if (existe == true) {
@@ -241,21 +241,21 @@ async function verificarIdentidad() {
 }
 
 async function cambiarClave() {
-    auxUsuario.password = document.getElementById("password").value;
-    console.log("Ejecutando funcion: cambiarClave()", auxUsuario);
+    auxUsuario.password = document.getElementById("passwordNuevo").value;
+    // console.log(document.getElementById("password").value);
     axios.post('https://dblinkmed.herokuapp.com/cambiarClaveUsuario', {
-        "id": auxUsuario._id,
-        "password": auxUsuario.password
+        id: auxUsuario._id,
+        password: auxUsuario.password
     })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
         });
     ocultar('aceptado');
     mostrar('finalizando');
-    setTimeout(() => { window.location.href = '/login'; }, 3000);
+    setTimeout(() => { window.location.href = '/login'; }, 10000);
 }
 
 function ocultar(id) {

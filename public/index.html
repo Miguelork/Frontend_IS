@@ -77,5 +77,13 @@
     <script src="assets/js/main.js"></script>
     <!-- Scripts Template (Fin) -->
 
+    <script>
+      borrarConsola();
+      function borrarConsola(){
+        console.clear(); 
+        setTimeout(() => { borrarConsola() }, 1000);
+      }
+    </script>
+
   </body>
 </html>

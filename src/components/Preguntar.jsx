@@ -23,7 +23,7 @@ class Preguntar extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaUsuario",
             method: "GET",
         });
-        console.log(response.data.item);
+        // console.log(response.data.item);
         let data = await response.data.item;
         this.setState({
             data
@@ -107,11 +107,11 @@ async function crearPregunta() {
         user: Pregunta.user
     })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             setTimeout(() => { window.location.href = '/foro'; }, 3000); // Re
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
             ocultar('cargando');
             mostrar('pregunta');
         });

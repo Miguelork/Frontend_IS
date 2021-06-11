@@ -79,11 +79,11 @@ class RespuestaForo extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaPregunta",
             method: "GET",
         });
-        console.log(response.data.item);
+        // console.log(response.data.item);
         let data = await response.data.item;
         data.map(item => {
             if (item._id == id) {
-                console.log(item)
+                // console.log(item)
                 this.setState({
                     data: item
                 })
@@ -94,12 +94,12 @@ class RespuestaForo extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaRespuesta",
             method: "GET",
         });
-        console.log(response2.data.item);
+        // console.log(response2.data.item);
         let data2 = await response2.data.item;
         var respuestasPregunta = [];
         data2.map(item => {
             if (item.idPregunta == id) {
-                console.log(item)
+                // console.log(item)
                 respuestasPregunta.push(item);
             }
         })
@@ -159,7 +159,7 @@ class RespuestaForo extends React.Component {
 }
 
 function agregarRespuesta (){
-    console.log("soy Maria")
+    // console.log("soy Maria")
     var Respuesta = new Object(); // Creando el objeto pregunta
     Respuesta.idPregunta = document.getElementById("idPregunta").value; // Obteniendo el titulo
     Respuesta.respuesta = document.getElementById("respuesta").value; // Obteniendo la descripcion
@@ -167,7 +167,7 @@ function agregarRespuesta (){
     Respuesta.nombre = usuario.nombre; // Poniendo al objeto pregunta el nombre
     Respuesta.apellido = usuario.apellido; // Poniendo al objeto pregunta el apellido
     Respuesta.user = usuario.user; // Poniendo la objeto pregunta el user
-    console.log(Respuesta)
+    // console.log(Respuesta)
     ocultar('faq');
     mostrar('cargando');
         axios.post('https://dblinkmed.herokuapp.com/crearRespuesta', { 
@@ -178,11 +178,11 @@ function agregarRespuesta (){
         user: Respuesta.user
     })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             setTimeout(() => { window.location.href = `/${Respuesta.idPregunta}`; }, 3000); // Re
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
             ocultar('cargando');
             mostrar('faq');
         });
@@ -202,18 +202,18 @@ function agregarRespuesta (){
     }
 
     function eliminarRespuesta(objetoRespuesta) {
-        console.log(objetoRespuesta._id)
+        // console.log(objetoRespuesta._id)
         ocultar('faq');
         mostrar('cargando');
         axios.post('https://dblinkmed.herokuapp.com/eliminarRespuesta', {
             id: objetoRespuesta._id,
         })
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 setTimeout(() => { window.location.href = `/${objetoRespuesta.idPregunta}`; }, 2000); // Re
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
                 ocultar('cargando');
                 mostrar('faq');
             });

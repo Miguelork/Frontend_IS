@@ -282,7 +282,7 @@ async function registrarDoctor() {
         url: "https://dblinkmed.herokuapp.com/listaUsuario",
         method: "GET",
     });
-    // console.log(response.data.item);
+    // // console.log(response.data.item);
 
     var controlExiste = false; // Variable booleana para saber si existe ponerla en true
     response.data.item.map((usuario) => {
@@ -318,11 +318,11 @@ async function registrarDoctor() {
         aprobado: false
     })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             setTimeout(() => { window.location.href = '/login'; }, 3000);
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
         });
     }else{
         ocultar('DocFinalizando');
