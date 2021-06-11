@@ -111,7 +111,7 @@ class RespuestaForo extends React.Component {
                                             {this.state.respuestas.map((item, index) => {
                                                 return (
                                                     <li>
-                                                        <a data-toggle="collapse" className="collapse" href={'#faq-list-' + index} style={{ "text-decoration": "none" }}><i class="icofont-doctor"></i> {item.nombre} {item.apellido}<i className="bx bx-chevron-down icon-show" /></a>
+                                                        <a data-toggle="collapse" className="collapse" href="#" style={{ "text-decoration": "none" }}><i class="icofont-doctor"></i> {item.nombre} {item.apellido}<i className="bx bx-chevron-down icon-show" /></a>
                                                         <div id={'faq-list-' + index} className="collapse show" data-parent=".faq-list">
                                                             <p>{item.respuesta}</p>
                                                         </div>
