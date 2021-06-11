@@ -56,6 +56,17 @@ class RespuestaForo extends React.Component {
         }
        }
 
+       eliminar = (objetoRespuesta) => {
+        var usuario = cookies.get("usuario");
+        if (objetoRespuesta.user == usuario.user) {
+            return (
+                <div>
+                        <a href="#" onClick={() => eliminarRespuesta(objetoRespuesta)} style={{"color":"red","text-decoration":"none"}}><i class="icofont-trash"></i></a>
+                </div>
+            )
+        }
+    }
+
     async componentDidMount() {
         // Verificar que este logueado
         if (!cookies.get("usuario")) {
@@ -128,6 +139,7 @@ class RespuestaForo extends React.Component {
                                                         <a data-toggle="collapse" className="collapse" href="#" style={{ "text-decoration": "none" }}><i class="icofont-doctor"></i> {item.nombre} {item.apellido}<i className="bx bx-chevron-down icon-show" /></a>
                                                         <div id={'faq-list-' + index} className="collapse show" data-parent=".faq-list">
                                                             <p>{item.respuesta}</p>
+                                                            {(this.eliminar(item))}
                                                         </div>
                                                     </li>
                                                 )
@@ -189,6 +201,23 @@ function agregarRespuesta (){
         }, 500);
     }
 
+    function eliminarRespuesta(objetoRespuesta) {
+        console.log(objetoRespuesta._id)
+        ocultar('faq');
+        mostrar('cargando');
+        axios.post('https://dblinkmed.herokuapp.com/eliminarRespuesta', {
+            id: objetoRespuesta._id,
+        })
+            .then(function (response) {
+                console.log(response);
+                setTimeout(() => { window.location.href = `/${objetoRespuesta.idPregunta}`; }, 2000); // Re
+            })
+            .catch(function (error) {
+                console.log(error);
+                ocultar('cargando');
+                mostrar('faq');
+            });
+    }
 
 
 export default withRouter(RespuestaForo);
