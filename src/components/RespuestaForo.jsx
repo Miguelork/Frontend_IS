@@ -43,6 +43,19 @@ class RespuestaForo extends React.Component {
         )
     }
 
+    alerta = (array) => {
+        if( array.length == 0){
+           return (
+               <div>
+                   <div className="section-title" data-aos="fade-up">
+                       {/* Aqui deberiamos poner una imagen que se como de que no hay respuestas */}
+                   <p style={{ "color": "white", "font-size": "14px"}}>Aún no hay respuesta</p>
+                   </div>
+               </div>
+           )
+        }
+       }
+
     async componentDidMount() {
         // Verificar que este logueado
         if (!cookies.get("usuario")) {
@@ -106,6 +119,7 @@ class RespuestaForo extends React.Component {
                             </div>
                             <div className="row" data-aos="fade-left">
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>
+                                {(this.alerta(this.state.respuestas))}
                                     <div className="faq-list">
                                         <ul id="listaForo">
                                             {this.state.respuestas.map((item, index) => {
