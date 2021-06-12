@@ -31,8 +31,8 @@ class AdminAprobar extends React.Component {
         this.setState({
             data
         })
-    
-}
+
+    }
 
     render() {
         return (
@@ -57,46 +57,84 @@ class AdminAprobar extends React.Component {
                             </div>
                             <div id='lista' className="row" data-aos="fade-left">
                                 <input style={{ "background": "white" }} type="text" id="inputBusDoc" onKeyUp={Buscar} className="form-control searchm mb-3" placeholder=" 🔍    Escriba el nombre..." />
-                                <table class="table" id="tablaDoctores">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" style={{ "color": "white" }}>Nombre</th>
-                                            <th scope="col" style={{ "color": "white" }}>Tipo</th>
-                                            <th scope="col" style={{ "color": "white" }}>Usuario</th>
-                                            <th scope="col" style={{ "color": "white" }}>Email</th>
-                                            <th scope="col" style={{ "color": "white" }}>Especialidades</th>
-                                            <th scope="col" style={{ "color": "white" }}>Estado</th>
-                                            <th scope="col" style={{ "color": "white" }}> </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.state.data.map(item => {
-                                            if (item.tipo == "Voluntario" || item.tipo == "Premium")
-                                                return (
-                                                    <tr >
-                                                        <td scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</td>
-                                                        <td style={{ "color": "white" }}>{item.tipo}</td>
-                                                        <td style={{ "color": "white" }}>{item.user}</td>
-                                                        <td style={{ "color": "white" }}>{item.email}</td>
-                                                        <td style={{ "color": "white" }}>{item.especialidades}</td>
-                                                        <td style={{ "color": "white" }}>{item.aprobado.toString()}</td>
-                                                        <td style={{ "color": "white" }}>
-                                                            <button type="button" class="btn-checkk btn-sm mr-2" onClick={actualizarDoctor.bind(this, item, true)}>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
-                                                                </svg>
-                                                            </button>
-                                                            <button type="button" class="btn-cancel btn-sm ml-2" onClick={actualizarDoctor.bind(this, item, false)}>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
-                                                                </svg>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                        })}
-                                    </tbody>
-                                </table>
+                                {/* ======= Tabla de Escritorios PC ======= */}
+                                <div class="d-none d-sm-none d-md-block">
+                                    <table class="table" id="tablaDoctores">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style={{ "color": "white" }}>Nombre</th>
+                                                <th scope="col" style={{ "color": "white" }}>Tipo</th>
+                                                <th scope="col" style={{ "color": "white" }}>Usuario</th>
+                                                <th scope="col" style={{ "color": "white" }}>Email</th>
+                                                <th scope="col" style={{ "color": "white" }}>Especialidades</th>
+                                                <th scope="col" style={{ "color": "white" }}>Estado</th>
+                                                <th scope="col" style={{ "color": "white" }}> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.data.map(item => {
+                                                if (item.tipo == "Voluntario" || item.tipo == "Premium")
+                                                    return (
+                                                        <tr >
+                                                            <td scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</td>
+                                                            <td style={{ "color": "white" }}>{item.tipo}</td>
+                                                            <td style={{ "color": "white" }}>{item.user}</td>
+                                                            <td style={{ "color": "white" }}>{item.email}</td>
+                                                            <td style={{ "color": "white" }}>{item.especialidades}</td>
+                                                            <td style={{ "color": "white" }}>{item.aprobado.toString()}</td>
+                                                            <td style={{ "color": "white" }}>
+                                                                <button type="button" class="btn-checkk btn-sm mr-2" onClick={actualizarDoctor.bind(this, item, true)}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                                                                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                                    </svg>
+                                                                </button>
+                                                                <button type="button" class="btn-cancel btn-sm ml-2" onClick={actualizarDoctor.bind(this, item, false)}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                                                                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
+                                                                    </svg>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {/* ======= Tabla de Moviles ======= */}
+                                <div class="d-block d-sm-block d-md-none">
+                                    <table class="table" id="tablaDoctores">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style={{ "color": "white" }}>Nombre</th>
+                                                <th scope="col" style={{ "color": "white" }}>Estado</th>
+                                                <th scope="col" style={{ "color": "white" }}> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.data.map(item => {
+                                                if (item.tipo == "Voluntario" || item.tipo == "Premium")
+                                                    return (
+                                                        <tr >
+                                                            <td scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</td>
+                                                            <td style={{ "color": "white" }}>{item.aprobado.toString()}</td>
+                                                            <td style={{ "color": "white" }}>
+                                                                <button type="button" class="btn-checkk btn-sm mr-2" onClick={actualizarDoctor.bind(this, item, true)}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                                                                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                                    </svg>
+                                                                </button>
+                                                                <button type="button" class="btn-cancel btn-sm ml-2" onClick={actualizarDoctor.bind(this, item, false)}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                                                                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
+                                                                    </svg>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div className="col-md-12 mb-5 text-center">
                                 <div data-aos="zoom-out">
@@ -104,31 +142,56 @@ class AdminAprobar extends React.Component {
                                 </div>
                             </div>
                             <div id='lista' className="row" data-aos="fade-left">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" style={{ "color": "white" }}>Nombre</th>
-                                            <th scope="col" style={{ "color": "white" }}>Genero</th>
-                                            <th scope="col" style={{ "color": "white" }}>Usuario</th>
-                                            <th scope="col" style={{ "color": "white" }}>Email</th>
-                                            <th scope="col" style={{ "color": "white" }}>Telefono</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.state.data.map(item => {
-                                            if (item.tipo == "Paciente")
-                                                return (
-                                                    <tr id="listaForo">
-                                                        <th scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</th>
-                                                        <td style={{ "color": "white" }}>{item.sexo}</td>
-                                                        <td style={{ "color": "white" }}>{item.user}</td>
-                                                        <td style={{ "color": "white" }}>{item.email}</td>
-                                                        <td style={{ "color": "white" }}>{item.telefono}</td>
-                                                    </tr>
-                                                )
-                                        })}
-                                    </tbody>
-                                </table>
+                                {/* ======= Tabla de Escritorio ======= */}
+                                <div class="d-none d-sm-none d-md-block">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style={{ "color": "white" }}>Nombre</th>
+                                                <th scope="col" style={{ "color": "white" }}>Genero</th>
+                                                <th scope="col" style={{ "color": "white" }}>Usuario</th>
+                                                <th scope="col" style={{ "color": "white" }}>Email</th>
+                                                <th scope="col" style={{ "color": "white" }}>Telefono</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.data.map(item => {
+                                                if (item.tipo == "Paciente")
+                                                    return (
+                                                        <tr id="listaForo">
+                                                            <th scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</th>
+                                                            <td style={{ "color": "white" }}>{item.sexo}</td>
+                                                            <td style={{ "color": "white" }}>{item.user}</td>
+                                                            <td style={{ "color": "white" }}>{item.email}</td>
+                                                            <td style={{ "color": "white" }}>{item.telefono}</td>
+                                                        </tr>
+                                                    )
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {/* ======= Tabla de Moviles ======= */}
+                                <div class="d-block d-sm-block d-md-none">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style={{ "color": "white" }}>Nombre</th>
+                                                <th scope="col" style={{ "color": "white" }}>Usuario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.data.map(item => {
+                                                if (item.tipo == "Paciente")
+                                                    return (
+                                                        <tr id="listaForo">
+                                                            <th scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</th>
+                                                            <td style={{ "color": "white" }}>{item.user}</td>
+                                                        </tr>
+                                                    )
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </section>{/* End Team Section */}
@@ -191,24 +254,24 @@ function mostrar(id) {
     }, 500);
 }
 
-function Buscar() {  
+function Buscar() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("inputBusDoc");
     filter = input.value.toUpperCase();
     table = document.getElementById("tablaDoctores");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
         }
-      }
     }
-  }
+}
 
 
 
