@@ -47,6 +47,7 @@ class Perfil extends React.Component {
                     document.getElementById("docespecialidad").value = data.especialidades;
                     document.getElementById("docdateI").value = data.horaInicial;
                     document.getElementById("docdateE").value = data.horaFinal;
+                    document.getElementById("aprobado").value = data.aprobado;
                     mostrar("Doctor");
                 }, 1000);
             }
@@ -190,6 +191,7 @@ class Perfil extends React.Component {
                             </form>
                             <form role="form" id="Doctor" class="php-email-form" style={{ "width": "100%", "display": "none" }}>
                             <input type="hidden" id="docid" />
+                            <input type="hidden" id="aprobado" />
                                 <input type="hidden" id="tipoD" />
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
@@ -412,6 +414,7 @@ function actualizarDoctor() {
     Doctor.especialidades = document.getElementById("docespecialidad").value;
     Doctor.horaInicial = document.getElementById("docdateI").value;
     Doctor.horaFinal = document.getElementById("docdateE").value;
+    Doctor.aprobado = document.getElementById("aprobado").value;
 
     ocultar('Doctor');
     ocultar('imagen');
@@ -432,7 +435,9 @@ function actualizarDoctor() {
         direccion: Doctor.direccion,
         especialidades: Doctor.especialidades,
         horaInicial: Doctor.horaInicial,
-        horaFinal: Doctor.horaFinal
+        horaFinal: Doctor.horaFinal,
+        aprobado: Doctor.aprobado
+
     })
         .then(function (response) {
             // console.log(response);
