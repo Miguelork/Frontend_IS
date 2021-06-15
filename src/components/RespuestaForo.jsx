@@ -19,7 +19,7 @@ class RespuestaForo extends React.Component {
 
     esDoctor = () => {
         if (cookies.get("usuario")) {
-            if (cookies.get("usuario").tipo == 'Premium' || cookies.get("usuario").tipo == 'Voluntario') {
+            if (cookies.get("usuario").tipo == 'Premium' || cookies.get("usuario").tipo == 'Voluntario' && cookies.get("usuario").aprobado == true ) {
                 return (
                     <div>
                         <form role="form" class="php-email-form" style={{ "width": "100%" }}>
@@ -31,7 +31,7 @@ class RespuestaForo extends React.Component {
                                 <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
                             </div>
                             <div class="text-center">
-                                <a href="#" onClick={ agregarRespuesta} className="btn-get-started scrollto">Aceptar</a>
+                                <a href="#" onClick={agregarRespuesta} className="btn-get-started scrollto">Aceptar</a>
                             </div>
                         </form>
                     </div>
@@ -44,24 +44,36 @@ class RespuestaForo extends React.Component {
     }
 
     alerta = (array) => {
-        if( array.length == 0){
-           return (
-               <div>
-                   <div className="section-title" data-aos="fade-up">
-                       {/* Aqui deberiamos poner una imagen que se como de que no hay respuestas */}
-                   <p style={{ "color": "white", "font-size": "14px"}}>Aún no hay respuesta</p>
-                   </div>
-               </div>
-           )
+        if (array.length == 0) {
+            return (
+                <div>
+                    <div className="section-title" data-aos="fade-up">
+                        {/* Aqui deberiamos poner una imagen que se como de que no hay respuestas */}
+                        <p style={{ "color": "white", "font-size": "14px" }}>Aún no hay respuesta</p>
+                    </div>
+                </div>
+            )
         }
-       }
+    }
 
-       eliminar = (objetoRespuesta) => {
+    eliminar = (objetoRespuesta) => {
         var usuario = cookies.get("usuario");
         if (objetoRespuesta.user == usuario.user) {
             return (
                 <div>
-                        <a href="#" onClick={() => eliminarRespuesta(objetoRespuesta)} style={{"color":"red","text-decoration":"none"}}><i class="icofont-trash"></i></a>
+                    <a href="#" onClick={() => eliminarRespuesta(objetoRespuesta)} style={{ "color": "red", "text-decoration": "none" }}><i class="icofont-trash"></i></a>
+                </div>
+            )
+        }
+    }
+
+    eliminarPregunta = (objetoPregunta, arrayRespuestas) => {
+        console.log(arrayRespuestas)
+        var usuario = cookies.get("usuario");
+        if (objetoPregunta.user == usuario.user) {
+            return (
+                <div id="botonEliminar">
+                    <a href="#" onClick={() => eliminarPreguntaBD(objetoPregunta, arrayRespuestas)} style={{ "color": "white", "background": "#dc3545", "text-decoration": "none", "margin-top": "1rem" }} class="btn-get-started scrollto"><i class="icofont-trash"></i> Eliminar Pregunta</a>
                 </div>
             )
         }
@@ -121,7 +133,8 @@ class RespuestaForo extends React.Component {
                                 <h2>Pregunta</h2>
                                 <p style={{ "color": "white" }}>{this.state.data.titulo}</p>
                                 <p style={{ "color": "white", "font-size": "14px" }}>{this.state.data.descripcion}</p>
-                                <input type="hidden" value={this.state.data._id} id="idPregunta" /> 
+                                <input type="hidden" value={this.state.data._id} id="idPregunta" />
+                                {(this.eliminarPregunta(this.state.data, this.state.respuestas))}
                             </div>
                             <div className="row section-title" data-aos="fade-left" id="cargando" style={{ "display": "none" }}>
                                 <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
@@ -130,7 +143,7 @@ class RespuestaForo extends React.Component {
                             </div>
                             <div className="row" data-aos="fade-left">
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>
-                                {(this.alerta(this.state.respuestas))}
+                                    {(this.alerta(this.state.respuestas))}
                                     <div className="faq-list">
                                         <ul id="listaForo">
                                             {this.state.respuestas.map((item, index) => {
@@ -138,7 +151,8 @@ class RespuestaForo extends React.Component {
                                                     <li>
                                                         <a data-toggle="collapse" className="collapse" href="#" style={{ "text-decoration": "none" }}><i class="icofont-doctor"></i> {item.nombre} {item.apellido}<i className="bx bx-chevron-down icon-show" /></a>
                                                         <div id={'faq-list-' + index} className="collapse show" data-parent=".faq-list">
-                                                            <p>{item.respuesta}</p>
+                                                            <p>{item.respuesta}</p>                                                            
+                                                            <a href={'/doctor/'+item.user} style={{"border-color":"#1acc8d","border-radius":"50px","text-decoration": "none","margin":"1rem","background":"#1acc8d"}} class="btn btn-primary btn-sm">Solicitar una cita</a>
                                                             {(this.eliminar(item))}
                                                         </div>
                                                     </li>
@@ -158,19 +172,19 @@ class RespuestaForo extends React.Component {
     }
 }
 
-function agregarRespuesta (){
+function agregarRespuesta() {
     // console.log("soy Maria")
     var Respuesta = new Object(); // Creando el objeto pregunta
     Respuesta.idPregunta = document.getElementById("idPregunta").value; // Obteniendo el titulo
     Respuesta.respuesta = document.getElementById("respuesta").value; // Obteniendo la descripcion
-    let usuario =  cookies.get("usuario"); // Obteniendo los datos del usuario en cookies
+    let usuario = cookies.get("usuario"); // Obteniendo los datos del usuario en cookies
     Respuesta.nombre = usuario.nombre; // Poniendo al objeto pregunta el nombre
     Respuesta.apellido = usuario.apellido; // Poniendo al objeto pregunta el apellido
     Respuesta.user = usuario.user; // Poniendo la objeto pregunta el user
     // console.log(Respuesta)
     ocultar('faq');
     mostrar('cargando');
-        axios.post('https://dblinkmed.herokuapp.com/crearRespuesta', { 
+    axios.post('https://dblinkmed.herokuapp.com/crearRespuesta', {
         idPregunta: Respuesta.idPregunta,
         respuesta: Respuesta.respuesta,
         nombre: Respuesta.nombre,
@@ -186,38 +200,75 @@ function agregarRespuesta (){
             ocultar('cargando');
             mostrar('faq');
         });
-    }
+}
 
-    function ocultar(id) {
-        document.getElementById(id).style.opacity = '0';
-        document.getElementById(id).style.transition = 'opacity 0.5s';
-        setTimeout(() => { document.getElementById(id).style.display = 'none'; }, 500);
-    }
+function ocultar(id) {
+    document.getElementById(id).style.opacity = '0';
+    document.getElementById(id).style.transition = 'opacity 0.5s';
+    setTimeout(() => { document.getElementById(id).style.display = 'none'; }, 500);
+}
 
-    function mostrar(id) {
-        setTimeout(() => {
-            document.getElementById(id).style.display = 'block';
-            document.getElementById(id).style.opacity = '100';
-        }, 500);
-    }
+function mostrar(id) {
+    setTimeout(() => {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById(id).style.opacity = '100';
+    }, 500);
+}
 
-    function eliminarRespuesta(objetoRespuesta) {
-        // console.log(objetoRespuesta._id)
-        ocultar('faq');
-        mostrar('cargando');
+function eliminarPreguntaBD(objetoPregunta, arrayRespuesta) {
+    // console.log(objetoRespuesta._id)
+    ocultar('botonEliminar');
+    ocultar('faq');
+    mostrar('cargando');
+    
+    axios.post('https://dblinkmed.herokuapp.com/eliminarPregunta', {
+        id: objetoPregunta._id,
+    })
+        .then(function (response) {
+            // console.log(response);
+            setTimeout(() => { window.location.href = `/foro`; }, 2000); // Re
+        })
+        .catch(function (error) {
+            // console.log(error);
+            ocultar('cargando');
+            mostrar('faq');
+            mostrar('botonEliminar');
+        });
+
+    arrayRespuesta.map((item) => {
         axios.post('https://dblinkmed.herokuapp.com/eliminarRespuesta', {
-            id: objetoRespuesta._id,
+            id: item._id,
         })
             .then(function (response) {
                 // console.log(response);
-                setTimeout(() => { window.location.href = `/${objetoRespuesta.idPregunta}`; }, 2000); // Re
             })
             .catch(function (error) {
                 // console.log(error);
                 ocultar('cargando');
                 mostrar('faq');
+                mostrar('botonEliminar');
             });
-    }
+    })
+}
+
+
+function eliminarRespuesta(objetoRespuesta) {
+    // console.log(objetoRespuesta._id)
+    ocultar('faq');
+    mostrar('cargando');
+    axios.post('https://dblinkmed.herokuapp.com/eliminarRespuesta', {
+        id: objetoRespuesta._id,
+    })
+        .then(function (response) {
+            // console.log(response);
+            setTimeout(() => { window.location.href = `/${objetoRespuesta.idPregunta}`; }, 2000); // Re
+        })
+        .catch(function (error) {
+            // console.log(error);
+            ocultar('cargando');
+            mostrar('faq');
+        });
+}
 
 
 export default withRouter(RespuestaForo);
