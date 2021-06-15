@@ -20,6 +20,7 @@ import Foro from './components/Foro';
 import AdminAprobar from './components/AdminAprobar';
 import Preguntar from './components/Preguntar';
 import RespuestaForo from "./components/RespuestaForo";
+import Doctor from "./components/Doctor";
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route path="/admin_aprobar">
             <AdminAprobar />
+          </Route>
+          <Route path="/doctor/:user">
+            <Doctor />
           </Route>
           <Route path="/:id">
             <RespuestaForo />
