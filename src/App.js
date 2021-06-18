@@ -60,7 +60,7 @@ function App() {
           <Route path="/admin_aprobar">
             <AdminAprobar />
           </Route>
-          <Route path="/doctor/:user">
+          <Route path="/doctor=:user">
             <Doctor />
           </Route>
           <Route path="/:id">

@@ -152,7 +152,7 @@ class RespuestaForo extends React.Component {
                                                         <a data-toggle="collapse" className="collapse" href="#" style={{ "text-decoration": "none" }}><i class="icofont-doctor"></i> {item.nombre} {item.apellido}<i className="bx bx-chevron-down icon-show" /></a>
                                                         <div id={'faq-list-' + index} className="collapse show" data-parent=".faq-list">
                                                             <p>{item.respuesta}</p>                                                            
-                                                            <a href={'/doctor/'+item.user} style={{"border-color":"#1acc8d","border-radius":"50px","text-decoration": "none","margin":"1rem","background":"#1acc8d"}} class="btn btn-primary btn-sm">Solicitar una cita</a>
+                                                            <a href={'/doctor='+item.user} style={{"border-color":"#1acc8d","border-radius":"50px","text-decoration": "none","margin":"1rem","background":"#1acc8d"}} class="btn btn-primary btn-sm">Solicitar una cita</a>
                                                             {(this.eliminar(item))}
                                                         </div>
                                                     </li>
