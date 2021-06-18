@@ -116,6 +116,35 @@ async function login() {
     });
     // Si login esta true es que todo fue bien y se inicia sesión
     if (login == true) {
+        
+        //Llamamos a la lista de historias para verificar si hay una historia para este usuario
+        const check = await axios({
+            url: "https://dblinkmed.herokuapp.com/listaHistoria",
+            method: "GET",
+        });
+        
+        var hayHistoria = false;//variable de control que se pone true si existe una historia para el usuario
+        check.data.item.map((historia) => {
+            if (cookies.get("usuario").tipo == 'Paciente' 
+                    && historia.usuario_id == cookies.get("usuario")._id) {
+                hayHistoria = true;
+            }
+        });
+
+        //Si el usuario es de tipo paciente y no se encuentra una historia en bdd se le crea una
+        if(hayHistoria == false && cookies.get("usuario").tipo == 'Paciente'){
+            axios.post("https://dblinkmed.herokuapp.com/crearHistoria", {
+                usuario_id: cookies.get("usuario")._id,
+                contenido: "",
+            })
+            .then(function (response) {
+                // console.log(response);
+            })
+            .catch(function (error) {
+                // console.log(error);
+            });
+        }
+
         setTimeout(() => {
         window.location.href = "/menu";
         }, 1000);

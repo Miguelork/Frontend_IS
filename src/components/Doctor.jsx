@@ -12,8 +12,12 @@ const cookies = new Cookies();
 class Doctor extends React.Component {
     state = {
         doctor: JSON,
-        usuario: JSON
+        usuario: JSON,
+        usuarioHistoria_id: '',
+        doctorHistoria_id: ''
     }
+
+    
 
     async componentDidMount() {
         if (!cookies.get("usuario")) {
@@ -23,26 +27,63 @@ class Doctor extends React.Component {
         const user = this.props.match.params.user;
         //console.log(user)
 
-        const response = await axios({
+        const responseUsuario = await axios({
             url: "https://dblinkmed.herokuapp.com/listaUsuario",
             method: "GET",
         });
+
+        const responseHistoria = await axios({
+            url: "https://dblinkmed.herokuapp.com/listaHistoria",
+            method: "GET",
+        });
+
+        const responseDoctorHistoria = await axios({
+            url: "https://dblinkmed.herokuapp.com/listaDoctorHistoria",
+            method: "GET",
+        });
+        
+
         //console.log(response.data.item);
-        let data = await response.data.item;
-        data.map(item => {
+        let dataUsuario = await responseUsuario.data.item;
+        let dataHistoria = await responseHistoria.data.item;
+        let dataDoctorHistoria = await responseDoctorHistoria.data.item;
+
+        dataUsuario.map(item => {
             if (item.user == user) {
                 this.setState({
                     doctor: item
                 })
             }
         })
+
         let usuario = cookies.get("usuario");
         this.setState({
             usuario: usuario
         })
+
+        dataHistoria.map(item => {
+            if (item.usuario_id == this.state.usuario._id) {
+                this.setState({
+                    usuarioHistoria_id: item._id
+                })
+            }
+        })
+
+        dataDoctorHistoria.map(item => {
+            if (item.doctor_id == this.state.doctor._id
+                    && item.historia_id == this.state.usuarioHistoria_id) {
+                    this.setState({
+                        doctorHistoria_id: item._id
+                    })
+            }
+        })
+        
+
         console.clear()
         console.log(this.state.doctor)
         console.log(this.state.usuario)
+        console.log(this.state.usuarioHistoria_id)
+        console.log(this.state.doctorHistoria_id)
 
     }
 
@@ -77,7 +118,10 @@ class Doctor extends React.Component {
                                                             <i class="icofont-doctor"></i>
                                                             <span data-toggle="counter-up" style={{ "font-size": "1.5rem" }}>{this.state.doctor.nombre} {this.state.doctor.apellido}</span>
                                                             <a href="#" class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Iniciar Chat</a>
-                                                            <a href="#" onClick={ () => compartirHistoria(this.state.doctor._id , this.state.usuario._id) } class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Compartir mi Historia</a>
+                                                            {(this.state.doctorHistoria_id == '')
+                                                                ?<a href="#" onClick={ () => compartirHistoria(this.state.doctor._id , this.state.doctor.user, this.state.usuarioHistoria_id) } class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Compartir mi Historia</a>
+                                                                :<p class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Historia compartida</p>
+                                                            }
                                                         </div>
                                                     </div>
 
@@ -106,12 +150,23 @@ class Doctor extends React.Component {
     }
 }
 
-function compartirHistoria(idDoctor , idPaciente) {
+async function compartirHistoria(idDoctor ,userDoc, idHistoria) {
     console.log("Ejecutando funcion: compartirHistoria()")
     console.log("idDoctor:" , idDoctor)
-    console.log("idPaciente:" , idPaciente)
-    // Aqui estas teniendo los IDs que se necesitan para la coleccion de compartirHistorias
-
+    console.log("idHistoria:" , idHistoria)
+    ocultar('faq');
+    mostrar('cargando');
+    axios.post("https://dblinkmed.herokuapp.com/crearDoctorHistoria", {
+            historia_id: idHistoria,
+            doctor_id: idDoctor,
+        })
+        .then(function (response) {
+            // console.log(response);
+            window.location.href = '/doctor='+userDoc;
+        })
+        .catch(function (error) {
+            // console.log(error);
+        });
 }
 
 function ocultar(id) {
