@@ -1134,6 +1134,13 @@ section {
     border-radius: 100%;
 }
 
+select {
+    content: "\025bd";
+    background: transparent;
+    border: none;
+    font-size: 14px;
+}
+
 .btn-cancel {
     color: whitesmoke;
     background-color: #c4090c;
