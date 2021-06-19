@@ -17,6 +17,16 @@ class Menu extends React.Component {
     return false
   }
 
+  esDoctor = () => {
+    if (cookies.get("usuario")) {
+      if(cookies.get("usuario").tipo === 'Premium'
+          || cookies.get("usuario").tipo === 'Voluntario'){
+        return true
+      }
+    } 
+    return false
+  }
+
   cerrarSesion = () => {
     cookies.remove("usuario", { path: "/" });
     window.location.href = "/";
@@ -195,6 +205,26 @@ class Menu extends React.Component {
                         <Link to='/admin_aprobar'>
                         <h3>
                           <a href>Gestionar Doctores y Pacientes </a>
+                        </h3>
+                        </Link>
+                      </div>
+                    </div>
+                  : <div></div>
+                }
+                {(this.esDoctor())
+                  ? <div className='col-md-12 mt-4'>
+                      <div
+                        className='icon-box'
+                        data-aos='zoom-in'
+                        data-aos-delay={150}
+                      >
+                        <i
+                          className='icofont-search-document'
+                          style={{ color: "#e80368" }}
+                        />
+                        <Link to='/historiasAut'>
+                        <h3>
+                          <a href>Ver historias de pacientes</a>
                         </h3>
                         </Link>
                       </div>

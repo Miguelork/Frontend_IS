@@ -21,6 +21,9 @@ import AdminAprobar from './components/AdminAprobar';
 import Preguntar from './components/Preguntar';
 import RespuestaForo from "./components/RespuestaForo";
 import Doctor from "./components/Doctor";
+import ListaHistorias from "./components/ListaHistorias";
+import Historia from "./components/Historia"
+import FormHistoria from "./components/FormHistoria"
 
 function App() {
   return (
@@ -62,6 +65,15 @@ function App() {
           </Route>
           <Route path="/doctor=:user">
             <Doctor />
+          </Route>
+          <Route path="/historiasAut">
+            <ListaHistorias />
+          </Route>
+          <Route path="/historia=:user_id">
+            <Historia />
+          </Route>
+          <Route path="/modificarhistoria=:user_id">
+            <FormHistoria />
           </Route>
           <Route path="/:id">
             <RespuestaForo />
