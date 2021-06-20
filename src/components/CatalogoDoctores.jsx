@@ -41,7 +41,7 @@ class CatalogoDoctores extends React.Component {
                                 <h2>Catalogo de Doctores</h2>
                             </div>
                             <div className="row" data-aos="fade-left">
-                            <div className="row mb-3">
+                            {/* ======= <div className="row mb-3">
                                     <div className="col-xs-10 col-md-10">
                                         <input style={{ "background": "white" }} type="text" id="inputBusDoc" onKeyUp={Buscar} onMouseMove={Buscar} className="form-control searchm mb-3" placeholder=" 🔍    Escriba el nombre..." />
                                     </div>
@@ -52,7 +52,7 @@ class CatalogoDoctores extends React.Component {
                                             <option style={{ "color": "black" }} onClick={Buscar} value="1">Tipo</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div>======= */}
                                 {this.state.data.map(item => {
                                     if ((item.tipo == "Voluntario" || item.tipo == "Premium") && (item.aprobado == true))
                                         return (
@@ -195,25 +195,6 @@ class CatalogoDoctores extends React.Component {
     }
 }
 
-function Buscar() {
-    var input, filter, table, tr, td, i, txtValue,num;
-    input = document.getElementById("inputBusDoc");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("tablaDoctores");
-    tr = table.getElementsByTagName("tr");
-    num = document.getElementById("buscarPar").value;
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[Number.parseInt(num)];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
 
 
 export default CatalogoDoctores
