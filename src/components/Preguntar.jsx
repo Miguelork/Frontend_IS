@@ -47,7 +47,7 @@ class Preguntar extends React.Component {
                             </div>
                             <div className="row" id="pregunta" >
                                 <div className="col-md-4 hero-img">
-                                    <img src="assets/img/foroimg.svg" className="img-fluid animated" alt="" />
+                                    <img src="assets/img/foroimg.svg" className="img-fluid animated mt-3" alt="" />
                                 </div>
                                 <div className="col-md-1"></div>
                                 <div className="col-md-7" data-aos="fade-left" id="DocFormulario">

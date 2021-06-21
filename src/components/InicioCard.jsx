@@ -6,9 +6,9 @@ function InicioCard(props) {
             <div className="row">
                 {props.card.map((card) => {
                     return (
-                        <div className="col-12 col-md-3">
-                            <div className="card cardHero mt-3 md-3">
-                                <div className="card-body">
+                        <div className="col-12 col-md-3 br">
+                            <div className="card cardHero mt-3 md-3 br">
+                                <div className="card-body br">
                                     <h5 className="card-title icoFont"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                                         class={card.ico} viewBox="0 0 16 16">
                                         <path d={card.d1} />

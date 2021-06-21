@@ -154,6 +154,7 @@ h6 {
 #header.header-scrolled {
     background: rgba(1, 4, 136, 0.9);
     height: 60px;
+    text-decoration: none;
 }
 
 #header .logo h1 {
@@ -467,8 +468,9 @@ h6 {
 .btn-cancel {
     font-size: 30px;
     color: whitesmoke;
-    border: 1px solid whitesmoke;
+    border: none;
     background-color: red;
+    text-decoration: none;
 }
 
 #hero {
@@ -526,6 +528,7 @@ h6 {
 }
 
 #hero .btn-get-started {
+    text-decoration: none;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -536,10 +539,13 @@ h6 {
     transition: 0.5s;
     color: #fff;
     background: #1acc8d;
+    border: none;
 }
 
 #hero .btn-get-started:hover {
     background: #17b57d;
+    text-decoration: none;
+    border: none;
 }
 
 #hero .animated {
@@ -1145,6 +1151,7 @@ select {
     color: whitesmoke;
     background-color: #c4090c;
     border: none;
+    text-decoration: none;
 }
 
 .ico-cancel {
@@ -1154,6 +1161,7 @@ select {
 }
 
 .btn-cancel:hover {
+    text-decoration: none;
     background-color: whitesmoke;
     color: #c4090c;
     border: none;
@@ -1163,12 +1171,14 @@ select {
     color: whitesmoke;
     background-color: #08bb3d;
     border: none;
+    text-decoration: none;
 }
 
 .btn-checkk:hover {
     background-color: whitesmoke;
     color: #08bb3d;
     border: none;
+    text-decoration: none;
 }
 
 
@@ -1207,6 +1217,14 @@ select {
     font-weight: 600;
     font-family: "Poppins", sans-serif;
     margin-bottom: 20px;
+}
+
+.br {
+    border-radius: 15% 0% 15% 0%;
+}
+
+span {
+    font-family: "Poppins", sans-serif;
 }
 
 .pricing h4 sup {
@@ -1250,10 +1268,14 @@ select {
     padding: 20px 15px;
     background: #f8f8f8;
     text-align: center;
+    text-decoration: none;
+    border: none;
 }
 
 .pricing .btn-buy {
     background: #1acc8d;
+    border: none;
+    text-decoration: none;
     display: inline-block;
     padding: 8px 35px 10px 35px;
     border-radius: 50px;
@@ -1268,6 +1290,7 @@ select {
 
 .pricing .btn-buy:hover {
     background: #149f6e;
+    border: none;
 }
 
 .pricing .featured h3 {

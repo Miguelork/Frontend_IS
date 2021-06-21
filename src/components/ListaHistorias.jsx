@@ -74,15 +74,6 @@ class ListaHistorias extends React.Component {
                 }
             })
         }
-        
-            
-        
-        
-        console.log(this.state.dataDoctorHistoria)
-        console.log(this.state.dataHistoria)
-        console.log(this.state.dataUsuario)
-        
-
     }
 
     render() {

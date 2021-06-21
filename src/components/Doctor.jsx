@@ -17,8 +17,6 @@ class Doctor extends React.Component {
         doctorHistoria_id: ''
     }
 
-    
-
     async componentDidMount() {
         if (!cookies.get("usuario")) {
             window.location.href = "/login";
@@ -41,7 +39,7 @@ class Doctor extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaDoctorHistoria",
             method: "GET",
         });
-        
+
 
         //console.log(response.data.item);
         let dataUsuario = await responseUsuario.data.item;
@@ -71,13 +69,13 @@ class Doctor extends React.Component {
 
         dataDoctorHistoria.map(item => {
             if (item.doctor_id == this.state.doctor._id
-                    && item.historia_id == this.state.usuarioHistoria_id) {
-                    this.setState({
-                        doctorHistoria_id: item._id
-                    })
+                && item.historia_id == this.state.usuarioHistoria_id) {
+                this.setState({
+                    doctorHistoria_id: item._id
+                })
             }
         })
-        
+
 
         console.clear()
         console.log(this.state.doctor)
@@ -97,8 +95,8 @@ class Doctor extends React.Component {
                         <div className="container">
                             <div className="section-title" data-aos="fade-up">
                                 <h2>Pregunta</h2>
-                                <p style={{ "color": "white" }}>Perfil</p>
-                                <p style={{ "color": "white", "font-size": "14px" }}>Doctor</p>
+                                <p style={{ "color": "white", "font-size": "14px" }}>Contactar con:</p>
+                                <p style={{ "color": "white" }}>{this.state.doctor.nombre} {this.state.doctor.apellido}</p>
                             </div>
                             <div className="row section-title" data-aos="fade-left" id="cargando" style={{ "display": "none" }}>
                                 <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
@@ -108,33 +106,34 @@ class Doctor extends React.Component {
                             <div className="row" data-aos="fade-left">
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>
                                     <div class="row" data-aos="fade-up">
-
-                                        <section id="counts" class="counts" style={{ "background": "none" , "padding":"25px 0"}}>
+                                        <section id="counts" class="counts" style={{ "background": "none", "padding": "25px 0" }}>
                                             <div class="container">
                                                 <div class="row" data-aos="fade-up">
-
                                                     <div class="col-lg-3 col-md-6">
-                                                        <div class="count-box">
+                                                        <div class="count-box br">
                                                             <i class="icofont-doctor"></i>
-                                                            <span data-toggle="counter-up" style={{ "font-size": "1.5rem" }}>{this.state.doctor.nombre} {this.state.doctor.apellido}</span>
+                                                            <span style={{ "color": "#293133", "font-size": "1.5rem" }}>{this.state.doctor.nombre} {this.state.doctor.apellido}</span>
+                                                            <span style={{ "color": "#293133", "font-size": "1rem" }}>{this.state.doctor.especialidades}</span>
                                                             <a href="#" class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Iniciar Chat</a>
                                                             {(this.state.doctorHistoria_id == '')
-                                                                ?<a href="#" onClick={ () => compartirHistoria(this.state.doctor._id , this.state.doctor.user, this.state.usuarioHistoria_id) } class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Compartir mi Historia</a>
-                                                                :<p class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Historia compartida</p>
+                                                                ? <a href="#" onClick={() => compartirHistoria(this.state.doctor._id, this.state.doctor.user, this.state.usuarioHistoria_id)} class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Compartir mi Historia</a>
+                                                                : <p class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Historia compartida</p>
                                                             }
                                                         </div>
                                                     </div>
-
                                                     <div class="col-lg-9 col-md-6 mt-5 mt-md-0">
-                                                        <div class="count-box">
+                                                        <div class="count-box br">
                                                             <i class="icofont-document-folder"></i>
-                                                            <span data-toggle="counter-up" style={{ "font-size": "1rem" }}>Datos del Doctor</span>
+                                                            <span className="mb-2" style={{ "color": "#293133", "font-size": "1.5rem" }}>Información del Doctor</span>
+                                                            <p>Hola aqui tu médico de contacto, mi nombre es {this.state.doctor.nombre} {this.state.doctor.apellido}, soy especialista en {this.state.doctor.especialidades}, si deseas contactar conmigo este es el monto de mi consulta: this.state.doctor.monto (falta ese dato), si estas de acuerdo con el monto, presione el boton de iniciar chat, o bien el de compartir historia para facilitarme su información, a continuación mas información acerca de mi:</p>
                                                             <p>Aqui mostrar los datos del doctor detalladamente y bueno nos esta faltando un atributo que sea para el costo por hora del doctor. Para mostrar los datos del doctor en esta parte se debe usar this.state.doctor.nombre o this.state.doctor.tipo y asi pero eso entre llaves en el codigo</p>
                                                         </div>
                                                     </div>
-
+                                                    <div class="text-center col-md-12 mt-3 mb-3">
+                                                        <a href="/foro" className="btn-get-started ">Volver</a>
+                                                    </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </section>
 
@@ -150,19 +149,19 @@ class Doctor extends React.Component {
     }
 }
 
-async function compartirHistoria(idDoctor ,userDoc, idHistoria) {
+async function compartirHistoria(idDoctor, userDoc, idHistoria) {
     console.log("Ejecutando funcion: compartirHistoria()")
-    console.log("idDoctor:" , idDoctor)
-    console.log("idHistoria:" , idHistoria)
+    console.log("idDoctor:", idDoctor)
+    console.log("idHistoria:", idHistoria)
     ocultar('faq');
     mostrar('cargando');
     axios.post("https://dblinkmed.herokuapp.com/crearDoctorHistoria", {
-            historia_id: idHistoria,
-            doctor_id: idDoctor,
-        })
+        historia_id: idHistoria,
+        doctor_id: idDoctor,
+    })
         .then(function (response) {
             // console.log(response);
-            window.location.href = '/doctor='+userDoc;
+            window.location.href = '/doctor=' + userDoc;
         })
         .catch(function (error) {
             // console.log(error);

@@ -19,7 +19,7 @@ class RespuestaForo extends React.Component {
 
     esDoctor = () => {
         if (cookies.get("usuario")) {
-            if (cookies.get("usuario").tipo == 'Premium' || cookies.get("usuario").tipo == 'Voluntario' && cookies.get("usuario").aprobado == true ) {
+            if (cookies.get("usuario").tipo == 'Premium' || cookies.get("usuario").tipo == 'Voluntario' && cookies.get("usuario").aprobado == true) {
                 return (
                     <div>
                         <form role="form" class="php-email-form" style={{ "width": "100%" }}>
@@ -30,9 +30,19 @@ class RespuestaForo extends React.Component {
                             <div class="mt-4 mb-3">
                                 <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
                             </div>
-                            <div class="text-center">
-                                <a href="#" onClick={agregarRespuesta} className="btn-get-started scrollto">Aceptar</a>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-4"></div>
+                                    <div class="col-md-2 mt-3 mb-3">
+                                        <button href="/foro" className="btn-get-started ">Volver</button>
+                                    </div>
+                                    <div class="col-md-2 mt-3 mb-3">
+                                        <button href="#" onClick={agregarRespuesta} className="btn-get-started ">Aceptar</button>
+                                    </div>
+                                    <div className="col-md-4"></div>
+                                </div>
                             </div>
+
                         </form>
                     </div>
                 )
@@ -151,8 +161,8 @@ class RespuestaForo extends React.Component {
                                                     <li>
                                                         <a data-toggle="collapse" className="collapse" href="#" style={{ "text-decoration": "none" }}><i class="icofont-doctor"></i> {item.nombre} {item.apellido}<i className="bx bx-chevron-down icon-show" /></a>
                                                         <div id={'faq-list-' + index} className="collapse show" data-parent=".faq-list">
-                                                            <p>{item.respuesta}</p>                                                            
-                                                            <a href={'/doctor='+item.user} style={{"border-color":"#1acc8d","border-radius":"50px","text-decoration": "none","margin":"1rem","background":"#1acc8d"}} class="btn btn-primary btn-sm">Solicitar una cita</a>
+                                                            <p>{item.respuesta}</p>
+                                                            <a href={'/doctor=' + item.user} style={{ "border-color": "#1acc8d", "border-radius": "50px", "text-decoration": "none", "margin": "1rem", "background": "#1acc8d" }} class="btn btn-primary btn-sm">Solicitar una cita</a>
                                                             {(this.eliminar(item))}
                                                         </div>
                                                     </li>
@@ -173,7 +183,6 @@ class RespuestaForo extends React.Component {
 }
 
 function agregarRespuesta() {
-    // console.log("soy Maria")
     var Respuesta = new Object(); // Creando el objeto pregunta
     Respuesta.idPregunta = document.getElementById("idPregunta").value; // Obteniendo el titulo
     Respuesta.respuesta = document.getElementById("respuesta").value; // Obteniendo la descripcion
@@ -220,7 +229,7 @@ function eliminarPreguntaBD(objetoPregunta, arrayRespuesta) {
     ocultar('botonEliminar');
     ocultar('faq');
     mostrar('cargando');
-    
+
     axios.post('https://dblinkmed.herokuapp.com/eliminarPregunta', {
         id: objetoPregunta._id,
     })
