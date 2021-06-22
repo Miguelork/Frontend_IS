@@ -91,7 +91,7 @@ class FormHistoria extends React.Component {
                                                         <div class="count-box">
                                                                 <i class="icofont-document-folder"></i>
                                                                 <span data-toggle="counter-up" style={{ "font-size": "1rem" }}>Historia del paciente</span>
-                                                                <input type="textarea" id="historia" className="form-control" placeholder="Escriba la historia del paciente" />
+                                                                <textarea rows="4" cols="50" id="historia" className="form-control" placeholder="Escriba la historia del paciente" />
                                                         </div>
                                                         <div class="text-center">
                                                             <a href="#" onClick={actualizarHistoria} className="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Aceptar</a>
