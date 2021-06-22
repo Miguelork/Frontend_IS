@@ -1223,7 +1223,7 @@ select {
     border-radius: 15% 0% 15% 0%;
 }
 
-span {
+.fontPop {
     font-family: "Poppins", sans-serif;
 }
 
