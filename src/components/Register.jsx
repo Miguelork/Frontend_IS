@@ -10,12 +10,15 @@ function mostrarDivDoctorV() {
    document.getElementById('pricing').style.display = 'none';
    document.getElementById('divDoctor').style.display = '';
    document.getElementById('tipoD').value = "Voluntario";
+   document.getElementById('tamm').classList.add('col-md-12');
 }
 
 function mostrarDivDoctorP() {
    document.getElementById('pricing').style.display = 'none';
    document.getElementById('divDoctor').style.display = '';
    document.getElementById('tipoD').value = "Premium";
+   mostrar('divMonto')
+   document.getElementById('tamm').classList.add('col-md-6');
 }
 
 function mostrarDivPaciente() {
@@ -122,6 +125,19 @@ class Register extends React.Component {
          </div>
       )
    }
+}
+
+function ocultar( id ){
+   document.getElementById(id).style.opacity = '0';
+   document.getElementById(id).style.transition = 'opacity 0.5s';
+   setTimeout(() => {  document.getElementById(id).style.display = 'none'; }, 500);
+}
+
+function mostrar( id ){
+   setTimeout(() => { 
+   document.getElementById(id).style.display = 'block';
+   document.getElementById(id).style.opacity = '100';
+   }, 500);
 }
 
 export default Register

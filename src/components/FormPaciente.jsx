@@ -17,6 +17,7 @@ const FormPaciente = () => {
         apellido: false,
         usuario: false,
         password: false,
+        password2: false,
         telefono: false,
         email: false,
         direccion: false,
@@ -67,14 +68,29 @@ const FormPaciente = () => {
             campos[campo] = false;
         }
     }
+    const validarpassword2 = () => {
+        if ((document.getElementById('pacpassword').value == document.getElementById('pacpassword2').value)&&(campos.password = true)) {
+            document.getElementById('pacpassword2').classList.add('is-valid');
+            document.getElementById('pacpassword2').classList.remove('is-invalid');
+            campos.password2 = true;
+        } else {
+            document.getElementById('pacpassword2').classList.add('is-invalid');
+            document.getElementById('pacpassword2').classList.remove('is-valid');
+            campos.password2 = false;
+        }
+    }
 
     const onSubmit = (e) => {
-        if (campos.nombre && campos.apellido && campos.usuario && campos.password && campos.telefono &&
-            campos.email && campos.direccion && campos.sexo && campos.nacimiento) {
-            registrarPaciente();
-        } else {
-            e.preventDefault();
-        }
+        if(campos.password2){
+            if (campos.nombre && campos.apellido && campos.usuario && campos.password && campos.telefono &&
+                campos.email && campos.direccion && campos.sexo && campos.nacimiento && campos.password2) {
+                registrarPaciente();
+            } else {
+                mostrar('camposincorrecto');
+            } 
+        }else{
+            mostrar('nocoincid');
+        }       
     }
 
     return (
@@ -92,7 +108,7 @@ const FormPaciente = () => {
             </div>
             <div className="row" data-aos="fade-left" id="PacFormulario">
                 <form role="form" class="php-email-form" style={{ "width": "100%" }}>
-                    <div class="form-row">
+                    <div class="row">
                         <div class="col-md-6 form-group">
                             <div className="input-group">
                                 <div className="input-group-prepend">
@@ -113,8 +129,6 @@ const FormPaciente = () => {
                                 <input type="text" id="pacapellido" name="apellido" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su apellido" />
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="col-md-6 form-group">
                             <div className="input-group">
                                 <div className="input-group-prepend">
@@ -125,28 +139,6 @@ const FormPaciente = () => {
                                     </div>
                                 </div>
                                 <input type="text" id="pacusuario" name="usuario" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su usuario" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <div className="input-group">
-                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
-                                    <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Clave</span>
-                                </div>
-                                <input type="password" id="pacpassword" name="password" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su contraseña" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-6 form-group">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
-                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
-                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                    </svg>  Nacimiento</span>
-                                    </div>
-                                </div>
-                                <input type="date" id="pacnacimiento" name="nacimiento" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" />
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
@@ -162,8 +154,34 @@ const FormPaciente = () => {
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
+                        <div class="col-md-6 form-group">
+                            <div className="input-group">
+                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                                    <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Clave</span>
+                                </div>
+                                <input type="password" id="pacpassword" name="password" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su contraseña" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div className="input-group">
+                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                                    <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Confirmar</span>
+                                </div>
+                                <input type="password" id="pacpassword2" name="password2" onClick={validarpassword2} onBlur={validarpassword2} onKeyUp={validarpassword2} className="form-control" placeholder="Vuelva a escribir su contraseña" required />
+                            </div>
+                        </div>  
+                        <div class="col-md-6 form-group">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                    </svg>  Nacimiento</span>
+                                    </div>
+                                </div>
+                                <input type="date" id="pacnacimiento" name="nacimiento" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" />
+                            </div>
+                        </div>
                         <div class="col-md-6 form-group">
                             <div className="input-group">
                                 <div className="input-group-prepend">
@@ -175,7 +193,7 @@ const FormPaciente = () => {
                                 <input type="text" id="pactelefono" name="telefono" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su teléfono" />
                             </div>
                         </div>
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-12 form-group">
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
@@ -197,6 +215,24 @@ const FormPaciente = () => {
                             </div>
                             <input type="text" id="pacdireccion" name="direccion" onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su dirección" />
                         </div>
+                    </div>
+                    <div id="nocoincid" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
+                        <strong>Las contraseñas no coinciden</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="camposincorrecto" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
+                        <strong>Por favor rellene los campos correctamente</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="existeuser" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
+                        <strong>El usuario ingresado ya esta en uso </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="text-center"><a href="#" onClick={onSubmit} className="btn-get-started scrollto">Aceptar</a></div>
                 </form>
@@ -236,12 +272,10 @@ async function registrarPaciente() {
             document.getElementById("pacusuario").classList.remove('is-valid');
             controlExiste = true;
         }
-        if (usuario.email == Paciente.email) {
-            document.getElementById("pacemail").classList.add('is-invalid');
-            document.getElementById("pacemail").classList.remove('is-valid');
-            controlExiste = true;
-        }
     });
+    if (controlExiste == true) {
+        mostrar('existeuser')
+    }
 
     // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
     if (controlExiste == false) {
