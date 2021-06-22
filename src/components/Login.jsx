@@ -43,6 +43,7 @@ const onSubmit = (e) => {
     if (campos.user && campos.password) {
         login();
     } else {
+        ocultar('datoincorrecto')
         mostrar('datosfaltan')
     }
 }
@@ -100,15 +101,9 @@ class Login extends React.Component {
                                     </div>
                                     <div id="datoincorrecto" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                                         <strong>Haz introducido algun dato erróneo</strong>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
                                     </div>
                                     <div id="datosfaltan" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                                         <strong>Por favor rellene los campos correctamente</strong>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
                                     </div>
                                     <div class="mb-3">
                                         <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
@@ -205,6 +200,7 @@ async function login() {
                 mostrar('login');
                 mostrar('imagen');
                 mostrar('datoincorrecto')
+                ocultar('datosfaltan')
             }, 3000);
         }
     

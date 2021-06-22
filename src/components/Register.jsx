@@ -44,7 +44,6 @@ class Register extends React.Component {
       return (
          <div>
             <Header></Header>
-            {/* ======= Hero Section ======= */}
             <section id="hero">
                <section id="pricing" className="pricing" style={{ "padding": "1rem" }}>
                   <div className="container">
@@ -104,24 +103,20 @@ class Register extends React.Component {
                      </div>
                   </div>
                </section>
-               {/* End Pricing Section */}
                <div>
                </div>
                <div id="divDoctor" style={{ "display": "none" }}>
                   <section id="features" className="features" style={{ "padding": "1rem" }}>
                      <FormDoctor />
                   </section>
-                  {/* End Features Section */}
                </div>
                <div id="divPaciente" style={{ "display": "none" }}>
                   <section id="features" className="features" style={{ "padding": "1rem" }}>
                      <FormPaciente />
                   </section>
-                  {/* End Features Section */}
                </div>
                <Wave />
             </section>
-            {/* End Hero */}
          </div>
       )
    }

@@ -21,8 +21,8 @@ const FormPaciente = () => {
         telefono: false,
         email: false,
         direccion: false,
-        nacimiento:false,
-        sexo:false
+        nacimiento: false,
+        sexo: false
     }
 
     const validarFormulario = (e) => {
@@ -48,7 +48,7 @@ const FormPaciente = () => {
             case "direccion":
                 validarCampo(expresiones.direccion, e.target, 'direccion')
                 break;
-            case "nacimiento": 
+            case "nacimiento":
                 validarCampo(expresiones.direccion, e.target, 'nacimiento')
                 break;
             case "sexo":
@@ -69,7 +69,7 @@ const FormPaciente = () => {
         }
     }
     const validarpassword2 = () => {
-        if ((document.getElementById('pacpassword').value == document.getElementById('pacpassword2').value)&&(campos.password = true)) {
+        if ((document.getElementById('pacpassword').value == document.getElementById('pacpassword2').value) && (campos.password == true)) {
             document.getElementById('pacpassword2').classList.add('is-valid');
             document.getElementById('pacpassword2').classList.remove('is-invalid');
             campos.password2 = true;
@@ -81,16 +81,20 @@ const FormPaciente = () => {
     }
 
     const onSubmit = (e) => {
-        if(campos.password2){
+        if (campos.password2) {
             if (campos.nombre && campos.apellido && campos.usuario && campos.password && campos.telefono &&
                 campos.email && campos.direccion && campos.sexo && campos.nacimiento && campos.password2) {
                 registrarPaciente();
             } else {
                 mostrar('camposincorrecto');
-            } 
-        }else{
+                ocultar('nocoincid');
+                ocultar('existeuser');
+            }
+        } else {
             mostrar('nocoincid');
-        }       
+            ocultar('camposincorrecto');
+            ocultar('existeuser');
+        }
     }
 
     return (
@@ -169,7 +173,7 @@ const FormPaciente = () => {
                                 </div>
                                 <input type="password" id="pacpassword2" name="password2" onClick={validarpassword2} onBlur={validarpassword2} onKeyUp={validarpassword2} className="form-control" placeholder="Vuelva a escribir su contraseña" required />
                             </div>
-                        </div>  
+                        </div>
                         <div class="col-md-6 form-group">
                             <div className="input-group">
                                 <div className="input-group-prepend">
@@ -218,21 +222,12 @@ const FormPaciente = () => {
                     </div>
                     <div id="nocoincid" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                         <strong>Las contraseñas no coinciden</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div id="camposincorrecto" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                         <strong>Por favor rellene los campos correctamente</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div id="existeuser" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                         <strong>El usuario ingresado ya esta en uso </strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="text-center"><a href="#" onClick={onSubmit} className="btn-get-started scrollto">Aceptar</a></div>
                 </form>
@@ -275,6 +270,8 @@ async function registrarPaciente() {
     });
     if (controlExiste == true) {
         mostrar('existeuser')
+        ocultar('nocoincid');
+        ocultar('camposincorrecto');
     }
 
     // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta

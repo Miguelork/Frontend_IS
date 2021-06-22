@@ -15,20 +15,20 @@ const FormDoctor = () => {
     }
 
     const campos = {
-        nombre:false,
-        apellido:false,
-        usuario:false,
-        password:false,
-        password2:false,
-        telefono:false,
-        email:false,
-        direccion:false,
-        especialidad:false,
-        dateI:false,
-        dateE:false,
-        nacimiento:false,
-        sexo:false,
-        monto:false
+        nombre: false,
+        apellido: false,
+        usuario: false,
+        password: false,
+        password2: false,
+        telefono: false,
+        email: false,
+        direccion: false,
+        especialidad: false,
+        dateI: false,
+        dateE: false,
+        nacimiento: false,
+        sexo: false,
+        monto: false
     }
 
     const validarFormulario = (e) => {
@@ -66,7 +66,7 @@ const FormDoctor = () => {
             case "dateE":
                 validarCampo(expresiones.hora, e.target, 'dateE')
                 break;
-            case "nacimiento": 
+            case "nacimiento":
                 validarCampo(expresiones.direccion, e.target, 'nacimiento')
                 break;
             case "sexo":
@@ -87,7 +87,7 @@ const FormDoctor = () => {
         }
     }
     const validarpassword2 = () => {
-        if ((document.getElementById('docpassword').value == document.getElementById('docpassword2').value)&&(campos.password = true)) {
+        if ((document.getElementById('docpassword').value == document.getElementById('docpassword2').value) && (campos.password == true)) {
             document.getElementById('docpassword2').classList.add('is-valid');
             document.getElementById('docpassword2').classList.remove('is-invalid');
             campos.password2 = true;
@@ -99,25 +99,31 @@ const FormDoctor = () => {
     }
 
     const onSubmit = (e) => {
-        if(campos.password2){
-            if(document.getElementById("tipoD").value == "Premium"){
-                if( campos.nombre && campos.apellido && campos.monto && campos.usuario && campos.password && campos.password2 && campos.telefono && campos.sexo &&
-                    campos.email && campos.direccion && campos.especialidad && campos.dateI && campos.dateE && campos.nacimiento){
+        if (campos.password2) {
+            if (document.getElementById("tipoD").value == "Premium") {
+                if (campos.nombre && campos.apellido && campos.monto && campos.usuario && campos.password && campos.password2 && campos.telefono && campos.sexo &&
+                    campos.email && campos.direccion && campos.especialidad && campos.dateI && campos.dateE && campos.nacimiento) {
                     registrarDoctor();
-                } else{
+                } else {
                     mostrar('camposincorrect');
+                    ocultar('existeusuario');
+                    ocultar('nocoincide');
                 }
-            }else{
-                if( campos.nombre && campos.apellido && campos.usuario && campos.password && campos.password2 && campos.telefono && campos.sexo &&
-                    campos.email && campos.direccion && campos.especialidad && campos.dateI && campos.dateE && campos.nacimiento){
-                        registrarDoctor();
-                } else{
+            } else {
+                if (campos.nombre && campos.apellido && campos.usuario && campos.password && campos.password2 && campos.telefono && campos.sexo &&
+                    campos.email && campos.direccion && campos.especialidad && campos.dateI && campos.dateE && campos.nacimiento) {
+                    registrarDoctor();
+                } else {
                     mostrar('camposincorrect');
+                    ocultar('existeusuario');
+                    ocultar('nocoincide');
                 }
-            } 
-        }else{
+            }
+        } else {
             mostrar('nocoincide');
-        }       
+            ocultar('existeusuario');
+            ocultar('camposincorrect');
+        }
     }
 
     return (
@@ -126,12 +132,12 @@ const FormDoctor = () => {
                 <h2>Registro</h2>
                 <p style={{ "color": "white" }}>Doctor</p>
             </div>
-            <div className="row section-title" data-aos="fade-left" id="DocFinalizando"  style={{ "display": "none" }}>  
+            <div className="row section-title" data-aos="fade-left" id="DocFinalizando" style={{ "display": "none" }}>
                 <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
-                <p style={{ "color": "white", "font-size":"12px"}}>
+                <p style={{ "color": "white", "font-size": "12px" }}>
                     Se esta registrando<br /> Sera redirigido al Login para que inicie sesión
                 </p>
-                <style dangerouslySetInnerHTML={{__html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />    
+                <style dangerouslySetInnerHTML={{ __html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />
             </div>
             <div className="row" data-aos="fade-left" id="DocFormulario">
                 <form role="form" id="regDoctor" class="php-email-form" style={{ "width": "100%" }}>
@@ -197,7 +203,7 @@ const FormDoctor = () => {
                                 </div>
                                 <input type="password" id="docpassword2" name="password2" onClick={validarpassword2} onBlur={validarpassword2} onKeyUp={validarpassword2} className="form-control" placeholder="Vuelva a escribir su contraseña" required />
                             </div>
-                        </div>              
+                        </div>
                         <div className="col-md-6 form-group">
                             <div className="input-group">
                                 <div className="input-group-prepend">
@@ -222,42 +228,42 @@ const FormDoctor = () => {
                             </div>
                         </div>
                         <div id="tamm" class="form-group">
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
-                                                </svg>  Email</span>
-                                            </div>
-                                        </div>
-                                        <input type="email" id="docemail" name="email" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su email" required />
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                                    </svg>  Email</span>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6 form-group" id="divMonto" style={{ "display": "none" }}>
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
-                                                <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z"/>
-                                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                <path fill-rule="evenodd" d="M8 13.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
-                                                </svg>  Monto</span>
-                                            </div>
-                                        </div>
-                                        <input type="number" id="docmonto" min="1" name="monto" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba el monto de su consulta (En dolares)" required />
-                                    </div>
+                                <input type="email" id="docemail" name="email" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su email" required />
                             </div>
-                        
-                    <div class="form-group">
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                                </svg>  Dirección</span>
-                                </div>
-                            </div>
-                            <input type="text" id="docdireccion" name="direccion" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su dirección" required />
                         </div>
-                    </div>
+
+                        <div class="col-md-6 form-group" id="divMonto" style={{ "display": "none" }}>
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+                                        <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
+                                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path fill-rule="evenodd" d="M8 13.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                                    </svg>  Monto</span>
+                                    </div>
+                                </div>
+                                <input type="number" id="docmonto" min="1" name="monto" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba el monto de su consulta (En dolares)" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                                    </svg>  Dirección</span>
+                                    </div>
+                                </div>
+                                <input type="text" id="docdireccion" name="direccion" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su dirección" required />
+                            </div>
+                        </div>
                         <div class="col-md-6 form-group">
                             <div className="input-group">
                                 <div className="input-group-prepend">
@@ -295,21 +301,12 @@ const FormDoctor = () => {
                     </div>
                     <div id="nocoincide" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                         <strong>Las contraseñas no coinciden</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div id="camposincorrect" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                         <strong>Por favor rellene los campos correctamente</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div id="existeusuario" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                         <strong>El usuario ingresado ya esta en uso </strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="mb-3">
                         <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
@@ -337,10 +334,10 @@ async function registrarDoctor() {
     Doctor.especialidades = document.getElementById("docespecialidad").value;
     Doctor.horaInicial = document.getElementById("docdateI").value;
     Doctor.horaFinal = document.getElementById("docdateE").value;
-    if(document.getElementById("tipoD").value == "Premium"){
+    if (document.getElementById("tipoD").value == "Premium") {
         Doctor.monto = document.getElementById("docmonto").value;
     }
-    
+
     ocultar('DocFormulario');
     mostrar('DocFinalizando');
 
@@ -360,80 +357,82 @@ async function registrarDoctor() {
         }
     });
     if (controlExiste == true) {
-        mostrar('existeusuario')
+        mostrar('existeusuario');
+        ocultar('nocoincide');
+        ocultar('camposincorrect');
     }
 
     // Cuando este false es decir que no existe se guarde en DB y de lo contrario se muestra un alerta
     if (controlExiste == false) {
-    // Envio POST al backend
-    if(document.getElementById("tipoD").value == "Premium"){
-        axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
-        tipo: Doctor.tipo,
-        nombre: Doctor.nombre,
-        apellido: Doctor.apellido, 
-        user: Doctor.user,
-        password: Doctor.password,
-        nacimiento: Doctor.nacimiento,
-        sexo: Doctor.sexo,
-        telefono: Doctor.telefono,
-        email: Doctor.email,
-        direccion: Doctor.direccion,
-        especialidades: Doctor.especialidades,
-        horaInicial: Doctor.horaInicial,
-        horaFinal: Doctor.horaFinal,
-        monto: Doctor.monto,
-        aprobado: false
-    })
-    .then(function (response) {
-        // console.log(response);
-        setTimeout(() => { window.location.href = '/login'; }, 3000);
-    })
-    .catch(function (error) {
-        // console.log(error);
-    });
-    }else{
-        axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
-        tipo: Doctor.tipo,
-        nombre: Doctor.nombre,
-        apellido: Doctor.apellido, 
-        user: Doctor.user,
-        password: Doctor.password,
-        nacimiento: Doctor.nacimiento,
-        sexo: Doctor.sexo,
-        telefono: Doctor.telefono,
-        email: Doctor.email,
-        direccion: Doctor.direccion,
-        especialidades: Doctor.especialidades,
-        horaInicial: Doctor.horaInicial,
-        horaFinal: Doctor.horaFinal,
-        aprobado: false
-    })
-    .then(function (response) {
-        // console.log(response);
-        setTimeout(() => { window.location.href = '/login'; }, 3000);
-    })
-    .catch(function (error) {
-        // console.log(error);
-    });
-    }
-    
-        
-    }else{
+        // Envio POST al backend
+        if (document.getElementById("tipoD").value == "Premium") {
+            axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
+                tipo: Doctor.tipo,
+                nombre: Doctor.nombre,
+                apellido: Doctor.apellido,
+                user: Doctor.user,
+                password: Doctor.password,
+                nacimiento: Doctor.nacimiento,
+                sexo: Doctor.sexo,
+                telefono: Doctor.telefono,
+                email: Doctor.email,
+                direccion: Doctor.direccion,
+                especialidades: Doctor.especialidades,
+                horaInicial: Doctor.horaInicial,
+                horaFinal: Doctor.horaFinal,
+                monto: Doctor.monto,
+                aprobado: false
+            })
+                .then(function (response) {
+                    // console.log(response);
+                    setTimeout(() => { window.location.href = '/login'; }, 3000);
+                })
+                .catch(function (error) {
+                    // console.log(error);
+                });
+        } else {
+            axios.post('https://dblinkmed.herokuapp.com/crearUsuario', {
+                tipo: Doctor.tipo,
+                nombre: Doctor.nombre,
+                apellido: Doctor.apellido,
+                user: Doctor.user,
+                password: Doctor.password,
+                nacimiento: Doctor.nacimiento,
+                sexo: Doctor.sexo,
+                telefono: Doctor.telefono,
+                email: Doctor.email,
+                direccion: Doctor.direccion,
+                especialidades: Doctor.especialidades,
+                horaInicial: Doctor.horaInicial,
+                horaFinal: Doctor.horaFinal,
+                aprobado: false
+            })
+                .then(function (response) {
+                    // console.log(response);
+                    setTimeout(() => { window.location.href = '/login'; }, 3000);
+                })
+                .catch(function (error) {
+                    // console.log(error);
+                });
+        }
+
+
+    } else {
         ocultar('DocFinalizando');
         mostrar('DocFormulario');
     }
 }
 
-function ocultar( id ){
+function ocultar(id) {
     document.getElementById(id).style.opacity = '0';
     document.getElementById(id).style.transition = 'opacity 0.5s';
-    setTimeout(() => {  document.getElementById(id).style.display = 'none'; }, 500);
+    setTimeout(() => { document.getElementById(id).style.display = 'none'; }, 500);
 }
 
-function mostrar( id ){
-    setTimeout(() => { 
-    document.getElementById(id).style.display = 'block';
-    document.getElementById(id).style.opacity = '100';
+function mostrar(id) {
+    setTimeout(() => {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById(id).style.opacity = '100';
     }, 500);
 }
 
