@@ -288,6 +288,7 @@ async function registrarPaciente() {
             telefono: Paciente.telefono,
             email: Paciente.email,
             direccion: Paciente.direccion,
+            aprobado: true
         })
             .then(function (response) {
                 // console.log(response);

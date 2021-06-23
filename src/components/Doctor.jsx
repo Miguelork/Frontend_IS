@@ -137,8 +137,7 @@ class Doctor extends React.Component {
                                                         <div class="count-box br">
                                                             <i class="icofont-document-folder"></i>
                                                             <span className="mb-2" style={{ "color": "#293133", "font-size": "1.5rem" }}>Información del Doctor</span>
-                                                            <p>Hola aqui tu médico de contacto, mi nombre es {this.state.doctor.nombre} {this.state.doctor.apellido}, soy especialista en {this.state.doctor.especialidades}, si deseas contactar conmigo este es el monto de mi consulta: this.state.doctor.monto (falta ese dato), si estas de acuerdo con el monto, presione el boton de iniciar chat, o bien el de compartir historia para facilitarme su información, a continuación mas información acerca de mi:</p>
-                                                            <p>Aqui mostrar los datos del doctor detalladamente y bueno nos esta faltando un atributo que sea para el costo por hora del doctor. Para mostrar los datos del doctor en esta parte se debe usar this.state.doctor.nombre o this.state.doctor.tipo y asi pero eso entre llaves en el codigo</p>
+                                                            <p>Hola aqui tu médico de contacto, mi nombre es {this.state.doctor.nombre} {this.state.doctor.apellido}, soy especialista en {this.state.doctor.especialidades}, si deseas contactar conmigo este es el monto de mi consulta: {this.state.doctor.monto}$ , si estas de acuerdo con el monto, presione el boton de iniciar chat, o bien el de compartir historia para facilitarme su información.</p>
                                                         </div>
                                                     </div>
                                                     {/*

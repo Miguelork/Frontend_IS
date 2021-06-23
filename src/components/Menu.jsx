@@ -19,8 +19,7 @@ class Menu extends React.Component {
 
   esDoctor = () => {
     if (cookies.get("usuario")) {
-      if(cookies.get("usuario").tipo === 'Premium'
-          || cookies.get("usuario").tipo === 'Voluntario'){
+      if(cookies.get("usuario").tipo === 'Premium'){
         return true
       }
     } 
@@ -274,5 +273,6 @@ class Menu extends React.Component {
     );
   }
 }
+
 
 export default Menu;
