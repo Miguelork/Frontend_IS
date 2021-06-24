@@ -23,7 +23,6 @@ class RespuestaForo extends React.Component {
             if (cookies.get("usuario").tipo == 'Premium' || cookies.get("usuario").tipo == 'Voluntario' && cookies.get("usuario").aprobado == true) {
                 return (
                     <div>
-                        <form role="form" class="php-email-form" style={{ "width": "100%" }}>
                             <div class="form-group">
                                 <h2 className="mt-4 mb-4" style={{ "color": "white" }}><b>Escribe una respuesta</b></h2>
                                 <textarea rows="6" cols="50" id="respuesta" name="respuesta" className="form-control" placeholder="Escriba su respuesta..." required />
@@ -43,8 +42,6 @@ class RespuestaForo extends React.Component {
                                     <div className="col-md-4"></div>
                                 </div>
                             </div>
-
-                        </form>
                     </div>
                 )
             }
