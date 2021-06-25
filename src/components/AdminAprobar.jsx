@@ -58,16 +58,18 @@ class AdminAprobar extends React.Component {
                             </div>
                             <div id="Listas">
                                 <div id='lista' className="row" data-aos="fade-left">
-                                    <div className="row mb-3">
-                                        <div className="col-xs-10 col-md-10">
-                                            <input style={{ "background": "white" }} type="text" id="inputBusDoc" onKeyUp={Buscar} onMouseMove={Buscar} className="form-control searchm mb-3" placeholder=" 🔍    Escriba el nombre..." />
-                                        </div>
-                                        <div class="col-xs-2 col-md-2"  >
-                                            <select style={{ "color": "white" }} id="buscarPar" class="btn">
-                                                <option style={{ "color": "black" }} onClick={Buscar} value="0" selected>Nombre</option>
-                                                <option style={{ "color": "black" }} onClick={Buscar} value="4">Especialidad</option>
-                                                <option style={{ "color": "black" }} onClick={Buscar} value="1">Tipo</option>
-                                            </select>
+                                    <div class="d-none d-sm-none d-md-block">
+                                        <div className="row mb-3">
+                                            <div className="col-xs-10 col-md-10">
+                                                <input style={{ "background": "white" }} type="text" id="inputBusDoc" onKeyUp={Buscar} onMouseMove={Buscar} className="form-control searchm mb-3" placeholder=" 🔍    Escriba el nombre..." />
+                                            </div>
+                                            <div class="col-xs-2 col-md-2"  >
+                                                <select style={{ "color": "white" }} id="buscarPar" class="btn">
+                                                    <option style={{ "color": "black" }} onClick={Buscar} value="0" selected>Nombre</option>
+                                                    <option style={{ "color": "black" }} onClick={Buscar} value="4">Especialidad</option>
+                                                    <option style={{ "color": "black" }} onClick={Buscar} value="1">Tipo</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -82,7 +84,7 @@ class AdminAprobar extends React.Component {
                                                     <th scope="col" style={{ "color": "white" }}>Email</th>
                                                     <th scope="col" style={{ "color": "white" }}>Especialidades</th>
                                                     <th scope="col" style={{ "color": "white" }}>Estado</th>
-                                                    <th scope="col" style={{ "color": "white" }}> </th>
+                                                    <th scope="col" style={{ "color": "white" }}>Opción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -95,7 +97,20 @@ class AdminAprobar extends React.Component {
                                                                 <td style={{ "color": "white" }}>{item.user}</td>
                                                                 <td style={{ "color": "white" }}>{item.email}</td>
                                                                 <td style={{ "color": "white" }}>{item.especialidades}</td>
-                                                                <td style={{ "color": "white" }}>{item.aprobado.toString()}</td>
+                                                                <td style={{ "color": "white" }}>
+                                                                    {item.aprobado
+                                                                        ? <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                                                <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                        : <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    }
+                                                                </td>
                                                                 <td style={{ "color": "white" }}>
                                                                     <button type="button" class="btn-checkk btn-sm mr-2" onClick={actualizarDoctor.bind(this, item, true)}>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
@@ -121,7 +136,7 @@ class AdminAprobar extends React.Component {
                                                 <tr>
                                                     <th scope="col" style={{ "color": "white" }}>Nombre</th>
                                                     <th scope="col" style={{ "color": "white" }}>Estado</th>
-                                                    <th scope="col" style={{ "color": "white" }}> </th>
+                                                    <th scope="col" style={{ "color": "white" }}>Opción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -166,6 +181,7 @@ class AdminAprobar extends React.Component {
                                                     <th scope="col" style={{ "color": "white" }}>Usuario</th>
                                                     <th scope="col" style={{ "color": "white" }}>Email</th>
                                                     <th scope="col" style={{ "color": "white" }}>Telefono</th>
+                                                    <th scope="col" style={{ "color": "white" }}>Estado</th>
                                                     <th scope="col" style={{ "color": "white" }}>Opción</th>
                                                 </tr>
                                             </thead>
@@ -174,11 +190,25 @@ class AdminAprobar extends React.Component {
                                                     if (item.tipo == "Paciente")
                                                         return (
                                                             <tr id="listaForo">
-                                                                <th scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</th>
+                                                                <td scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</td>
                                                                 <td style={{ "color": "white" }}>{item.sexo}</td>
                                                                 <td style={{ "color": "white" }}>{item.user}</td>
                                                                 <td style={{ "color": "white" }}>{item.email}</td>
                                                                 <td style={{ "color": "white" }}>{item.telefono}</td>
+                                                                <td style={{ "color": "white" }}>
+                                                                    {item.aprobado
+                                                                        ? <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                                                <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                        : <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    }
+                                                                </td>
                                                                 <td style={{ "color": "white" }}>
                                                                     <button type="button" class="btn-checkk btn-sm ml-2" onClick={() => desbanned(item)}>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
@@ -212,7 +242,7 @@ class AdminAprobar extends React.Component {
                                                     if (item.tipo == "Paciente")
                                                         return (
                                                             <tr id="listaForo">
-                                                                <th scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</th>
+                                                                <td scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</td>
                                                                 <td style={{ "color": "white" }}>{item.user}</td>
                                                             </tr>
                                                         )
@@ -226,6 +256,7 @@ class AdminAprobar extends React.Component {
                     </section>{/* End Team Section */}
                     <Wave />
                 </section>
+                <style dangerouslySetInnerHTML={{ __html: "\n.table {\n  border: 1px solid #1acc8d;\n}\n th {\n    font-weight: 700;\n    text-transform: uppercase;\n    font-family: \"Poppins\", sans-serif;\n}\n" }} />
                 {/* End Hero */}
             </div>
         )
