@@ -34,9 +34,6 @@ class RespuestaForo extends React.Component {
                                 <div className="row">
                                     <div className="col-md-4"></div>
                                     <div class="col-md-2 mt-3 mb-3">
-                                        <button href="/foro" className="btn-get-started ">Volver</button>
-                                    </div>
-                                    <div class="col-md-2 mt-3 mb-3">
                                         <button href="#" onClick={agregarRespuesta} className="btn-get-started ">Aceptar</button>
                                     </div>
                                     <div className="col-md-4"></div>
@@ -69,7 +66,7 @@ class RespuestaForo extends React.Component {
         if (objetoRespuesta.user == usuario.user) {
             return (
                 <div>
-                    <a href="#" onClick={() => eliminarRespuesta(objetoRespuesta)} style={{ "color": "red", "text-decoration": "none" }}><i class="icofont-trash"></i></a>
+                    <a onClick={() => eliminarRespuesta(objetoRespuesta)} style={{ "color": "red", "text-decoration": "none" }}><i class="icofont-trash"></i></a>
                 </div>
             )
         }
