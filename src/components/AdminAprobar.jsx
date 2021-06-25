@@ -134,7 +134,7 @@ class AdminAprobar extends React.Component {
                                         <table class="table" id="tablaDoctores">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" style={{ "color": "white" }}>Nombre</th>
+                                                    <th scope="col" style={{ "color": "white" }}>Usuario</th>
                                                     <th scope="col" style={{ "color": "white" }}>Estado</th>
                                                     <th scope="col" style={{ "color": "white" }}>Opción</th>
                                                 </tr>
@@ -144,8 +144,21 @@ class AdminAprobar extends React.Component {
                                                     if (item.tipo == "Voluntario" || item.tipo == "Premium")
                                                         return (
                                                             <tr >
-                                                                <td scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</td>
-                                                                <td style={{ "color": "white" }}>{item.aprobado.toString()}</td>
+                                                                <td scope="row" style={{ "color": "white" }}>{item.user}</td>
+                                                                <td style={{ "color": "white" }}>
+                                                                    {item.aprobado
+                                                                        ? <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                                                <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                        : <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    }
+                                                                </td>
                                                                 <td style={{ "color": "white" }}>
                                                                     <button type="button" class="btn-checkk btn-sm mr-2" onClick={actualizarDoctor.bind(this, item, true)}>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
@@ -233,8 +246,9 @@ class AdminAprobar extends React.Component {
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" style={{ "color": "white" }}>Nombre</th>
                                                     <th scope="col" style={{ "color": "white" }}>Usuario</th>
+                                                    <th scope="col" style={{ "color": "white" }}>Estado</th>
+                                                    <th scope="col" style={{ "color": "white" }}>Opción</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -242,8 +256,34 @@ class AdminAprobar extends React.Component {
                                                     if (item.tipo == "Paciente")
                                                         return (
                                                             <tr id="listaForo">
-                                                                <td scope="row" style={{ "color": "white" }}>{item.nombre + " " + item.apellido}</td>
-                                                                <td style={{ "color": "white" }}>{item.user}</td>
+                                                                <td scope="row" style={{ "color": "white" }}>{item.user}</td>
+                                                                <td style={{ "color": "white" }}>
+                                                                    {item.aprobado
+                                                                        ? <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                                                <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                        : <div>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    }
+                                                                </td>
+                                                                <td style={{ "color": "white" }}>
+                                                                    <button type="button" class="btn-checkk btn-sm ml-2" onClick={() => desbanned(item)}>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+                                                                            <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                                                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                                        </svg>
+                                                                    </button>
+                                                                    <button type="button" class="btn-cancel btn-sm ml-2" onClick={() => banned(item)}>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                                                                            <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z" />
+                                                                        </svg>
+                                                                    </button>
+                                                                </td>
                                                             </tr>
                                                         )
                                                 })}
