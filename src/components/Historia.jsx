@@ -15,7 +15,19 @@ class Historia extends React.Component {
         historia: '',
     }
 
-    
+    mostrarHistoria = (historia) => {
+        if (historia.length < 1) {
+            return (
+                <div class="alert alert-primary" role="alert">
+                    La Historia de este paciente <a href="#" class="alert-link">esta vacia</a>. Igualmente puede empezar a llenarla.
+                </div>
+            )
+        }else{
+            return (
+                <p>{historia}</p>
+            )
+        }
+    }
 
     async componentDidMount() {
         if (!cookies.get("usuario")) {
@@ -77,7 +89,7 @@ class Historia extends React.Component {
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>
                                     <div class="row" data-aos="fade-up">
 
-                                        <section id="counts" class="counts" style={{ "background": "none" , "padding":"25px 0"}}>
+                                        <section id="counts" class="counts" style={{ "background": "none", "padding": "25px 0" }}>
                                             <div class="container">
                                                 <div class="row" data-aos="fade-up">
 
@@ -93,9 +105,10 @@ class Historia extends React.Component {
                                                         <div class="count-box">
                                                             <i class="icofont-document-folder"></i>
                                                             <span data-toggle="counter-up" style={{ "font-size": "1rem" }}>Historia del paciente</span>
-                                                            <p>{this.state.historia}</p>
+                                                            <br />
+                                                            {(this.mostrarHistoria(this.state.historia))}
                                                         </div>
-                                                        <a href={'/modificarhistoria='+this.state.paciente._id} class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Modificar Historia</a>
+                                                        <a href={'/modificarhistoria=' + this.state.paciente._id} class="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Modificar Historia</a>
                                                     </div>
                                                 </div>
                                             </div>

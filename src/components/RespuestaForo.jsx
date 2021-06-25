@@ -23,22 +23,22 @@ class RespuestaForo extends React.Component {
             if (cookies.get("usuario").tipo == 'Premium' || cookies.get("usuario").tipo == 'Voluntario' && cookies.get("usuario").aprobado == true) {
                 return (
                     <div>
-                            <div class="form-group">
-                                <h2 className="mt-4 mb-4" style={{ "color": "white" }}><b>Escribe una respuesta</b></h2>
-                                <textarea rows="6" cols="50" id="respuesta" name="respuesta" className="form-control" placeholder="Escriba su respuesta..." required />
-                            </div>
-                            <div class="mt-4 mb-3">
-                                <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
-                            </div>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-md-4"></div>
-                                    <div class="col-md-2 mt-3 mb-3">
-                                        <button href="#" onClick={agregarRespuesta} className="btn-get-started ">Aceptar</button>
-                                    </div>
-                                    <div className="col-md-4"></div>
+                        <div class="form-group">
+                            <h2 className="mt-4 mb-4" style={{ "color": "white" }}><b>Escribe una respuesta</b></h2>
+                            <textarea rows="6" cols="50" id="respuesta" name="respuesta" className="form-control" placeholder="Escriba su respuesta..." required />
+                        </div>
+                        <div class="mt-4 mb-3">
+                            <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
+                        </div>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-4"></div>
+                                <div class="col-md-2 mt-3 mb-3">
+                                    <button href="#" onClick={agregarRespuesta} className="btn-get-started ">Aceptar</button>
                                 </div>
+                                <div className="col-md-4"></div>
                             </div>
+                        </div>
                     </div>
                 )
             }
@@ -177,7 +177,9 @@ class RespuestaForo extends React.Component {
                                                         <a data-toggle="collapse" className="collapse" href="#" style={{ "text-decoration": "none" }}><i class="icofont-doctor"></i> {item.nombre} {item.apellido}<i className="bx bx-chevron-down icon-show" /></a>
                                                         <div id={'faq-list-' + index} className="collapse show" data-parent=".faq-list">
                                                             <p>{item.respuesta}</p>
-                                                            <a href={'/doctor=' + item.user} style={{ "border-color": "#1acc8d", "border-radius": "50px", "text-decoration": "none", "margin": "1rem", "background": "#1acc8d" , "display":"none"}} class="btn btn-primary btn-sm" id={'solicitarCita' + item.user}>Solicitar una cita</a>
+                                                            <Link to={'/doctor=' + item.user}>
+                                                                <a href="#" style={{ "border-color": "#1acc8d", "border-radius": "50px", "text-decoration": "none", "margin": "1rem", "background": "#1acc8d", "display": "none" }} class="btn btn-primary btn-sm" id={'solicitarCita' + item.user}>Solicitar una cita</a>
+                                                            </Link>
                                                             {(this.buttonSolicitarCita(item))}
                                                             {(this.eliminar(item))}
                                                         </div>
