@@ -69,7 +69,7 @@ const RecuperarContrasena = () => {
                     </svg>
                 </p>
             </div>
-            <form role="form" class="php-email-form">
+            <div role="form" class="php-email-form">
                 <input type="hidden" id="pasos" value="0" />
                 <div className="row" data-aos="fade-left" id="paso-1">
                     <div class="col-md-12">
@@ -170,7 +170,7 @@ const RecuperarContrasena = () => {
                         <a type="button" data-dismiss="modal" onClick={clear} aria-label="Close" className="mr-2 btn-get-started scrollto">Cerrar</a>
                     </Link>
                 </div>
-            </form>
+            </div>
         </div>
     )
 }

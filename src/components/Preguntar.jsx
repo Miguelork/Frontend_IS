@@ -60,7 +60,7 @@ class Preguntar extends React.Component {
                                     <div className="col-md-1"></div>
                                     <div className="col-md-7" data-aos="fade-left" id="DocFormulario">
 
-                                        <form role="form" class="php-email-form" style={{ "width": "100%" }}>
+                                        <div role="form" class="php-email-form" style={{ "width": "100%" }}>
                                             <div class="form-group">
                                                 <h2 className="mt-4 mb-4" style={{ "color": "white" }}><b>Ingresa aqui tu duda</b></h2>
                                                 <input type="text" id="titulo" name="titulo" className="form-control" placeholder="Escriba su duda aqui " required />
@@ -73,7 +73,7 @@ class Preguntar extends React.Component {
                                             <div class="text-center">
                                                 <a href="#" onClick={validar} className="btn-get-started scrollto">Aceptar</a>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             }
