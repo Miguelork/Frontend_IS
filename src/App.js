@@ -22,8 +22,10 @@ import Preguntar from './components/Preguntar';
 import RespuestaForo from "./components/RespuestaForo";
 import Doctor from "./components/Doctor";
 import ListaHistorias from "./components/ListaHistorias";
-import Historia from "./components/Historia"
-import FormHistoria from "./components/FormHistoria"
+import Historia from "./components/Historia";
+import FormHistoria from "./components/FormHistoria";
+import Chat from "./components/Chat";
+import Chats from "./components/Chats";
 
 function App() {
   return (
@@ -74,6 +76,12 @@ function App() {
           </Route>
           <Route path="/modificarhistoria=:user_id">
             <FormHistoria />
+          </Route>
+          <Route path="/chats">
+            <Chats />
+          </Route>
+          <Route path="/chat=:chat_id">
+            <Chat />
           </Route>
           <Route path="/:id">
             <RespuestaForo />

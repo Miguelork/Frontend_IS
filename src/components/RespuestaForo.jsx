@@ -86,7 +86,7 @@ class RespuestaForo extends React.Component {
 
     buttonSolicitarCita = (item) => {
         this.state.ArrayUsuarios.map(itemUsuario => {
-            if (itemUsuario.user == item.user && itemUsuario.tipo == 'Premium' && itemUsuario.aprobado == true) {
+            if (itemUsuario.user == item.user && itemUsuario.tipo == 'Premium' && itemUsuario.aprobado == true && cookies.get("usuario").tipo == 'Paciente') {
                 console.log(itemUsuario, item)
                 document.getElementById('solicitarCita' + item.user).style.display = 'block';
             }
