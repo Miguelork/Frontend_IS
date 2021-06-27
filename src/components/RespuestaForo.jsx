@@ -58,8 +58,15 @@ class RespuestaForo extends React.Component {
             return (
                 <div>
                     <div className="section-title" data-aos="fade-up">
-                        {/* Aqui deberiamos poner una imagen que se como de que no hay respuestas */}
-                        <p style={{ "color": "white", "font-size": "14px" }}>Aún no hay respuesta</p>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-4"></div>
+                                <div className="col-md-4 mt-3">
+                                    <img src="assets/img/notfound.svg" className="img-fluid" alt="" />
+                                    <h5 className="mt-5 fontPop" style={{ "color": "white" }}>Aún no hay respuesta</h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )
@@ -97,7 +104,6 @@ class RespuestaForo extends React.Component {
             }
         })
     }
-
 
     async componentDidMount() {
         // Verificar que este logueado
@@ -300,6 +306,5 @@ function eliminarRespuesta(objetoRespuesta) {
             mostrar('faq');
         });
 }
-
 
 export default withRouter(RespuestaForo);

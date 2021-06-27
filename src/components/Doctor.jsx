@@ -238,5 +238,4 @@ function mostrar(id) {
     }, 500);
 }
 
-
 export default withRouter(Doctor);

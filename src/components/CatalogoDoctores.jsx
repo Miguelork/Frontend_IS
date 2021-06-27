@@ -57,14 +57,22 @@ class CatalogoDoctores extends React.Component {
                                         return (
                                             <div className="col-lg-3 col-md-6 mt-5 mt-md-0 mb-5">
                                                 <div className="carCatalogo" data-aos="zoom-in" data-aos-delay={100}>
-                                                    <a href="#" style={{ "text-decoration": "none",  "color": "whitesmoke"}}data-toggle="modal" data-target={"#" + item.user}>
+                                                    <a href="#" style={{ "text-decoration": "none", "color": "whitesmoke" }} data-toggle="modal" data-target={"#" + item.user}>
                                                         <div className="pic p-4"><img src={"assets/img/doctor" + item.sexo + ".svg"} className="img-fluid" alt /></div>
                                                         <div className="member-info">
-                                                            <h5 style={{  "color": "whitesmoke" }}><strong>{item.nombre} {item.apellido}</strong></h5>
+                                                            <h5 style={{ "color": "whitesmoke" }}><strong>{item.nombre} {item.apellido}</strong></h5>
                                                             <span><i>{item.especialidades}</i></span>
-                                                            <div className="social pb-3">
-                                                                <a><i className="icofont-star" /> --</a>
-                                                            </div>
+                                                            {(item.tipo == "Voluntario") ?
+                                                                <div className="social pb-3">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                                                    </svg>
+                                                                </div>
+                                                                :
+                                                                <div className="social pb-3">
+                                                                    <i className="icofont-star" />
+                                                                </div>
+                                                            }
                                                         </div>
                                                     </a>
                                                 </div>
@@ -93,94 +101,24 @@ class CatalogoDoctores extends React.Component {
                                         <div className="modal-body bg-blue">
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-md-12 form-group">
-                                                        <div className="input-group">
-                                                            <div>
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Nombre</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.nombre} {item.apellido}</p></div>
+                                                    <h4 style={{ "color": "whitesmoke" }}>Nombre: {item.nombre} {item.apellido}</h4>
+                                                    <h4 style={{ "color": "whitesmoke" }}>Especialidad: {item.especialidades}</h4>
+                                                    <h4 style={{ "color": "whitesmoke" }}>Periodo de Atención al Público:</h4>
+                                                    <h4 style={{ "color": "whitesmoke" }}>Hora de Inicio: {item.horaInicial}</h4>
+                                                    <h4 style={{ "color": "whitesmoke" }}>Hora de Finalización: {item.horaFinal}</h4>
+                                                    {(item.tipo == "Premium") ?
+                                                        <div>
+                                                            <h4 style={{ "color": "whitesmoke" }}>Monto por Hora de Consulta: {item.monto}</h4>
+                                                            <button href="#" onClick={() => iniciarChat(item, cookies.get('usuario'))} class="btn-get-started mr-2 scrollto mt-3" style={{ "text-decoration": "none" }}>Iniciar Chat</button>
+                                                            <button href={'whatsapp://send?text=' + item.telefono} class="btn-get-started scrollto ml-2 mt-3" style={{ "text-decoration": "none" }}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                                                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+                                                                </svg><span> Compartir</span> 
+                                                            </button>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 form-group">
-                                                        <div className="input-group">
-                                                            <div className="input-group-prepend">
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                                                                </svg>  Telefono</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.telefono}</p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 form-group">
-                                                        <div className="input-group">
-                                                            <div className="input-group-prepend">
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                                                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
-                                                                </svg>  Email</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.email}</p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 form-group">
-                                                        <div className="input-group">
-                                                            <div className="input-group-prepend">
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                                                                </svg>  Dirección</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.direccion}</p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 form-group">
-                                                        <div className="input-group">
-                                                            <div className="input-group-prepend">
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-plus" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
-                                                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                                                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-                                                                </svg>  Especialidad</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.especialidades}</p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <h6 className="col-sm-12 mb-2" style={{ "color": "white" }} >Horarios de atencion</h6>
-                                                    <div class="col-sm-12 form-group">
-                                                        <div className="input-group">
-                                                            <div className="input-group-prepend">
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                                                                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-                                                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                                                                </svg> Desde</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control mr-1"><p>{item.horaInicial}</p></div>
-                                                            <div className="input-group-prepend ml-1">
-                                                                <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
-                                                                    <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
-                                                                    <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
-                                                                    <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
-                                                                </svg>  Hasta</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="form-control"><p>{item.horaFinal}</p></div>
-                                                        </div>
-                                                    </div>
+                                                        :
+                                                        <h6 className="mt-4" style={{ "color": "whitesmoke" }}><i>Este es un usuario voluntario, por lo cual en estos momentos no posee estas funciones habilitadas </i></h6>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -188,10 +126,80 @@ class CatalogoDoctores extends React.Component {
                                 </div>
                             </div>
                         )
-                })}
-            </div>
+                })
+                }
+            </div >
         )
     }
+}
+
+async function iniciarChat(doctor, usuario) {
+    const Chats = await axios({
+        url: "https://dblinkmed.herokuapp.com/listaChat",
+        method: "GET",
+    }).then(function (response) {
+        let existeChat = false
+        let id = ''
+        console.log(response)
+        response.data.item.map(Chat => {
+            console.log(Chat.userPaciente, usuario.user, Chat.userDoctor, doctor.user)
+            if (Chat.userPaciente == usuario.user && Chat.userDoctor == doctor.user) {
+                console.log("Verda")
+                existeChat = true
+                id = Chat._id
+            }
+        })
+
+        if (existeChat == false) {
+            axios.post("https://dblinkmed.herokuapp.com/crearChat", {
+                userPaciente: usuario.user,
+                userDoctor: doctor.user,
+            })
+                .then(function (response) {
+                    // console.log(response);
+                    iniciarChat(doctor, usuario)
+                })
+                .catch(function (error) {
+                    // console.log(error);
+                });
+        } else {
+            window.location = '/chat=' + id;
+        }
+
+    });
+
+}
+
+async function compartirHistoria(idDoctor, userDoc, idHistoria) {
+    console.log("Ejecutando funcion: compartirHistoria()")
+    console.log("idDoctor:", idDoctor)
+    console.log("idHistoria:", idHistoria)
+    ocultar('faq');
+    mostrar('cargando');
+    axios.post("https://dblinkmed.herokuapp.com/crearDoctorHistoria", {
+        historia_id: idHistoria,
+        doctor_id: idDoctor,
+    })
+        .then(function (response) {
+            // console.log(response);
+            window.location.href = '/doctor=' + userDoc;
+        })
+        .catch(function (error) {
+            // console.log(error);
+        });
+}
+
+function ocultar(id) {
+    document.getElementById(id).style.opacity = '0';
+    document.getElementById(id).style.transition = 'opacity 0.5s';
+    setTimeout(() => { document.getElementById(id).style.display = 'none'; }, 500);
+}
+
+function mostrar(id) {
+    setTimeout(() => {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById(id).style.opacity = '100';
+    }, 500);
 }
 
 export default CatalogoDoctores
