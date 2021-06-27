@@ -29,8 +29,7 @@ class Nosotros extends React.Component {
                   </div>
                   <div className="col-md-9">
                      <h1 style={{ "color": "white" }} >Manuel Rodriguez</h1>
-                    <p style={{ "color": "white" }} class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    <p style={{ "color": "white" }} class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p style={{ "color": "white" }} class="lead">Manuel Rodríguez, un estudiante de ingeniería de sistemas en la Universidad Metropolitana, con conocimientos acerca de temas como el hardware o el software. A lo largo de mi trayectoria he utilizado diversos lenguajes de programación tales como: C++, Java, Visual, PHP, Python, HTML, Jython y JavaScript. Además de que he tenido la oportunidad de trabajar con múltiples herramientas como Angular, React.js, Next.js, Laravel, Git, MongoDB y MySQL.</p>
                     <p class="lead">
                       <a class="btn-get-started btn-lg" href="https://wa.me/584129076968/" role="button">Contactame</a>
                     </p>

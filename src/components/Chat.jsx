@@ -13,7 +13,8 @@ class Chat extends React.Component {
     state = {
         mensajes: [],
         chat_id: '',
-        usuario: JSON
+        usuario: JSON,
+        numeroMensajes: 0
     }
 
     async componentDidMount() {
@@ -36,7 +37,7 @@ class Chat extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaMensaje",
             method: "GET",
         });
-        console.log(response.data.item);
+        //console.log(response.data.item);
         let mensajes = await response.data.item;
 
         var mensajesDeEsteChat = [];
@@ -60,12 +61,12 @@ class Chat extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaMensaje",
             method: "GET",
         });
-        console.log(response.data.item);
+        //console.log(response.data.item);
         let mensajes = await response.data.item;
 
         var mensajesDeEsteChat = [];
         mensajes.map(mensaje => {
-            console.log(mensajes)
+            //console.log(mensajes)
             if (mensaje.idChat == chat_id) {
                 mensajesDeEsteChat.push(mensaje)
             }
@@ -74,6 +75,14 @@ class Chat extends React.Component {
         this.setState({
             mensajes: mensajesDeEsteChat
         })
+
+        if ( mensajesDeEsteChat.length != this.state.numeroMensajes ){
+            console.log( mensajesDeEsteChat.length , this.state.numeroMensajes)
+            this.setState({
+                numeroMensajes: mensajesDeEsteChat.length
+            })
+            setTimeout(() => { window.scrollTo(0, document.body.scrollHeight); }, 1000);
+        }
 
         setTimeout(() => { this.refrescarChat(chat_id) }, 1000);
     }
@@ -100,7 +109,7 @@ class Chat extends React.Component {
                                 } else {
                                     return (
                                         <div className="chat-log__item">
-                                            <h3 className="chat-log__author">{mensaje.user} <small> - {mensaje.fecha}</small></h3>
+                                            <h3 className="chat-log__author">{mensaje.nombre} <small> - {mensaje.fecha}</small></h3>
                                             <div className="chat-log__message">{mensaje.texto}</div>
                                         </div>
                                     )
@@ -146,12 +155,14 @@ function enviarMensaje(chat_id) {
     Mensaje.texto = document.getElementById("mensaje").value
     Mensaje.fecha = datetime
     Mensaje.user = cookies.get("usuario").user
+    Mensaje.nombre = cookies.get("usuario").nombre
 
     axios.post("https://dblinkmed.herokuapp.com/crearMensaje", {
         idChat: Mensaje.idChat,
         texto: Mensaje.texto,
         fecha: Mensaje.fecha,
         user: Mensaje.user,
+        nombre: Mensaje.nombre,
     })
         .then(function (response) {
             // console.log(response);

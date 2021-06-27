@@ -169,6 +169,8 @@ class Doctor extends React.Component {
 }
 
 async function iniciarChat(doctor, usuario) {
+    ocultar('faq');
+    mostrar('cargando');
     const Chats = await axios({
         url: "https://dblinkmed.herokuapp.com/listaChat",
         method: "GET",
@@ -188,7 +190,9 @@ async function iniciarChat(doctor, usuario) {
         if (existeChat == false) {
             axios.post("https://dblinkmed.herokuapp.com/crearChat", {
                 userPaciente: usuario.user,
+                nombrePaciente: usuario.nombre + ' ' + usuario.apellido,
                 userDoctor: doctor.user,
+                nombreDoctor: doctor.nombre + ' ' + doctor.apellido
             })
                 .then(function (response) {
                     // console.log(response);

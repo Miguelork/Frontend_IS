@@ -63,7 +63,7 @@ class Chats extends React.Component {
                                                             this.state.hayChats = true
                                                             return (
                                                                 <tr>
-                                                                    <td scope="row" style={{ "color": "white" }}>{item.userDoctor}</td>
+                                                                    <td scope="row" style={{ "color": "white" }}>{item.nombreDoctor}</td>
                                                                     <td style={{ "color": "white" }}>
                                                                         <Link to={'chat=' + item._id}>
                                                                             <a className="btn-get-started scrollto" style={{ "padding": ".25rem .5rem", "font-size": ".875rem", "line-height": "1.5" }}>
@@ -80,7 +80,7 @@ class Chats extends React.Component {
                                                             this.state.hayChats = true
                                                             return (
                                                                 <tr>
-                                                                    <td scope="row" style={{ "color": "white" }}>{item.userPaciente}</td>
+                                                                    <td scope="row" style={{ "color": "white" }}>{item.nombrePaciente}</td>
                                                                     <td style={{ "color": "white" }}>
                                                                         <Link to={'chat=' + item._id}>
                                                                             <a className="btn-get-started scrollto" style={{ "padding": ".25rem .5rem", "font-size": ".875rem", "line-height": "1.5" }}>

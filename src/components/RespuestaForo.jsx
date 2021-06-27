@@ -34,11 +34,11 @@ class RespuestaForo extends React.Component {
                             <div className="row">
                                 <div className="col-md-4"></div>
                                 <div class="col-md-2 mt-3 mb-3">
-                                    <button href="#" onClick={agregarRespuesta} className="btn-get-started ">Aceptar</button>
+                                    <a href="#" onClick={agregarRespuesta} className="btn-get-started ">Aceptar</a>
                                 </div>
                                 <div class="col-md-2 mt-3 mb-3">
                                     <Link to='/foro'>
-                                        <button className="btn-get-started ">Volver</button>
+                                        <a className="btn-get-started ">Volver</a>
                                     </Link>
                                 </div>
                                 <div className="col-md-4"></div>
