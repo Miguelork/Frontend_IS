@@ -323,6 +323,9 @@ const FormDoctor = () => {
                             El usuario ingresado ya esta en uso 
                         </strong>
                     </div>
+                    <div id="avisopago" style={{ "display": "none" }} class="alert alert-primary" role="alert">
+                        <strong>Por favor comuniquese con linkmedproyecto@gmail.com para concretar su pago por suscripcion</strong>
+                    </div>  
                     <div class="mb-3">
                         <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
                     </div>

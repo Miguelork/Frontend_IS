@@ -18,6 +18,7 @@ function mostrarDivDoctorP() {
    document.getElementById('divDoctor').style.display = '';
    document.getElementById('tipoD').value = "Premium";
    mostrar('divMonto')
+   mostrar('avisopago')
    document.getElementById('tamm').classList.add('col-md-6');
 }
 
