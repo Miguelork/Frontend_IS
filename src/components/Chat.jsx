@@ -121,7 +121,7 @@ class Chat extends React.Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-9 col-xs-10">
-                                    <input type="text" id="mensaje" className="form-control" />
+                                    <input type="text" id="mensaje" className="form-control" autocomplete="off" />
                                 </div>
                                 <div className="col-3 col-xs-2">
                                     <button onClick={() => enviarMensaje(this.state.chat_id)} className="btn btn-success btn-block" style={{ "color": "#fff", "background-color": "#1217A5", "border-color": "#1217A5", "text-transform": "uppercase", "font-family": "Poppins", "font-weight": "700" }}>
