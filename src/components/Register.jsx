@@ -116,17 +116,11 @@ class Register extends React.Component {
                   </section>
                </div>
                <Wave />
-            </section>
+            </section> 
          </div>
       )
    }
-}
-
-function ocultar( id ){
-   document.getElementById(id).style.opacity = '0';
-   document.getElementById(id).style.transition = 'opacity 0.5s';
-   setTimeout(() => {  document.getElementById(id).style.display = 'none'; }, 500);
-}
+} 
 
 function mostrar( id ){
    setTimeout(() => { 

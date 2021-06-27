@@ -9,15 +9,12 @@ import {
 const Header = () => {
     return (
     <div>
-      {/* ======= Header ======= */}
       <header id="header" className="fixed-top d-flex align-items-center header-transparent">
           <div className="container d-flex align-items-center">
             <div className="logo mr-auto">
                 <h1 className="text-light"><a href="/"><span><img src="assets/img/logoLM.png" className="img-fluid" alt="" /> LinkMed</span></a></h1>
-                {/* Uncomment below if you prefer to use an image logo */}
-                {/* <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>*/}
             </div>
-            <nav className="nav-menu d-lg-block">
+            <nav className="nav-menu lign-items-right d-lg-block">
                 <ul>
                   <Link to="/menu">
                   <h1 style={{'color':'white'}}>
@@ -28,10 +25,8 @@ const Header = () => {
                   </Link>
                 </ul>
             </nav>
-            {/* .nav-menu */}
           </div>
       </header>
-      {/* End Header */}
     </div>
     )
 }

@@ -77,16 +77,14 @@ class Preguntar extends React.Component {
                                     </div>
                                 </div>
                             }
-
                             {this.state.usuario.aprobado == false &&
-                            <div className="row section-title" data-aos="fade-left">
-
-                                <div className="row" id="mensaje" >
-                                    <div className="hero-img">
-                                        <img src="assets/img/foroimg.svg" className="img-fluid animated mb-3" alt="" style={{ "max-width": "250px" }} />
-                                    </div>
-
-                                        <p style={{ "color": "white", "font-size": "12px" }}>Usted no puede realizar preguntas</p>
+                                <div className="row section-title" data-aos="fade-left">
+                                    <div className="row" id="mensaje" >
+                                        <div className="col-md-2"></div>
+                                        <div className="col-md-8 mt-3">
+                                            <img src="assets/img/denied.svg" className="img-fluid animated mb-3" alt="" />
+                                        </div>
+                                        <p className="fontPop" style={{ "color": "white", "font-size": "18px" }}>Usted no puede responder preguntas aún, espere a ser aprobado</p>
                                     </div>
                                 </div>
                             }

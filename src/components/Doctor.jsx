@@ -95,7 +95,6 @@ class Doctor extends React.Component {
         return (
             <div>
                 <Header />
-                {/* ======= Hero Section ======= */}
                 <section id="hero">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">

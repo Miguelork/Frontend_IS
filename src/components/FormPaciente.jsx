@@ -221,13 +221,28 @@ const FormPaciente = () => {
                         </div>
                     </div>
                     <div id="nocoincid" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                        <strong>Las contraseñas no coinciden</strong>
+                        <strong>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                            Las contraseñas no coinciden
+                        </strong>
                     </div>
                     <div id="camposincorrecto" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                        <strong>Por favor rellene los campos correctamente</strong>
+                        <strong>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                            Por favor rellene los campos correctamente
+                        </strong>
                     </div>
                     <div id="existeuser" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                        <strong>El usuario ingresado ya esta en uso </strong>
+                        <strong>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                            </svg>
+                            El usuario ingresado ya esta en uso 
+                        </strong>
                     </div>
                     <div class="text-center"><a href="#" onClick={onSubmit} className="btn-get-started scrollto">Aceptar</a></div>
                 </div>
@@ -315,7 +330,5 @@ function mostrar(id) {
         document.getElementById(id).style.opacity = '100';
     }, 500);
 }
-
-
 
 export default FormPaciente

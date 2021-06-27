@@ -71,7 +71,6 @@ class Historia extends React.Component {
         return (
             <div>
                 <Header />
-                {/* ======= Hero Section ======= */}
                 <section id="hero">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
@@ -125,8 +124,4 @@ class Historia extends React.Component {
     }
 }
 
-
-
-
 export default withRouter(Historia);
-

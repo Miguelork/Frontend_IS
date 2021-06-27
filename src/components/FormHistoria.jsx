@@ -15,8 +15,6 @@ class FormHistoria extends React.Component {
         historia: JSON,
     }
 
-    
-
     async componentDidMount() {
         if (!cookies.get("usuario")) {
             window.location.href = "/login";
@@ -64,7 +62,6 @@ class FormHistoria extends React.Component {
         return (
             <div>
                 <Header />
-                {/* ======= Hero Section ======= */}
                 <section id="hero">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
@@ -81,7 +78,7 @@ class FormHistoria extends React.Component {
                             <div className="row" data-aos="fade-left">
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>
                                     <div class="row" data-aos="fade-up">
-                                        <section id="counts" class="counts" style={{ "background": "none" , "padding":"25px 0"}}>
+                                        <section id="counts" class="counts" style={{ "background": "none", "padding": "25px 0" }}>
                                             <div class="container">
                                                 <div class="row" data-aos="fade-up">
                                                     <form role="form" id="regDoctor" class="php-email-form" style={{ "width": "100%" }}>
@@ -89,16 +86,14 @@ class FormHistoria extends React.Component {
                                                         <input type="hidden" id="historia_id" />
                                                         <input type="hidden" id="paciente_id" />
                                                         <div class="count-box">
-                                                                <i class="icofont-document-folder"></i>
-                                                                <span data-toggle="counter-up" style={{ "font-size": "1rem" }}>Historia del paciente</span>
-                                                                <textarea rows="4" cols="50" id="historia" className="form-control" placeholder="Escriba la historia del paciente" />
+                                                            <i class="icofont-document-folder"></i>
+                                                            <span data-toggle="counter-up" style={{ "font-size": "1rem" }}>Historia del paciente</span>
+                                                            <textarea rows="4" cols="50" id="historia" className="form-control" placeholder="Escriba la historia del paciente" />
                                                         </div>
                                                         <div class="text-center">
                                                             <a href="#" onClick={actualizarHistoria} className="btn-get-started scrollto mt-3" style={{ "text-decoration": "none" }}>Aceptar</a>
                                                         </div>
                                                     </form>
-                                                        
-                
                                                 </div>
                                             </div>
                                         </section>
@@ -113,8 +108,6 @@ class FormHistoria extends React.Component {
         )
     }
 }
-
-
 
 function actualizarHistoria() {
     var Historia = new Object();
@@ -131,15 +124,15 @@ function actualizarHistoria() {
         usuario_id: Historia.usuario_id,
         contenido: Historia.contenido,
     })
-    .then(function (response) {
-        // console.log(response);
-        window.location.href = '/historia='+Historia.usuario_id;
-    })
-    .catch(function (error) {
-        // console.log(error);
-        ocultar('faq');
-        mostrar('Doctor');
-    });
+        .then(function (response) {
+            // console.log(response);
+            window.location.href = '/historia=' + Historia.usuario_id;
+        })
+        .catch(function (error) {
+            // console.log(error);
+            ocultar('faq');
+            mostrar('Doctor');
+        });
 }
 
 function ocultar(id) {

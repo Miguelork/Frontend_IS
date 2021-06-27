@@ -9,7 +9,6 @@ class Mision extends React.Component {
     return (
       <div>
         <Header></Header>
-        {/* ======= Hero Section ======= */}
         <section id="hero">
           <div className="container">
             <div className="col-md-12 mb-5 text-center">
@@ -20,7 +19,7 @@ class Mision extends React.Component {
             <div className="row">
               <div className="row" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div className="col-md-3 mt-4 mb-4" data-aos="zoom-out" data-aos-delay={100} id="imagen" >
-                  <img src="assets/img/conected.svg" className="col-md-3" alt="" className="img-fluid" aling="left" width="250" height="250" />
+                  <img src="assets/img/conected.svg" alt="" className="img-fluid" aling="left" width="250" height="250" />
                 </div>
                 <div className="col-md-1 mt-4 mb-4"></div>
                 <div className="col-md-8 mt-4 mb-4 ">
@@ -35,12 +34,12 @@ class Mision extends React.Component {
                 </div>
                 <div className="col-md-1 mt-4 mb-4"></div>
                 <div className="col-md-3 mt-4 mb-4" data-aos="zoom-out" data-aos-delay={100} id="imagen" >
-                  <img src="assets/img/colaborar.svg" className="col-md-3" alt="" className="img-fluid" aling="right" width="500" height="500" />
+                  <img src="assets/img/colaborar.svg" alt="" className="img-fluid" aling="right" width="500" height="500" />
                 </div>
               </div>
               <div className="row" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div className="col-md-3 mt-4 mb-4" data-aos="zoom-out" data-aos-delay={100} id="imagen" >
-                  <img src="assets/img/question.svg" className="col-md-3" alt="" className="img-fluid" aling="left" width="250" height="250" />
+                  <img src="assets/img/question.svg" alt="" className="img-fluid" aling="left" width="250" height="250" />
                 </div>
                 <div className="col-md-1 mt-4 mb-4"></div>
                 <div className="col-md-8 mt-4 mb-4 ">
@@ -55,14 +54,16 @@ class Mision extends React.Component {
                 </div>
                 <div className="col-md-1 mt-4 mb-4"></div>
                 <div className="col-md-3 mt-4 mb-4" data-aos="zoom-out" data-aos-delay={100} id="imagen" >
-                  <img src="assets/img/colaborar.svg" className="col-md-3" alt="" className="img-fluid" aling="right" width="500" height="500" />
+                  <img src="assets/img/team.svg" alt="" className="img-fluid" aling="right" width="500" height="500" />
                 </div>
               </div>
+              <div className="col-md-12 mt-2 mb-2" data-aos="zoom-out" data-aos-delay={100} id="imagen" >
+                  <br/>
+                </div>
             </div>
           </div>
           <Wave />
         </section>
-        {/* End Hero */}
       </div>
     );
   }

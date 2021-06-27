@@ -43,8 +43,6 @@ class Menu extends React.Component {
     return (
       <div>
         <Header></Header>
-
-        {/* ======= Hero Section ======= */}
         <section id='hero'>
           <section
             id='features'
@@ -60,7 +58,6 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={50}
                   >
                     <i className='icofont-attachment' style={{ color: "#ffbb2c" }} />
@@ -74,7 +71,6 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={100}
                   >
                     <i
@@ -91,7 +87,6 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={150}
                   >
                     <i
@@ -108,7 +103,6 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={200}
                   >
                     <i
@@ -125,14 +119,12 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={250}
                   >
                     <i
                       className='icofont-id'
                       style={{ color: "#47aeff" }}
                     />
-                    {/* <h3><a href> Ver Perfil</a></h3>*/}
                     <Link to='/perfil'>
                       <h3>
                         <a href> Ver Perfil</a>
@@ -143,7 +135,6 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={300}
                   >
                     <i
@@ -161,7 +152,6 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={350}
                   >
                     <i
@@ -178,7 +168,6 @@ class Menu extends React.Component {
                 <div className='col-md-6 mt-4'>
                   <div
                     className='icon-box'
-                    data-aos='zoom-in'
                     data-aos-delay={400}
                   >
                     <i
@@ -196,7 +185,7 @@ class Menu extends React.Component {
                   ? <div className='col-md-12 mt-4'>
                       <div
                         className='icon-box'
-                        data-aos='zoom-in'
+  
                         data-aos-delay={150}
                       >
                         <i
@@ -216,7 +205,7 @@ class Menu extends React.Component {
                   ? <div className='col-md-12 mt-4'>
                       <div
                         className='icon-box'
-                        data-aos='zoom-in'
+  
                         data-aos-delay={150}
                       >
                         <i
@@ -235,7 +224,6 @@ class Menu extends React.Component {
               </div>
             </div>
           </section>
-          {/* End Features Section */}
           <svg
             className='hero-waves'
             xmlns='http://www.w3.org/2000/svg'
@@ -270,7 +258,6 @@ class Menu extends React.Component {
             </g>
           </svg>
         </section>
-        {/* End Hero */}
       </div>
     );
   }

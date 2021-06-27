@@ -11,7 +11,6 @@ const cookies = new Cookies();
 class AdminAprobar extends React.Component {
     state = {
         data: [],
-
     }
 
     async componentDidMount() {
@@ -27,7 +26,7 @@ class AdminAprobar extends React.Component {
             url: "https://dblinkmed.herokuapp.com/listaUsuario",
             method: "GET",
         });
-        // console.log(response.data.item);
+        
         let data = await response.data.item;
         this.setState({
             data
@@ -39,7 +38,6 @@ class AdminAprobar extends React.Component {
         return (
             <div>
                 <Header></Header>
-                {/* ======= Hero Section ======= */}
                 <section id="hero">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
@@ -72,8 +70,6 @@ class AdminAprobar extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-
-                                    {/* ======= Tabla de Escritorios PC ======= */}
                                     <div class="d-none d-sm-none d-md-block">
                                         <table class="table" id="tablaDoctores">
                                             <thead>
@@ -129,7 +125,6 @@ class AdminAprobar extends React.Component {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {/* ======= Tabla de Moviles ======= */}
                                     <div class="d-block d-sm-block d-md-none">
                                         <table class="table" id="tablaDoctores">
                                             <thead>
@@ -184,7 +179,6 @@ class AdminAprobar extends React.Component {
                                     </div>
                                 </div>
                                 <div id='lista' className="row" data-aos="fade-left">
-                                    {/* ======= Tabla de Escritorio ======= */}
                                     <div class="d-none d-sm-none d-md-block">
                                         <table class="table">
                                             <thead>
@@ -241,7 +235,6 @@ class AdminAprobar extends React.Component {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {/* ======= Tabla de Moviles ======= */}
                                     <div class="d-block d-sm-block d-md-none">
                                         <table class="table">
                                             <thead>
@@ -293,11 +286,10 @@ class AdminAprobar extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </section>{/* End Team Section */}
+                    </section>
                     <Wave />
                 </section>
                 <style dangerouslySetInnerHTML={{ __html: "\n.table {\n  border: 1px solid #1acc8d;\n}\n th {\n    font-weight: 700;\n    text-transform: uppercase;\n    font-family: \"Poppins\", sans-serif;\n}\n" }} />
-                {/* End Hero */}
             </div>
         )
     }

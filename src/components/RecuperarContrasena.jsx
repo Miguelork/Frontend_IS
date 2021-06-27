@@ -186,7 +186,6 @@ var auxUsuario = new Object();
 var paso = 1;
 
 function pasos() {
-    // console.log("Ejecutando funcion: pasos()", paso);
     paso++;
     ocultar('paso-1');
     ocultar('paso-2');

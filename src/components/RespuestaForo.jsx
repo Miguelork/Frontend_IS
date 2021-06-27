@@ -36,6 +36,11 @@ class RespuestaForo extends React.Component {
                                 <div class="col-md-2 mt-3 mb-3">
                                     <button href="#" onClick={agregarRespuesta} className="btn-get-started ">Aceptar</button>
                                 </div>
+                                <div class="col-md-2 mt-3 mb-3">
+                                    <Link to='/foro'>
+                                        <button className="btn-get-started ">Volver</button>
+                                    </Link>
+                                </div>
                                 <div className="col-md-4"></div>
                             </div>
                         </div>
@@ -150,7 +155,6 @@ class RespuestaForo extends React.Component {
         return (
             <div>
                 <Header></Header>
-                {/* ======= Hero Section ======= */}
                 <section id="hero">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">

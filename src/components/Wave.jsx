@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Wave = () => {
+
     return (      
         <div >
             <svg className="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
@@ -18,7 +19,7 @@ const Wave = () => {
                 </use></g>
             </svg>
         </div>
-    )
+    ) 
 }
 
 export default Wave

@@ -1223,6 +1223,17 @@ select {
     border-radius: 15% 0% 15% 0%;
 }
 
+.bradmodal {
+    border-radius: 10%;
+}
+
+.carCatalogo {
+    border-radius: 10%;
+    border: whitesmoke 5px solid;
+    font-family: "Poppins", sans-serif;
+    color: whitesmoke;
+}
+
 .fontPop {
     font-family: "Poppins", sans-serif;
 }

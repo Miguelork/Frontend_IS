@@ -86,7 +86,7 @@ class Nosotros extends React.Component {
               <div id="collapseVI" className="collapse bg-green brad mt-3 mb-3" style={{ "padding-top": "1rem" }} aria-labelledby="headVI" data-parent="#bloqcontact">
                 <div className="row">
                   <div className="col-md-1"></div>
-                  <div className="col-md-2">
+                  <div className="col-md-2 pt-5">
                     <img src="assets/img/perfilgirl.svg" className="img-fluid" alt="" />
                   </div>
                   <div className="col-md-9">

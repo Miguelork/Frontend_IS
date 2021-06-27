@@ -204,12 +204,21 @@ class Perfil extends React.Component {
             window.location.href = "/login";
         } else {
             let data = await cookies.get("usuario");
-            if(data.sexo=="hombre"){
-                document.getElementById("imagenero").src="assets/img/perfilboy.svg";
-            }else{
-                document.getElementById("imagenero").src="assets/img/perfilgirl.svg";
+            if (data.tipo == "Paciente") {
+                if (data.sexo == "hombre") {
+                    document.getElementById("imagenero").src = "assets/img/man.svg";
+                } else {
+                    document.getElementById("imagenero").src = "assets/img/woman.svg";
+                }
             }
-            
+            if ((data.tipo == "Voluntario") || (data.tipo == "Premium")) {
+                if (data.sexo == "hombre") {
+                    document.getElementById("imagenero").src = "assets/img/doctorperfil.svg";
+                } else {
+                    document.getElementById("imagenero").src = "assets/img/doctoraperfil.svg";
+                }
+            }
+
             if (data.tipo == "Paciente") {
                 setTimeout(() => {
                     document.getElementById("titulo").innerHTML = "Paciente";
@@ -268,17 +277,19 @@ class Perfil extends React.Component {
                 <Header></Header>
                 <section id="hero">
                     <div className="container">
-
                         <div className="section-title" data-aos="fade-up">
                             <h2>Perfil</h2>
                             <p style={{ "color": "white" }} id="titulo"></p>
                         </div>
-                        <div data-aos="zoom-out" data-aos-delay={60} id="imagen">
-                            <img id="imagenero" className="col-md-5" alt="" className="img-fluid" />
-                        </div>
-                        <div>
-                            <p></p>
-                            <p></p>
+                        <div className="row">
+                            <div className="col-md-3"></div>
+                            <div data-aos="zoom-out" className="col-md-6" data-aos-delay={60} id="imagen">
+                                <img id="imagenero" alt="" className="img-fluid" />
+                            </div>
+                            <div>
+                                <p></p>
+                                <p></p>
+                            </div>
                         </div>
                         <div className="row section-title" data-aos="fade-left" id="cargando" style={{ "display": "none" }}>
                             <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
@@ -286,7 +297,7 @@ class Perfil extends React.Component {
                             <style dangerouslySetInnerHTML={{ __html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />
                         </div>
                         <div className="row" data-aos="fade-left">
-                            <div role="form" id="Paciente" class="php-email-form" style={{ "width": "100%","display":"none" }}>
+                            <div role="form" id="Paciente" class="php-email-form" style={{ "width": "100%", "display": "none" }}>
                                 <div class="row">
                                     <input type="hidden" id="pacid" />
                                     <input type="hidden" id="pactipo" />
@@ -405,7 +416,7 @@ class Perfil extends React.Component {
                                 </div>
                                 <div class="text-center"><a href="#" onClick={onSubmit} className="btn-get-started scrollto">Guardar Cambios</a></div>
                             </div>
-                            <div role="form" id="Doctor" class="php-email-form" style={{ "width": "100%","display":"none" }}>
+                            <div role="form" id="Doctor" class="php-email-form" style={{ "width": "100%", "display": "none" }}>
                                 <input type="hidden" id="docid" />
                                 <input type="hidden" id="aprobado" />
                                 <input type="hidden" id="tipoD" />
@@ -566,13 +577,28 @@ class Perfil extends React.Component {
                                     </div>
                                 </div>
                                 <div id="nocoincide" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                                    <strong>Las contraseñas no coinciden</strong>
+                                    <strong>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                        </svg>
+                                        Las contraseñas no coinciden
+                                    </strong>
                                 </div>
                                 <div id="camposincorrect" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                                    <strong>Por favor rellene los campos correctamente</strong>
+                                    <strong>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                        </svg>
+                                        Por favor rellene los campos correctamente
+                                    </strong>
                                 </div>
                                 <div id="existeusuario" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                                    <strong>El usuario ingresado ya esta en uso </strong>
+                                    <strong>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                        </svg>
+                                        El usuario ingresado ya esta en uso
+                                    </strong>
                                 </div>
                                 <div class="text-center"><a href="#" onClick={onSubmit} className="btn-get-started scrollto">Guardar Cambios</a></div>
                             </div>
@@ -586,7 +612,6 @@ class Perfil extends React.Component {
 }
 
 async function actualizarPaciente() {
-    // console.log("Ejecutando funcion: actualizarPaciente()")
     var Paciente = new Object();
     Paciente._id = document.getElementById("pacid").value;
     Paciente.tipo = "Paciente";

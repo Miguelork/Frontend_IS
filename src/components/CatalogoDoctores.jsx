@@ -33,7 +33,6 @@ class CatalogoDoctores extends React.Component {
         return (
             <div>
                 <Header></Header>
-                {/* ======= Hero Section ======= */}
                 <section id="hero">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
@@ -41,7 +40,7 @@ class CatalogoDoctores extends React.Component {
                                 <h2>Catalogo de Doctores</h2>
                             </div>
                             <div className="row" data-aos="fade-left">
-                            {/* ======= <div className="row mb-3">
+                                {/* ======= <div className="row mb-3">
                                     <div className="col-xs-10 col-md-10">
                                         <input style={{ "background": "white" }} type="text" id="inputBusDoc" onKeyUp={Buscar} onMouseMove={Buscar} className="form-control searchm mb-3" placeholder=" 🔍    Escriba el nombre..." />
                                     </div>
@@ -57,31 +56,32 @@ class CatalogoDoctores extends React.Component {
                                     if ((item.tipo == "Voluntario" || item.tipo == "Premium") && (item.aprobado == true))
                                         return (
                                             <div className="col-lg-3 col-md-6 mt-5 mt-md-0 mb-5">
-                                                <div className="member" data-aos="zoom-in" data-aos-delay={100}>
-                                                    <div className="pic"><img src={"assets/img/team/" + item.sexo + ".jpg"} className="img-fluid" alt /></div>
-                                                    <div className="member-info">
-                                                        <h4><a href="#" style={{ "text-decoration": "none", "color": "#01036f" }} data-toggle="modal" data-target={"#" + item.user}>{item.nombre} {item.apellido}</a></h4>
-                                                        <span>{item.especialidades}</span>
-                                                        <div className="social">
-                                                            <a href><i className="icofont-star" /> --</a>
+                                                <div className="carCatalogo" data-aos="zoom-in" data-aos-delay={100}>
+                                                    <a href="#" style={{ "text-decoration": "none",  "color": "whitesmoke"}}data-toggle="modal" data-target={"#" + item.user}>
+                                                        <div className="pic p-4"><img src={"assets/img/doctor" + item.sexo + ".svg"} className="img-fluid" alt /></div>
+                                                        <div className="member-info">
+                                                            <h5 style={{  "color": "whitesmoke" }}><strong>{item.nombre} {item.apellido}</strong></h5>
+                                                            <span><i>{item.especialidades}</i></span>
+                                                            <div className="social pb-3">
+                                                                <a><i className="icofont-star" /> --</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         )
                                 })}
                             </div>
                         </div>
-                    </section>{/* End Team Section */}
+                    </section>
                     <Wave />
                 </section>
-                {/* End Hero */}
                 {this.state.data.map(item => {
                     if (item.tipo == "Voluntario" || item.tipo == "Premium")
                         return (
-                            <div className="modal fade" id={item.user} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div className="modal-dialog modal-dialog-centered" role="document">
-                                    <div className="modal-content">
+                            <div className="modal bradmodal fade" id={item.user} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div className="modal-dialog bradmodal modal-dialog-centered" role="document">
+                                    <div className="modal-content bradmodal ">
                                         <div className="modal-header bg-green pt-2 pb-2">
                                             <h5 style={{ "color": "white" }} className="modal-title" id="exampleModalLongTitle">Información detallada</h5>
                                             <h1 display="400" style={{ "color": "white" }} type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -170,7 +170,6 @@ class CatalogoDoctores extends React.Component {
                                                                 </div>
                                                             </div>
                                                             <div className="form-control mr-1"><p>{item.horaInicial}</p></div>
-
                                                             <div className="input-group-prepend ml-1">
                                                                 <div className="input-group-lm"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
                                                                     <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
@@ -194,7 +193,5 @@ class CatalogoDoctores extends React.Component {
         )
     }
 }
-
-
 
 export default CatalogoDoctores

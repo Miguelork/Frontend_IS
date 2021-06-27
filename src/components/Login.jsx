@@ -64,7 +64,6 @@ class Login extends React.Component {
         return (
             <div>
                 <Header></Header>
-                {/* ======= Hero Section ======= */}
                 <section id="hero">
                     <section id="pricing" className="pricing" style={{ "padding": "1rem" }}>
                         <div className="container" style={{ "max-width": "500px" }}>
@@ -100,10 +99,20 @@ class Login extends React.Component {
                                         <input type="password" id="password" name="password" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su contraseña" />
                                     </div>
                                     <div id="datoincorrecto" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                                        <strong>Haz introducido algun dato erróneo</strong>
+                                        <strong>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                            </svg>
+                                            Haz introducido algun dato erróneo
+                                        </strong>
                                     </div>
                                     <div id="datosfaltan" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
-                                        <strong>Por favor rellene los campos correctamente</strong>
+                                        <strong>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                            </svg>
+                                            Por favor rellene los campos correctamente
+                                        </strong>
                                     </div>
                                     <div class="mb-3">
                                         <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!</div>
@@ -123,10 +132,12 @@ class Login extends React.Component {
                         <div className="modal-dialog modal_border" role="document">
                             <div className="modal-content ">
                                 <div className="modal-header bg-green pb-0">
-                                    <p style={{ "color": "white", "font-size": "35px", "font-family": "Poppins, sans-serif" }}>Recuperar Contraseña</p>
-                                    <button type="button" className=" btn-cancel" height="35px" width="35px" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <h5 style={{ "color": "white" }} className="modal-title" id="exampleModalLongTitle">Recuperar Contraseña</h5>
+                                    <h1 display="400" style={{ "color": "white" }} type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                                            <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                                        </svg></span>
+                                    </h1>
                                 </div>
                                 <div className="modal-body bg-blue">
                                     <RecuperarContrasena />
@@ -136,74 +147,72 @@ class Login extends React.Component {
                     </div>
                     <Wave />
                 </section>
-                {/* End Hero */}
             </div>
         )
     }
 }
 
 async function login() {
-        ocultar('login');
-        ocultar('imagen');
-        mostrar('cargando');
-        // Funcion para iniciar sesión
-        const response = await axios({
-            url: "https://dblinkmed.herokuapp.com/listaUsuario",
+    ocultar('login');
+    ocultar('imagen');
+    mostrar('cargando');
+    // Funcion para iniciar sesión
+    const response = await axios({
+        url: "https://dblinkmed.herokuapp.com/listaUsuario",
+        method: "GET",
+    });
+    var login = false; // Variable de control para poner en true si coinciden los datos con la DB
+
+    response.data.item.map((usuario) => {
+        if (usuario.user == document.getElementById("user").value && usuario.password == document.getElementById("password").value) {
+            login = true;
+            cookies.set('usuario', usuario, { path: "/" });
+        }
+    });
+    // Si login esta true es que todo fue bien y se inicia sesión
+    if (login == true) {
+
+        //Llamamos a la lista de historias para verificar si hay una historia para este usuario
+        const check = await axios({
+            url: "https://dblinkmed.herokuapp.com/listaHistoria",
             method: "GET",
         });
-        // console.log(response.data.item);
-        var login = false; // Variable de control para poner en true si coinciden los datos con la DB
-        
-        response.data.item.map((usuario) => {
-            if (usuario.user == document.getElementById("user").value && usuario.password == document.getElementById("password").value) {
-                login = true;
-                cookies.set('usuario', usuario, { path: "/" });
+
+        var hayHistoria = false;//variable de control que se pone true si existe una historia para el usuario
+        check.data.item.map((historia) => {
+            if (cookies.get("usuario").tipo == 'Paciente'
+                && historia.usuario_id == cookies.get("usuario")._id) {
+                hayHistoria = true;
             }
         });
-        // Si login esta true es que todo fue bien y se inicia sesión
-        if (login == true) {
 
-            //Llamamos a la lista de historias para verificar si hay una historia para este usuario
-            const check = await axios({
-                url: "https://dblinkmed.herokuapp.com/listaHistoria",
-                method: "GET",
-            });
-
-            var hayHistoria = false;//variable de control que se pone true si existe una historia para el usuario
-            check.data.item.map((historia) => {
-                if (cookies.get("usuario").tipo == 'Paciente'
-                    && historia.usuario_id == cookies.get("usuario")._id) {
-                    hayHistoria = true;
-                }
-            });
-
-            //Si el usuario es de tipo paciente y no se encuentra una historia en bdd se le crea una
-            if (hayHistoria == false && cookies.get("usuario").tipo == 'Paciente') {
-                axios.post("https://dblinkmed.herokuapp.com/crearHistoria", {
-                    usuario_id: cookies.get("usuario")._id,
-                    contenido: "",
+        //Si el usuario es de tipo paciente y no se encuentra una historia en bdd se le crea una
+        if (hayHistoria == false && cookies.get("usuario").tipo == 'Paciente') {
+            axios.post("https://dblinkmed.herokuapp.com/crearHistoria", {
+                usuario_id: cookies.get("usuario")._id,
+                contenido: "",
+            })
+                .then(function (response) {
+                    // console.log(response);
                 })
-                    .then(function (response) {
-                        // console.log(response);
-                    })
-                    .catch(function (error) {
-                        // console.log(error);
-                    });
-            }
-
-            setTimeout(() => {
-                window.location.href = "/menu";
-            }, 1000);
-        } else {
-            setTimeout(() => {
-                ocultar('cargando');
-                mostrar('login');
-                mostrar('imagen');
-                mostrar('datoincorrecto')
-                ocultar('datosfaltan')
-            }, 3000);
+                .catch(function (error) {
+                    // console.log(error);
+                });
         }
-    
+
+        setTimeout(() => {
+            window.location.href = "/menu";
+        }, 1000);
+    } else {
+        setTimeout(() => {
+            ocultar('cargando');
+            mostrar('login');
+            mostrar('imagen');
+            mostrar('datoincorrecto')
+            ocultar('datosfaltan')
+        }, 3000);
+    }
+
 }
 
 function ocultar(id) {
