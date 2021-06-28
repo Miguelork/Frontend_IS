@@ -213,9 +213,9 @@ class Perfil extends React.Component {
             }
             if ((data.tipo == "Voluntario") || (data.tipo == "Premium")) {
                 if (data.sexo == "hombre") {
-                    document.getElementById("imagenero").src = "assets/img/doctorperfil.svg";
+                    document.getElementById("imagenero").src = "assets/img/doctorhombre.svg";
                 } else {
-                    document.getElementById("imagenero").src = "assets/img/doctoraperfil.svg";
+                    document.getElementById("imagenero").src = "assets/img/doctoramujer.svg";
                 }
             }
 
