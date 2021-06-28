@@ -206,9 +206,9 @@ class Perfil extends React.Component {
             let data = await cookies.get("usuario");
             if (data.tipo == "Paciente") {
                 if (data.sexo == "hombre") {
-                    document.getElementById("imagenero").src = "assets/img/man.svg";
+                    document.getElementById("imagenero").src = "assets/img/hombre.svg";
                 } else {
-                    document.getElementById("imagenero").src = "assets/img/woman.svg";
+                    document.getElementById("imagenero").src = "assets/img/mujer.svg";
                 }
             }
             if ((data.tipo == "Voluntario") || (data.tipo == "Premium")) {
