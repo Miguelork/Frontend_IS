@@ -1,0 +1,173 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="LinkMed" />
+
+<style>{`
+  .subheading {
+    --mediumdark: '#999999';
+    font-weight: 900;
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 6px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
+
+  .link-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  @media (min-width: 620px) {
+    .link-list {
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media all and (-ms-high-contrast:none) {
+  .link-list {
+      display: -ms-grid;
+      -ms-grid-columns: 1fr 1fr;
+      -ms-grid-rows: 1fr 1fr;
+    }
+  }
+
+  .link-item {
+    display: block;
+    padding: 20px 30px 20px 15px;
+    border: 1px solid #00000010;
+    border-radius: 5px;
+    transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+    color: #333333;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .link-item:hover {
+    border-color: #1EA7FD50;
+    transform: translate3d(0, -3px, 0);
+    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+  }
+
+  .link-item:active {
+    border-color: #1EA7FD;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .link-item strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .link-item img {
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+    flex: none;
+  }
+
+  .link-item span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .tip {
+    display: inline-block;
+    border-radius: 1em;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 700;
+    background: #E7FDD8;
+    color: #66BF3C;
+    padding: 4px 12px;
+    margin-right: 10px;
+    vertical-align: top;
+  }
+
+  .tip-wrapper {
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .tip-wrapper code {
+    font-size: 12px;
+    display: inline-block;
+  }
+
+  
+`}</style>
+
+# LinkMed
+
+Ante las nuevas dificultades acontecidas a partir de la actual pandemia, visionamos las necesidades que la comunidad médica requeriría para una mejor conexión con sus pacientes, y viceversa. Hay muchas personas inquietas no solo por el virus de Covid-19, sino por otras enfermedades y dolencias que no han podido consultar presencialmente por el colapso de muchos centros de salud. Hoy podemos asegurar que LinkMed conecta a usuarios distribuidos en países de habla hispana. Las necesidades de los profesionales pertenecientes a nuestra comunidad son el motor de avance que permite a este foro seguir sumando ideas y proyectos para optimizar el servicio ofrecido a quienes cuidan de nuestra salud, así estemos en casa.
+
+#### Ejecuta el proyecto los siguientes pasos:
+
+- Abre la Git Bash.
+
+- Cambia el directorio de trabajo actual a la ubicación en donde quieres clonar el directorio.
+
+- Escribe git clone, y luego pega la URL que copiaste antes.
+
+`git clone https://github.com/Miguelork/Frontend_IS.git`
+
+- Presiona Enter para crear tu clon local.
+
+- Espere que se descargue el poryecto.
+
+- Entre a la carpeta del proyecto y ejecute
+
+`npm install`
+
+- Finalemente, ejecute el proyecto
+
+`npm start`
+
+#### Estructura de la parte importante del proyecto:
+
+    public/
+	      assets/
+		        ...
+		  favicon.ico
+		  index.html
+		  manifest.json
+		  robots.txt
+    src/
+       components/
+                 AdminAprobar.jsx/
+                 CatalogoDoctores.jsx/
+                 Doctor.jsx/
+                 FormDoctor.js
+				 FormPaciente.jsx
+				 Foro.jsx
+				 Header.jsx
+				 Inicio.jsx
+				 InicioCard.jsx
+				 Login.jsx
+				 Menu.jsx
+				 Mision.jsx
+				 Nosotros.jsx
+				 Perfil.jsx
+				 Preguntar.jsx
+				 RecuperarContrasena.jsx
+				 css/
+				 	Register.css
+                 App.js
+				 ...
