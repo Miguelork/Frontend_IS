@@ -62,7 +62,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div data-testid="Login" id="Login">
                 <Header></Header>
                 <section id="hero">
                     <section id="pricing" className="pricing" style={{ "padding": "1rem" }}>
@@ -74,12 +74,12 @@ class Login extends React.Component {
                             <div className="mt-0 mb-4 hero-img" id="imagen" data-aos="zoom-out" data-aos-delay={100}>
                                 <img src="assets/img/log.svg" className="img-fluid" alt="" />
                             </div>
-                            <div className="row section-title" data-aos="fade-left" id="cargando" style={{ "display": "none" }}>
+                            <div className="row section-title" data-aos="fade-left" id="cargando" data-testid="cargando-login" style={{ "display": "none" }}>
                                 <div className="lds-spinner" style={{ "padding-right": "90px" }} ><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /><div /></div>
                                 <p style={{ "color": "white", "font-size": "12px" }}>Cargando</p>
                                 <style dangerouslySetInnerHTML={{ __html: "\n.lds-spinner {\n  color: official;\n  display: inline-block;\n  position: relative;\n  width: 80px;\n  height: 80px;\n}\n.lds-spinner div {\n  transform-origin: 40px 40px;\n  animation: lds-spinner 1.2s linear infinite;\n}\n.lds-spinner div:after {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 3px;\n  left: 37px;\n  width: 6px;\n  height: 18px;\n  border-radius: 20%;\n  background: #fff;\n}\n.lds-spinner div:nth-child(1) {\n  transform: rotate(0deg);\n  animation-delay: -1.1s;\n}\n.lds-spinner div:nth-child(2) {\n  transform: rotate(30deg);\n  animation-delay: -1s;\n}\n.lds-spinner div:nth-child(3) {\n  transform: rotate(60deg);\n  animation-delay: -0.9s;\n}\n.lds-spinner div:nth-child(4) {\n  transform: rotate(90deg);\n  animation-delay: -0.8s;\n}\n.lds-spinner div:nth-child(5) {\n  transform: rotate(120deg);\n  animation-delay: -0.7s;\n}\n.lds-spinner div:nth-child(6) {\n  transform: rotate(150deg);\n  animation-delay: -0.6s;\n}\n.lds-spinner div:nth-child(7) {\n  transform: rotate(180deg);\n  animation-delay: -0.5s;\n}\n.lds-spinner div:nth-child(8) {\n  transform: rotate(210deg);\n  animation-delay: -0.4s;\n}\n.lds-spinner div:nth-child(9) {\n  transform: rotate(240deg);\n  animation-delay: -0.3s;\n}\n.lds-spinner div:nth-child(10) {\n  transform: rotate(270deg);\n  animation-delay: -0.2s;\n}\n.lds-spinner div:nth-child(11) {\n  transform: rotate(300deg);\n  animation-delay: -0.1s;\n}\n.lds-spinner div:nth-child(12) {\n  transform: rotate(330deg);\n  animation-delay: 0s;\n}\n@keyframes lds-spinner {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n" }} />
                             </div>
-                            <div className="row" data-aos="fade-left" id="login">
+                            <div className="row" data-aos="fade-left" id="login" data-testid="form-login">
                                 <div role="form" class="php-email-form" style={{ "width": "100%" }}>
                                     <input type="hidden" id="tipoD" />
                                     <div className="input-group mb-3">
@@ -88,7 +88,7 @@ class Login extends React.Component {
                                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>  Usuario</span>
                                             </div>
                                         </div>
-                                        <input type="text" id="user" name="user" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su usuario" />
+                                        <input type="text" id="user" data-testid="input-user" name="user" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su usuario" required/>
                                     </div>
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
@@ -96,7 +96,7 @@ class Login extends React.Component {
                                                 <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>   Clave</span>
                                             </div>
                                         </div>
-                                        <input type="password" id="password" name="password" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su contraseña" />
+                                        <input type="password" id="password" data-testid="input-password" name="password" onClick={validarFormulario} onBlur={validarFormulario} onKeyUp={validarFormulario} className="form-control" placeholder="Escriba su contraseña" required/>
                                     </div>
                                     <div id="datoincorrecto" class="alert alert-danger alert-dismissible" style={{ "display": "none" }} role="alert">
                                         <strong>

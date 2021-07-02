@@ -47,7 +47,7 @@ class Inicio extends React.Component {
 
   render() {
     return (
-      <div>
+      <div data-testid="Inicio" id="Inicio">
         <Header />
         <section id="hero">
           <div className="container">
