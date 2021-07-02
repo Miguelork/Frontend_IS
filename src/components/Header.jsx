@@ -9,7 +9,7 @@ import {
 const Header = () => {
     return (
     <div>
-      <header id="header" className="fixed-top d-flex align-items-center header-transparent">
+      <header id="header" data-testid="header" className="fixed-top d-flex align-items-center header-transparent">
           <div className="container d-flex align-items-center">
             <div className="logo mr-auto">
                 <h1 className="text-light"><a href="/"><span><img src="assets/img/logoLM.png" className="img-fluid" alt="" /> LinkMed</span></a></h1>

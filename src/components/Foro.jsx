@@ -33,7 +33,7 @@ class Foro extends React.Component {
         return (
             <div>
                 <Header></Header>
-                <section id="hero">
+                <section id="hero" data-testid="Foro">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
                             <div className="section-title" data-aos="fade-up">
@@ -41,8 +41,8 @@ class Foro extends React.Component {
                             </div>
                             <div className="row" data-aos="fade-left">
                                 <section id="faq" className="faq section-bg" style={{ "background": "none", "padding-top": "0rem" }}>
-                                    <input type="text" id="inputBuscar" onKeyUp={Buscar} className="form-control searchm  mb-3" placeholder=" 🔍    Escriba lo que desea buscar..." />
-                                    <div className="faq-list">
+                                    <input type="text" id="inputBuscar" data-testid="input-buscar" onKeyUp={Buscar} className="form-control searchm  mb-3" placeholder=" 🔍    Escriba lo que desea buscar..." />
+                                    <div className="faq-list" data-testid="lista-preguntas">
                                         <ul id="listaForo">
                                             {this.state.data.map((item, index) => {
                                                 return (

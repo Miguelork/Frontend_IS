@@ -40,7 +40,7 @@ class Chats extends React.Component {
             <div>
                 <Header></Header>
                 {/* ======= Hero Section ======= */}
-                <section id="hero">
+                <section id="hero" data-testid="Chats">
                     <section id="team" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
                             <div className="section-title" data-aos="fade-up">

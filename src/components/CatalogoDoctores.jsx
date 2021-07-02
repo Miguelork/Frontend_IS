@@ -34,7 +34,7 @@ class CatalogoDoctores extends React.Component {
             <div>
                 <Header></Header>
                 <section id="hero">
-                    <section id="team" className="team" style={{ "background": "transparent" }}>
+                    <section id="team" data-testid="Catalogo" className="team" style={{ "background": "transparent" }}>
                         <div className="container">
                             <div className="section-title" data-aos="fade-up">
                                 <h2>Catalogo de Doctores</h2>
