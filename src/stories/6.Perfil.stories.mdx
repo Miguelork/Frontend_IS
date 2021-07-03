@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Perfil" />
+
+# Perfil
+
+La vista de perfil es la que permite a los usuarios registrados en la plataforma puedan modificar algunos de sus datos personales o profesionales. Como se ha mencionado con anterioridad los datos del usuarios en esta vista se extraen de los cookies `cookies.get("usuario");` No obstante, si el usuario no posee esto, entonces quiere decir que el usuario no ha iniciado sesión y se le redireccionara a la vista de `Login.jsx` para que proceda a iniciar sesión. Para que esto suceda se emplea una validacion basica en el `componentDidMount()`:
+
+    if (!cookies.get("usuario")) {
+        window.location.href = "/login";
+    }
+
+Ahora bien, si el usuario existe entonces se puede empezar a renderizar el resto de la vista mediante el uso de JavaScript pues, en este componente en especifico no se utilizo el `state` que propone React para trabajar en el renderizado de la vista. Sin embargo, funciona perfectamente porque se utiliza basicamente el mismo "concepto": 
+
+    if (data.tipo == "Paciente") {
+        if (data.sexo == "hombre") {
+        document.getElementById("imagenero").src = "assets/img/hombre.svg";
+        } else {
+        document.getElementById("imagenero").src = "assets/img/mujer.svg";
+        }
+    }
+    if ((data.tipo == "Voluntario") || (data.tipo == "Premium")) {
+        if (data.sexo == "hombre") {
+        document.getElementById("imagenero").src = "assets/img/doctorhombre.svg";
+        } else {
+        document.getElementById("imagenero").src = "assets/img/doctoramujer.svg";
+        }
+    }
+
+Esto funciona de la misma manera para los `inputs` como para las imagenes y todo lo relacionado a la renderización de esta vista. La existencia de los condicionales son porque la plataforma cuenta con usuarios `"tipo": "Paciente"` y usuarios `"tipo": "Voluntario"` o `"tipo": "Premium"` que son en otras palabras los doctores de la plataforma. 
+
+Por otro lado, es importante aclara que la vista en cuestion llama a una funcion diferente dependiendo el tipo de usuario como hemos mencionado con anterioridad, es decir, si es doctor ejecutara la funcion `actualizarDoctor()` o si es paciente `actualizarPaciente()`. Pero ambas se encargan de ejecutar el `post` al backend:
+
+    axios.post("https://dblinkmed.herokuapp.com/modificarUsuario", {
+            id: Doctor._id,
+            tipo: Doctor.tipo,
+            nombre: Doctor.nombre,
+            apellido: Doctor.apellido,
+            user: Doctor.user,
+            password: Doctor.password,
+            nacimiento: Doctor.nacimiento,
+            sexo: Doctor.sexo,
+            telefono: Doctor.telefono,
+            email: Doctor.email,
+            direccion: Doctor.direccion,
+            especialidades: Doctor.especialidades,
+            horaInicial: Doctor.horaInicial,
+            horaFinal: Doctor.horaFinal,
+            monto: Doctor.monto,
+            aprobado: Doctor.aprobado
+
+    })
+
+Este es el post correspondiente al de un doctor pero el del paciente es realmente similar pero varia el `"tipo"` de usuario. Finalmente, si el `post` se realiza con exito entonce se establece en la cookies `cookies.set('usuario', Doctor, { path: "/" });` y se redirecciona al usuario al la vista de menu de la plataforma.

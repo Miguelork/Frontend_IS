@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Preguntar" />
+
+# Preguntar
+
+El componente `Preguntar.jsx` permite a los usuarios realizar preguntas en el foro de la plataforma. Sin embargo, consta de un par de rederizaciones condicionales que permiten a los usuarios `"tipo": "Admin"` bannear el acceso a un usuario al Foro. Teniendo en cuenta que en `this.state.usuario` se tiene el objeto del usuario logueado con todos sus datos se hace el siguiente renderizado condicional:
+
+        {this.state.usuario.aprobado == true &&
+        <div className="row" id="pregunta" data-testid="form-pregunta">
+        <div className="col-md-4 hero-img">
+            <img src="assets/img/foroimg.svg" className="img-fluid animated mt-3" alt="" />
+        </div>
+        <div className="col-md-1"></div>
+        <div className="col-md-7" data-aos="fade-left" id="DocFormulario">
+            <div role="form" class="php-email-form" style={{ "width": "100%" }}>
+            <div class="form-group">
+                <h2 className="mt-4 mb-4" style={{ "color": "white" }}><b>Ingresa aqui tu duda</b></h2>
+                <input type="text" id="titulo" name="titulo" className="form-control" placeholder="Escriba su duda aqui " required />
+                <h2 className="mt-4 mb-4" style={{ "color": "white" }}><b>Especifique detalles de la duda</b></h2>
+                <textarea rows="6" cols="50" id="descripcion" name="descripcion" className="form-control" placeholder="Escriba detalles de su duda (Si lo considera necesario)" required />
+            </div>
+            <div class="mt-4 mb-3">
+                <div style={{ "display": "none", "color": "white" }}>¡Ha ocurrido un error!
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#" onClick={validar} className="btn-get-started scrollto">Aceptar</a>
+        </div>
+        </div>
+        </div>
+        </div>
+        }
+
+En el codigo anterior es posible observar que se despliegara un `Form` con un `input type="text"` donde se solicita el titulo de la preguntar y `textarea` donde el paciente podra escribir con detalles su duda. Es importante aclarar que tambien se muestra una imagen junto al `Form`. Ahora bién, en el caso contrario, es decir, que el usuario no este aprobado `"aprobado": false` entonces se mostrar otro contenido mas simple. 
+
+        {this.state.usuario.aprobado == false &&
+        <div className="row section-title" data-aos="fade-left">
+        <div className="row" id="mensaje" >
+            <div className="col-md-2"></div>
+            <div className="col-md-8 mt-3">
+                <img src="assets/img/denied.svg" className="img-fluid animated mb-3" alt="" />
+            </div>
+            <p className="fontPop" style={{ "color": "white", "font-size": "18px" }}>Usted no puede responder preguntas aún, espere a ser aprobado</p>
+        </div>
+        </div>
+        }
+
+Pues, como se puede ver es solo una imagen junto a un texto que informa al usuario "Usted no puede responder preguntas aún, espere a ser aprobado". Ahora bién, si el usuario esta aprobado y pulsa sobre el botón de aceptar, entonces se llama a la funcion `async` llamada  function `crearPregunta()` la cual realiza un `post` al backend de la siguiente manera:
+
+    axios.post('https://dblinkmed.herokuapp.com/crearPregunta', {
+        titulo: Pregunta.titulo,
+        descripcion: Pregunta.descripcion,
+        nombre: Pregunta.nombre,
+        apellido: Pregunta.apellido,
+        user: Pregunta.user
+    })
+
+En la función en cuestion se obtienen los datos del usuario con `let usuario = await cookies.get("usuario");` pues son necesarios para realizar el post mostrado anteriormente.
