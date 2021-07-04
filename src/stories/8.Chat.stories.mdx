@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Chat" />
+
+# Chat
+
+El Chat de la plataforma funciona mediante dos colecciones en la DB. Donde la primera coleccion posee el siguiente esquema:
+
+    let ChatSchema = new Schema({
+        userPaciente: {
+            type: String
+        },
+        nombrePaciente: {
+            type: String
+        },
+        userDoctor: {
+            type: String
+        },
+        nombreDoctor: {
+            type: String
+        },
+    })
+
+Entonces, esta coleccion funciona para llevar un control de los chats que se han iniciado en la plataforma. Cada chat posee un doctor y un paciente, puesto que no hay forma de establecer chats solo entre Doctores. Por otro lado, es importante destacar que en la vista del menu llamada "ver mensajes" es el componente `Chats.jsx` que consulta la colección mencionada anteriormente y le despliega al usuario los chast que le corresponden. A continuación se mostrará parte del este componente:
+
+    const response = await axios({
+            url: "https://dblinkmed.herokuapp.com/listaChat",
+            method: "GET",
+        });
+        
+        let data = await response.data.item;
+        this.setState({
+            data
+    })
+    
+Posteriormente de hacer el `GET` con axios se muestran en una tabla los Chats del usuario con un `.map`:
+
+    {this.state.data.map(item => {
+        if (item.userPaciente == this.state.usuario.user) {
+            this.state.hayChats = true
+                return (
+                    <tr>
+                    <td scope="row" style={{ "color": "white" }}>{item.nombreDoctor}</td>
+                    <td style={{ "color": "white" }}>
+                    <Link to={'chat=' + item._id}>
+                    <a className="btn-get-started scrollto" style={{ "padding": ".25rem .5rem", "font-size": ".875rem", "line-height": "1.5" }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-text-fill" viewBox="0 0 16 16">
+                        <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM4.5 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z" />
+                    </svg>
+                    </a>
+                    </Link>
+                    </td>
+                    </tr>
+                )
+    }
+
+Finalmente, como se puede apreciar se hacer un redireccionamiento `<Link>` pasando por `URL` el `idChat` para que se muestre una ventana de Chat similar a la de WhatsApp con el componente llamado `Chat.jsx`

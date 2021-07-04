@@ -10,4 +10,19 @@ import StackAlt from './assets/stackalt.svg';
 
 <Meta title="Proposito" />
 
-# Proposito
+# Propósito
+
+Es un componente que funciona para explicar un poco acerca de la aplicación. Además es una vista que no tiene funciones logacas adicionales pues es plenamente HTML. Conformada por varias imagenes y un conjunto de textos.
+
+    <div className="col-md-3 mt-4 mb-4" data-aos="zoom-out" data-aos-delay={100} id="imagen" >
+        <img src="assets/img/conected.svg" alt="" className="img-fluid" aling="left" width="250" height="250" />
+    </div>
+
+En el codigo anterior se puede evidenciar el uso de las clases `grid` de bootstrap para poder alinear la imagen. Por otro lado, para imprimir los textos se utilizan `<p>` de HTML como se puede ver a continuación: 
+
+    <div className="col-md-8 mt-4 mb-4 ">
+        <h5 style={{ "color": "white" }} className="card-title md-3 icoFont"><b>LinkMed, plataforma de salud online</b></h5>
+        <p style={{ "color": "white" }} className="card-text" class="text-justify wow fadeInUp" >Ante las nuevas dificultades acontecidas a partir de la actual pandemia, visionamos las necesidades que la comunidad médica requeriría para una mejor conexión con sus pacientes, y viceversa. Hay muchas personas inquietas no solo por el virus de Covid-19, sino por otras enfermedades y dolencias que no han podido consultar presencialmente por el colapso de muchos centros de salud. Hoy podemos asegurar que LinkMed conecta a usuarios distribuidos en países de habla hispana. Las necesidades de los profesionales pertenecientes a nuestra comunidad son el motor de avance que permite a este foro seguir sumando ideas y proyectos para optimizar el servicio ofrecido a quienes cuidan de nuestra salud, así estemos en casa. </p>
+    </div>
+
+De esta forma se van mostrando toda la información necesaria en la  vista en cuestión.

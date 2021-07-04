@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Mensajes" />
+
+# Mensajes
+
+La vista de mensajes en el proyecto es `Chat.jsx` que recibe un URL el `idChat` y renderiza el Chat correspondiente. En este caso se esta usando la `import { withRouter } from "react-router-dom";` para obtener ese `id` desde el URL. Ahora bién, es importante describir la funcion `componentDidMount()` pues posee algunas cosas que no son dificiles pero son JavaScript normal. 
+
+    window.scrollTo(0, 0);
+
+Esta es la primera linea de la funcion `componentDidMount()` que realiza el Scroll automatico al final del Chat puedo que se renderiza la conversación completa. Posteriormente, en dicha funcion se agrega todo lo necesario al estado para poder trabajar modoficando el mismo durante el chat:
+
+    this.setState({
+        usuario: cookies.get("usuario")
+    })
+
+    const chat_id = this.props.match.params.chat_id;
+        this.setState({
+            chat_id
+    })
+
+Finalmente, se hace un `GET` al backend para obtener todos los mensajes y son filtrados para que se muestren solo los mensajes correspondientes a la conversacion en cuestión.
+
+    const response = await axios({
+        url: "https://dblinkmed.herokuapp.com/listaMensaje",
+        method: "GET",
+    });
+
+    let mensajes = await response.data.item;
+
+    var mensajesDeEsteChat = [];
+        mensajes.map(mensaje => {
+            if (mensaje.idChat == chat_id) {
+                mensajesDeEsteChat.push(mensaje)
+            }
+    })
+
+Por ultimo, se llama a la funcion `refrescarChat(chat_id)` que es la encarga de realizar los cambios en la conversación y refresca el estado para que los usuarios puedan ir visualizando los mensajes mientras chatean.
+
+    if ( mensajesDeEsteChat.length != this.state.numeroMensajes ){
+        this.setState({
+            numeroMensajes: mensajesDeEsteChat.length
+        })
+            setTimeout(() => { window.scrollTo(0, document.body.scrollHeight); }, 1000);
+        }
+
+Este codigo mostrado anteriormente lo que hace es verificar si hubo algun mensaje nuevo para realizar un scroll automatico en la conversación.
