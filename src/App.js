@@ -26,12 +26,16 @@ import Historia from "./components/Historia";
 import FormHistoria from "./components/FormHistoria";
 import Chat from "./components/Chat";
 import Chats from "./components/Chats";
+import Chatbox from "./components/Chatbox";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-         <Switch>
+        <Switch>
+          <Route path="/chatbox">
+            <Chatbox/>
+          </Route>
           <Route path="/nosotros">
             <Nosotros />
           </Route>
