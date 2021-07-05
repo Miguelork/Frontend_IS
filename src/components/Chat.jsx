@@ -76,8 +76,8 @@ class Chat extends React.Component {
             mensajes: mensajesDeEsteChat
         })
 
-        if ( mensajesDeEsteChat.length != this.state.numeroMensajes ){
-            console.log( mensajesDeEsteChat.length , this.state.numeroMensajes)
+        if (mensajesDeEsteChat.length != this.state.numeroMensajes) {
+            console.log(mensajesDeEsteChat.length, this.state.numeroMensajes)
             this.setState({
                 numeroMensajes: mensajesDeEsteChat.length
             })
@@ -92,7 +92,14 @@ class Chat extends React.Component {
             <div>
                 <header className="page-header">
                     <div className="container ">
-                        <h2 style={{ "text-transform": "uppercase", "font-family": "Poppins", "font-weight": "700" }}>Chat</h2>
+                        <h2 style={{"margin-bottom":"0,5 rem","textDecoration":"none","text-decoration":"none","text-align": "left","color":"white","text-transform": "uppercase", "font-family": "Poppins", "font-weight": "700" }}>
+                            <Link to='chats' style={{ textDecoration: 'none', color: 'white' }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                </svg>
+                            </Link>
+                            &nbsp;&nbsp;Chat
+                        </h2>
                     </div>
                 </header>
                 <div className="main">
