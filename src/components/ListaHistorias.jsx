@@ -101,7 +101,7 @@ class ListaHistorias extends React.Component {
                                     <div className="row">
                                         <div className="col-md-2"></div>
                                         <div className="col-md-8 mt-3">
-                                            <img src="assets/img/notfound.svg" className="img-fluid" alt="" />
+                                            <img src="assets/img/sinresult.svg" className="img-fluid" alt="" />
                                             <h5 className="mt-5 fontPop" style={{ "color": "white" }}>No te han sido compartidas historias aun</h5>
                                         </div>
                                     </div>

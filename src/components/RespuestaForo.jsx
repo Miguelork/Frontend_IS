@@ -62,7 +62,7 @@ class RespuestaForo extends React.Component {
                             <div className="row">
                                 <div className="col-md-4"></div>
                                 <div className="col-md-4 mt-3">
-                                    <img src="assets/img/notfound.svg" className="img-fluid" alt="" />
+                                    <img src="assets/img/sinresult.svg" className="img-fluid" alt="" />
                                     <h5 className="mt-5 fontPop" style={{ "color": "white" }}>Aún no hay respuesta</h5>
                                 </div>
                             </div>
