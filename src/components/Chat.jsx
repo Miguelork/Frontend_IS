@@ -89,16 +89,16 @@ class Chat extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="ml-0 pl-0">
                 <header className="page-header">
-                    <div className="container ">
+                    <div className="container-fluid">
                         <h2 style={{"margin-bottom":"0,5 rem","textDecoration":"none","text-decoration":"none","text-align": "left","color":"white","text-transform": "uppercase", "font-family": "Poppins", "font-weight": "700" }}>
                             <Link to='chats' style={{ textDecoration: 'none', color: 'white' }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                                 </svg>
                             </Link>
-                            &nbsp;&nbsp;Chat
+                            &nbsp;&nbsp;                                           Chat
                         </h2>
                     </div>
                 </header>
@@ -124,14 +124,14 @@ class Chat extends React.Component {
                             })}
                         </div>
                     </div>
-                    <div className="chat-form" style={{ "padding": "0.5rem" }}>
+                    <div className="chat-form" style={{ "margin":"0px","padding": "0.5rem" }}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-9 col-xs-10">
                                     <input type="text" id="mensaje" className="form-control" autocomplete="off" />
                                 </div>
                                 <div className="col-3 col-xs-2">
-                                    <button onClick={() => enviarMensaje(this.state.chat_id)} className="btn btn-success btn-block" style={{ "color": "#fff", "background-color": "#1217A5", "border-color": "#1217A5", "text-transform": "uppercase", "font-family": "Poppins", "font-weight": "700" }}>
+                                    <button onClick={() => enviarMensaje(this.state.chat_id)} className="btn-get-started btn-block" style={{ "color": "#fff", "border-color": "#1217A5", "text-transform": "uppercase", "font-family": "Poppins", "font-weight": "700" }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-text-fill" viewBox="0 0 16 16">
                                             <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM4.5 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z" />
                                         </svg>
@@ -141,7 +141,6 @@ class Chat extends React.Component {
                         </div>
                     </div>
                 </div>
-                <link href="assets/css/chat.css" rel="stylesheet" />
             </div>
         )
     }

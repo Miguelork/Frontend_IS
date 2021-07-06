@@ -436,11 +436,6 @@ h6 {
     color: #fff;
 }
 
-
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
-
 .bg-blue {
     width: 100%;
     background: url("../img/hero-bg.jpg");
@@ -692,10 +687,43 @@ h6 {
     }
 }
 
+.chat-log {
+    padding: 40px 0 114px;
+    height: auto;
+    overflow: auto;
+}
 
-/*--------------------------------------------------------------
-# Sections General
---------------------------------------------------------------*/
+.chat-log__item {
+    background: #fafafa;
+    padding: 10px;
+    margin: 0 auto 20px;
+    max-width: 80%;
+    float: left;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    clear: both;
+}
+
+.chat-log__item.chat-log__item--own {
+    float: right;
+    background: #DCF8C6;
+    text-align: right;
+}
+
+.chat-form {
+    background: #DDDDDD;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    width: 75%;
+}
+
+.chat-log__author {
+    margin: 0 auto .5em;
+    font-size: 14px;
+    font-weight: bold;
+}
 
 section {
     padding: 60px 0;
@@ -1078,6 +1106,12 @@ section {
 
 .team .member:hover img {
     transform: scale(1.1);
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .team .member .member-info {

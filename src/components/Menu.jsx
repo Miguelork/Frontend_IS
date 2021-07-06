@@ -77,7 +77,7 @@ class Menu extends React.Component {
                       className='icofont-comment'
                       style={{ color: "#5578ff" }}
                     />
-                    <Link to='/chats'>
+                    <Link to='/chatBox'>
                     <h3>
                       <a href> Ver Mensajes</a>
                     </h3>
