@@ -8,6 +8,57 @@ import Plugin from './assets/plugin.svg';
 import Repo from './assets/repo.svg';
 import StackAlt from './assets/stackalt.svg';
 
-<Meta title="Menu" />
+<Meta title="Menú" />
 
-# Menu
+# Menú
+
+El menú de la App es el componente llamado `Menu.jsx` es mostrada solo si el usuario ha iniciado sesión: 
+
+    componentDidMount() {
+        if (!cookies.get("usuario")) {
+        window.location.href = "/login";
+        } 
+    }
+
+Por otro lado, este componente solo contiene `<Link>` para redireccionar a las distintar partes que componen la pagina. Igualmente, hay un par de funciones adicionales que sirven para desplegar funciones adicionales dependiento del `"tipo"` de usuario
+
+    esAdmin = () => {
+        if (cookies.get("usuario")) {
+        if(cookies.get("usuario").tipo === 'Admin'){
+            return true
+        }
+        } 
+        return false
+    }
+
+    esDoctor = () => {
+        if (cookies.get("usuario")) {
+        if(cookies.get("usuario").tipo === 'Premium'){
+            return true
+        }
+        } 
+        return false
+    }
+
+Finalmente, el resto del componente esta compuesto de `<Link>` como el mostrado a continuación:
+
+    <div className='col-md-6 mt-4'>
+        <div
+            className='icon-box'
+            data-aos-delay={50}
+            >
+            <i className='icofont-attachment' style={{ color: "#ffbb2c" }} />
+            <Link to='/preguntar'>
+            <h3>
+                <a href> Realizar una pregunta en el Foro</a>
+            </h3>
+            </Link>
+        </div>
+    </div>
+
+Y la función de cerrar sesión que sirve para limpiar cookies y desloguear al usuarios de la plataforma:
+
+    cerrarSesion = () => {
+        cookies.remove("usuario", { path: "/" });
+        window.location.href = "/";
+    };

@@ -11,3 +11,51 @@ import StackAlt from './assets/stackalt.svg';
 <Meta title="Catalogo" />
 
 # Catalogo
+
+La vista en cuestión es llamada `CatalogoDoctores.jsx` es un componente que cuenta en la función `componentDidMount()` con un `GET` con axios al Backend para obtener un listado de los doctores que se han registrado en la plataforma:
+
+    const response = await axios({
+            url: "https://dblinkmed.herokuapp.com/listaUsuario",
+            method: "GET",
+    });
+    console.log(response.data.item);
+
+Ahora bién, luego de obtener un listado de todos los usuarios de la plataforma, entonces se realiza una renderización condicional para que solo se mustren aquellos usuarios que sean `"tipo": "Premium"` o que sean `"tipo": "Voluntario"`. Además, dichos usuarios deben estar aprobados, es decir, tienen que estar `"aprobado": true`. A continuación se muestra lo mencionado anteriormente:
+
+    {this.state.data.map(item => {
+    if ((item.tipo == "Voluntario" || item.tipo == "Premium") && (item.aprobado == true))
+        return (
+        <div className="col-lg-3 col-md-6 mt-5 mt-md-0 mb-5">
+        <div className="carCatalogo" data-aos="zoom-in" data-aos-delay={100}>
+            <a href="#" style={{ "text-decoration": "none", "color": "whitesmoke" }} data-toggle="modal" data-target={"#" + item.user}>
+            <div className="pic p-4"><img src={"assets/img/doctor" + item.sexo + ".svg"} className="img-fluid" alt /></div>
+            <div className="member-info">
+                <h5 style={{ "color": "whitesmoke" }}><strong>{item.nombre} {item.apellido}</strong></h5>
+                <span><i>{item.especialidades}</i></span>
+                {(item.tipo == "Voluntario") ?
+                <div className="social pb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                    </svg>
+                </div>
+                :
+                <div className="social pb-3">
+                    <i className="icofont-star" />
+                </div>
+                }
+            </div>
+            </a>
+        </div>
+        </div>
+        )
+    })}
+
+Esta vista contiene Modals para mostrar la información detallada de cada doctor. Por lo tanto, se hace una especie de indice para mostrar dichos modals. Estos indices son `data-target={"#" + item.user}` que sirven para mostrar el model correspondiente, pues todos los modals son renderizados al inicio de la pagina y dependiendo de cual se pulse se abre el que corresponde al ID del usuario.
+
+    <h4 style={{ "color": "whitesmoke" }}>Nombre: {item.nombre} {item.apellido}</h4>
+    <h4 style={{ "color": "whitesmoke" }}>Especialidad: {item.especialidades}</h4>
+    <h4 style={{ "color": "whitesmoke" }}>Periodo de Atención al Público:</h4>
+    <h4 style={{ "color": "whitesmoke" }}>Hora de Inicio: {item.horaInicial}</h4>
+    <h4 style={{ "color": "whitesmoke" }}>Hora de Finalización: {item.horaFinal}</h4>
+
+Lo mostrado anteriormente es parte del cuerpo del modal donde se puede apreciar que se despliega la información del doctor.    
