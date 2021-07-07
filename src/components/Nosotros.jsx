@@ -110,7 +110,7 @@ class Nosotros extends React.Component {
                   </div>
                   <div className="col-md-9">
                   <h1 style={{ "color": "white" }} >Pedro Barrios</h1>
-                    <p style={{ "color": "white" }} class="lead">¡Hola! Me llamo Pedro Barrios, tengo 20 años y estudio Ingeniería de Sistemas en la Unimet. Me apasiona leer, escuchar música y jugar videojuegos. Mis metas son graduarme como Ingeniero y empezar a trabajar como programador. This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p style={{ "color": "white" }} class="lead">¡Hola! Me llamo Pedro Barrios, tengo 20 años y estudio Ingeniería de Sistemas en la Unimet. Me apasiona leer, escuchar música y jugar videojuegos. Mis metas son graduarme como Ingeniero y empezar a trabajar como programador.</p>
                     <p style={{ "color": "white" }} class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                     <p class="lead">
                       <a class="btn-get-started btn-lg" href="https://wa.me/584241612170/" role="button">Contactame</a>
