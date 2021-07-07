@@ -91,7 +91,7 @@ class Nosotros extends React.Component {
                   <div className="col-md-9">
                   <h1 style={{ "color": "white" }} >Maria Soto</h1>
                     <p style={{ "color": "white" }} class="lead">Soy María Valentina Soto Alvarez, tengo 19 años. Estudio Ingeniería de Sistemas en la Unimet gracias a una beca de Matrícula de Honor. Actualmente, represento a la Universidad Metropolitana con el equipo de Kickingball Unimet y con el equipo de Rugby Unimet. </p>
-                    <p style={{ "color": "white" }} class="lead">Mis Objetivos a corto plazo son: Mejorar como deportista, culminar mi trimestre con un índice académico mayor a 16,5 y aprender Inglés.</p>
+                    <p style={{ "color": "white" }} class="lead">Mis Objetivos a corto plazo son: Mejorar como deportista, culminar mi trimestre con un índice académico mayor a 16,5 y aprender Inglés.Mis Objetivos a largo plazo son: Graduarme como Ingeniero de Sistemas en la Universidad Metropolitana, certificarme en el sistema SAP y ser bilingüe.</p>
                     <p class="lead">
                       <a class="btn-get-started btn-lg" href="https://wa.me/584142871576/" role="button">Contactame</a>
                     </p>
