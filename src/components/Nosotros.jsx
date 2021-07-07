@@ -48,7 +48,7 @@ class Nosotros extends React.Component {
                   </div>
                   <div className="col-md-9">
                   <h1 style={{ "color": "white" }} >Gabriela Banezca</h1>
-                    <p style={{ "color": "white" }} class="lead">Soy Gabriela Banezca, estudiante de Ingeniería de Sistemas en la Unimet, 20 años. Me caracterizo como una persona creativa, centrada en la meta de graduarse. Le inspira el arte, le apasiona la música, pero le gusta el mundo de la ingeniería dónde todo en medible y comprobable. </p>
+                    <p style={{ "color": "white" }} class="lead">Soy Gabriela Banezca, estudiante de Ingeniería de Sistemas en la Unimet, 20 años. Me caracterizo como una persona creativa, centrada en la meta de graduarse. Me inspira el arte, me apasiona la música, pero me gusta el mundo de la ingeniería dónde todo es medible y comprobable. </p>
                     <p style={{ "color": "white" }} class="lead">Me gusta programar en varios lenguajes como por ejemplo Java, Python. Soy muy detallista y por eso también me gusta trabajar en el Frontend.  </p>
                     <p class="lead">
                       <a class="btn-get-started btn-lg" href="https://wa.me/584129888614/" role="button">Contactame</a>
