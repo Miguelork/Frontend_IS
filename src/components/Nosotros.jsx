@@ -111,7 +111,7 @@ class Nosotros extends React.Component {
                   <div className="col-md-9">
                   <h1 style={{ "color": "white" }} >Pedro Barrios</h1>
                     <p style={{ "color": "white" }} class="lead">¡Hola! Me llamo Pedro Barrios, tengo 20 años y estudio Ingeniería de Sistemas en la Unimet. Me apasiona leer, escuchar música y jugar videojuegos. Mis metas son graduarme como Ingeniero y empezar a trabajar como programador.</p>
-                    <p style={{ "color": "white" }} class="lead">Me gusta programar en los lenguajes Java y Python. Soy bueno trabajando en el backend aunque también puedo llegar a ser detallista para el frontend.</p>
+                    <p style={{ "color": "white" }} class="lead">Me gusta programar en los lenguajes Java, Python, Assembler, C y R. Soy bueno trabajando en el backend aunque también puedo llegar a ser detallista para el frontend.</p>
                     <p class="lead">
                       <a class="btn-get-started btn-lg" href="https://wa.me/584241612170/" role="button">Contactame</a>
                     </p>
