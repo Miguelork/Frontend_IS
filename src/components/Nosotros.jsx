@@ -90,7 +90,7 @@ class Nosotros extends React.Component {
                   </div>
                   <div className="col-md-9">
                   <h1 style={{ "color": "white" }} >Maria Soto</h1>
-                    <p style={{ "color": "white" }} class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p style={{ "color": "white" }} class="lead">Soy María Valentina Soto Alvarez, tengo 19 años. Estudio Ingeniería de Sistemas en la Unimet gracias a una beca de Matrícula de Honor. Actualmente, represento a la Universidad Metropolitana con el equipo de Kickingbll Unimet y con el equipo de Rugby Unimet. </p>
                     <p style={{ "color": "white" }} class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                     <p class="lead">
                       <a class="btn-get-started btn-lg" href="https://wa.me/584142871576/" role="button">Contactame</a>
